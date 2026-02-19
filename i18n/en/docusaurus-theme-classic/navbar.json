@@ -1,0 +1,34 @@
+{
+  "logo.alt": {
+    "message": "Flowing Docs",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.博客": {
+    "message": "Blog",
+    "description": "Navbar item with label 博客"
+  },
+  "item.label.技术写作": {
+    "message": "Technical Writing",
+    "description": "Navbar item with label 技术写作"
+  },
+  "item.label.项目案例": {
+    "message": "Project Cases",
+    "description": "Navbar item with label 项目案例"
+  },
+  "item.label.友链": {
+    "message": "Friends",
+    "description": "Navbar item with label 友链"
+  },
+  "item.label.更多": {
+    "message": "More",
+    "description": "Navbar item with label 更多"
+  },
+  "item.label.关于我": {
+    "message": "About Me",
+    "description": "Navbar item with label 关于我"
+  },
+  "item.label.归档": {
+    "message": "Archive",
+    "description": "Navbar item with label 归档"
+  }
+}

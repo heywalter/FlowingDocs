@@ -1,0 +1,54 @@
+{
+  "link.title.学习": {
+    "message": "Learning",
+    "description": "The title of the footer links column with title=学习 in the footer"
+  },
+  "link.title.社交媒体": {
+    "message": "Social Media",
+    "description": "The title of the footer links column with title=社交媒体 in the footer"
+  },
+  "link.title.更多": {
+    "message": "More",
+    "description": "The title of the footer links column with title=更多 in the footer"
+  },
+  "link.item.label.博客": {
+    "message": "Blog",
+    "description": "The label of footer link with label=博客 linking to blog"
+  },
+  "link.item.label.技术写作": {
+    "message": "Technical Writing",
+    "description": "The label of footer link with label=技术写作 linking to docs"
+  },
+  "link.item.label.实战项目": {
+    "message": "Project Cases",
+    "description": "The label of footer link with label=实战项目 linking to showcase"
+  },
+  "link.item.label.归档": {
+    "message": "Archive",
+    "description": "The label of footer link with label=归档 linking to blog/archive"
+  },
+  "link.item.label.关于我": {
+    "message": "About Me",
+    "description": "The label of footer link with label=关于我 linking to /about"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/heywalter"
+  },
+  "link.item.label.邮箱": {
+    "message": "Email",
+    "description": "The label of footer link with label=邮箱 linking to mailto:walter@flowingdocs.com"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/f9DU3Enqqm"
+  },
+  "link.item.label.友链": {
+    "message": "Friends",
+    "description": "The label of footer link with label=友链 linking to friends"
+  },
+  "copyright": {
+    "message": "\n        <p>Copyright © 2026 - ${new Date().getFullYear()} Walter | Built with Docusaurus. “Sharing the warmth of technology, connecting the value of knowledge.”</p>\n      ",
+    "description": "The footer copyright"
+  }
+}

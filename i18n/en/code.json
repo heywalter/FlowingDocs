@@ -1,0 +1,909 @@
+{
+  "about.page.title": {
+    "message": "About Me"
+  },
+  "about.page.description": {
+    "message": "An introduction to Walter"
+  },
+  "about.header.title": {
+    "message": "About Me"
+  },
+  "about.stat.exp": {
+    "message": "Years Exp"
+  },
+  "about.stat.articles": {
+    "message": "Articles"
+  },
+  "about.stat.readers": {
+    "message": "Readers"
+  },
+  "about.sidebar.skills": {
+    "message": "Skills & Tools"
+  },
+  "about.role.title": {
+    "message": "Senior Technical Writer & AI Explorer"
+  },
+  "about.intro.paragraph1": {
+    "message": "Hey, I'm Walter Gui 👋 I translate between human language and technical complexity. My job? Helping teams build products people actually understand and enjoy using."
+  },
+  "about.intro.paragraph2": {
+    "message": "You might have noticed—my English name sounds like “Water.” That’s no accident. It reflects my core philosophy for technical communication:"
+  },
+  "about.intro.quote": {
+    "message": "Knowledge is like water—it only has value when it flows."
+  },
+  "about.philosophy.title": {
+    "message": "My Philosophy"
+  },
+  "about.philosophy.paragraph1": {
+    "message": "In the vast ocean of technology, complex code and architecture can be like towering icebergs—impressive, yet hard to approach. Great documentation melts those icebergs into clear streams of knowledge, naturally flowing to the people who need it."
+  },
+  "about.philosophy.paragraph2": {
+    "message": "In reality, much of our technical knowledge stays “frozen”—scattered, jargon-heavy, and hard to apply. Through my work, I aim to set that knowledge in motion, so it can reach its full potential."
+  },
+  "about.work.title": {
+    "message": "How I Work"
+  },
+  "about.work.feature1.title": {
+    "message": "Collaborative Discovery"
+  },
+  "about.work.feature1.description": {
+    "message": "I dig into the real problems teams face, not just what features do. Together, we uncover the stories that make technology meaningful to actual humans."
+  },
+  "about.work.feature2.title": {
+    "message": "Technical Translation"
+  },
+  "about.work.feature2.description": {
+    "message": "Code is poetry, but most people don't speak fluent Python. I turn technical complexity into stories that make sense, so teams can ship products humans actually understand."
+  },
+  "about.work.feature3.title": {
+    "message": "Living Examples"
+  },
+  "about.work.feature3.description": {
+    "message": "Design practical, relatable examples that make abstract concepts tangible and easier to apply."
+  },
+  "about.life.title": {
+    "message": "Beyond Work"
+  },
+  "about.life.hobby1.title": {
+    "message": "Cycling Enthusiast"
+  },
+  "about.life.hobby2.title": {
+    "message": "Tech Explorer"
+  },
+  "about.section.experience": {
+    "message": "Career Journey"
+  },
+  "about.hero.greeting": {
+    "message": "Hi, I'm"
+  },
+  "about.hero.name": {
+    "message": "Walter Gui"
+  },
+  "about.hero.tag1": {
+    "message": "Technical Communicator"
+  },
+  "about.hero.tag2": {
+    "message": "Champion of Knowledge Flow"
+  },
+  "about.hero.tag3": {
+    "message": "The “Translator” Between Product & Users"
+  },
+  "about.hero.subtitle": {
+    "message": "I help teams turn complex tech into content people actually want to read. Let's build documentation that flows."
+  },
+  "about.intro.title": {
+    "message": "Nice to Meet You"
+  },
+  "about.work.intro": {
+    "message": "At Flowing Docs, you’ll find a different perspective on technical content creation:"
+  },
+  "about.work.belief": {
+    "message": "Documentation isn't just words on a page—it's where products meet people. Every confused user, every 'aha!' moment, every support ticket is feedback that helps us build better bridges."
+  },
+  "about.life.hobby1.description": {
+    "message": "Cycling taught me that great rides—like great documentation—need the right balance of planning and improvisation. Sometimes you take the scenic route, sometimes you sprint to the finish, but you always learn something new about the journey."
+  },
+  "about.life.hobby2.description": {
+    "message": "From Raspberry Pi clusters to the latest AI models, I love tinkering with tech that might just change how we work. If it's new and slightly overwhelming, I'm probably experimenting with it."
+  },
+  "about.tech.title": {
+    "message": "Tech Stack"
+  },
+  "about.tech.category1.title": {
+    "message": "Core Skills"
+  },
+  "about.tech.category2.title": {
+    "message": "Databases"
+  },
+  "about.tech.category3.title": {
+    "message": "Tools & Platforms"
+  },
+  "about.contact.title": {
+    "message": "Get in Touch"
+  },
+  "about.contact.intro": {
+    "message": "Got questions, ideas, or a collaboration in mind? Here’s how you can reach me:"
+  },
+  "about.closing.paragraph1": {
+    "message": "Thanks for reading this far! I hope something here sparks an idea or helps you in your work. Whether it’s about tech or content creation, I’m always happy to chat."
+  },
+  "about.closing.paragraph2": {
+    "message": "Since you’ve made it this far—why not share your thoughts? I’d love to hear from you."
+  },
+  "friends.page.title": {
+    "message": "Friend Links"
+  },
+  "friends.page.description": {
+    "message": "A network of great tech doc communities, learning and growing together"
+  },
+  "friends.siteInfo.description": {
+    "message": "The art and science of technical documentation"
+  },
+  "friends.siteInfo.collapse": {
+    "message": "Collapse site info"
+  },
+  "friends.siteInfo.expand": {
+    "message": "Expand site info"
+  },
+  "friends.siteInfo.label": {
+    "message": "Site Info"
+  },
+  "friends.siteInfo.title": {
+    "message": "About This Site"
+  },
+  "friends.header.applyLink": {
+    "message": "Apply for a Friend Link"
+  },
+  "friends.empty.title": {
+    "message": "No Links Yet"
+  },
+  "friends.empty.description": {
+    "message": "Be the first to add your link!"
+  },
+  "friends.empty.applyLink": {
+    "message": "Apply for a Friend Link"
+  },
+  "showcase.filters.resultCount": {
+    "message": "{sitesCount} case studies",
+    "description": "Label for the number of sites found on the showcase. Simplified for single plural form support in zh-Hans."
+  },
+  "showcase.title": {
+    "message": "Projects & Tools Showcase"
+  },
+  "showcase.description": {
+    "message": "A collection of projects, tools, and documentation engineering practices from my technical communication career. Covering technical writing, DX optimization, and AI integration. Continuously updated—let's connect and share ideas."
+  },
+  "showcase.header.button": {
+    "message": "💬 Send Feedback / Leave a Comment"
+  },
+  "theme.blog.archive.posts.unit": {
+    "message": "posts"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archive",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archive",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.archive.posts.total": {
+    "message": "{total} posts so far—keep creating!",
+    "description": "Blog archive total posts message"
+  },
+  "theme.blog.title.new": {
+    "message": "Blog"
+  },
+  "theme.blog.subtitle": {
+    "message": "Code & Life: A Journey Weaving Technology and Stories"
+  },
+  "theme.blog.post.plurals": {
+    "message": "One post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagged with \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "View all tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "homepage.blog.no_posts": {
+    "message": "No posts yet..."
+  },
+  "homepage.blog.title": {
+    "message": "Latest Posts"
+  },
+  "homepage.feature.title": {
+    "message": "What I Do"
+  },
+  "homepage.hero.greet": {
+    "message": "Hello!"
+  },
+  "homepage.hero.name": {
+    "message": "World"
+  },
+  "homepage.hero.text": {
+    "message": "Documenting technical communication practices, focusing on user experience, and sharing the simple joys of life."
+  },
+  "homepage.hero.introduce": {
+    "message": "About Me"
+  },
+  "homepage.lookMore": {
+    "message": "See More"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Blog recent posts navigation",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Toggle word wrap",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Main",
+    "description": "The ARIA label for the main navigation"
+  },
+  "showcase.card.sourceLink": {
+    "message": "Get Details"
+  },
+  "showcase.usersList.noResult": {
+    "message": "No results"
+  },
+  "showcase.usersList.allUsers": {
+    "message": "Latest Showcases"
+  },
+  "showcase.filters.title": {
+    "message": "Quick Filters"
+  },
+  "showcase.searchBar.placeholder": {
+    "message": "Search for site name..."
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read more",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Read more about {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "This page crashed.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Scroll back to top",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blog list page navigation",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Newer entries",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Older entries",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blog post page navigation",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Newer post",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Older post",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Switch between dark and light mode (currently {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "dark mode",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "light mode",
+    "description": "The name for the light color mode"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 item|{count} items",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Breadcrumbs",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Previous",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Next",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "One doc tagged|{count} docs tagged",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} with \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Edit this page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "caution",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "note",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "tip",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "warning",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Expand sidebar category '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Collapse sidebar category '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "On this page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Home page",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs sidebar",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "See all {count} results"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "One document found|{count} documents found",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Search results for \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Search the documentation",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.inputPlaceholder": {
+    "message": "Type your search here",
+    "description": "The placeholder for search page input"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "Search",
+    "description": "The ARIA label for search page input"
+  },
+  "theme.SearchPage.algoliaLabel": {
+    "message": "Search by Algolia",
+    "description": "The description label for Algolia mention"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No results were found",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Fetching new results...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.label": {
+    "message": "Search",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Clear the query",
+    "description": "The label and ARIA label for search box reset button"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Cancel",
+    "description": "The label and ARIA label for search box cancel button"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Recent",
+    "description": "The title for recent searches"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "No recent searches",
+    "description": "The text when there are no recent searches"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Save this search",
+    "description": "The title for save recent search button"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Remove this search from history",
+    "description": "The title for remove recent search button"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Favorite",
+    "description": "The title for favorite searches"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Remove this search from favorites",
+    "description": "The title for remove favorite search button"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Unable to fetch results",
+    "description": "The title for error screen"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "You might want to check your network connection.",
+    "description": "The help text for error screen"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "to select",
+    "description": "The select text for footer"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Enter key",
+    "description": "The ARIA label for select key in footer"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "to navigate",
+    "description": "The navigate text for footer"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Arrow up",
+    "description": "The ARIA label for navigate up key in footer"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Arrow down",
+    "description": "The ARIA label for navigate down key in footer"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "to close",
+    "description": "The close text for footer"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Escape key",
+    "description": "The ARIA label for close key in footer"
+  },
+  "theme.SearchModal.footer.searchByText": {
+    "message": "Search by",
+    "description": "The 'Powered by' text for footer"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "No results for",
+    "description": "The text when there are no results"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Try searching for",
+    "description": "The text for suggested query"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Believe this query should return results?",
+    "description": "The text for reporting missing results"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Let us know.",
+    "description": "The link text for reporting missing results"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Search docs",
+    "description": "The placeholder of the input of the DocSearch pop-up modal"
+  },
+  "theme.IdealImageMessage.loading": {
+    "message": "Loading...",
+    "description": "When the full-scale image is loading"
+  },
+  "theme.IdealImageMessage.load": {
+    "message": "Click to load{sizeMessage}",
+    "description": "To prompt users to load the full image. sizeMessage is a parenthesized size figure."
+  },
+  "theme.IdealImageMessage.offline": {
+    "message": "Your browser is offline. Image not loaded",
+    "description": "When the user is viewing an offline document"
+  },
+  "theme.IdealImageMessage.404error": {
+    "message": "404. Image not found",
+    "description": "When the image is not found"
+  },
+  "theme.IdealImageMessage.error": {
+    "message": "Error. Click to reload",
+    "description": "When the image fails to load for unknown error"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Authors",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "View all authors",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Unlisted page",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Draft page",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Try again",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "homepage.feature.focus": {
+    "message": "Engineering Technical Documentation"
+  },
+  "homepage.feature.focus.description": {
+    "message": "I turn technical complexity into clarity. Through API design, developer experience optimization, and Docs-as-Code workflows, I help teams ship documentation that actually gets used—not just written."
+  },
+  "homepage.feature.ai": {
+    "message": "AI-Powered Technical Writing"
+  },
+  "homepage.feature.ai.description": {
+    "message": "AI isn't replacing technical writers—it's supercharging them. I experiment with intelligent content generation, automated quality checks, and smart documentation systems that help teams create better content faster."
+  },
+  "homepage.feature.ux": {
+    "message": "User-Centric Information Experience"
+  },
+  "homepage.feature.ux.description": {
+    "message": "Documentation isn't just about explaining features—it's about guiding humans through their entire journey. I design content that meets users where they are, whether they're skimming for quick answers or diving deep into complex implementations."
+  },
+  "showcase.flowingdocs.title": {
+    "message": "Flowing Docs Blog Practice"
+  },
+  "showcase.flowingdocs.description": {
+    "message": "A personal blog built with Docusaurus, focusing on technical writing, developer experience, and content maintainability. Features include dark mode, PWA support, Giscus comments, and SEO optimization."
+  },
+  "showcase.tag.favorite.label": {
+    "message": "Featured Projects"
+  },
+  "showcase.tag.favorite.description": {
+    "message": "Handpicked quality projects worth exploring"
+  },
+  "showcase.tag.personalSite.label": {
+    "message": "Personal Blog/Portfolio"
+  },
+  "showcase.tag.personalSite.description": {
+    "message": "Personal websites, blogs, and portfolio projects"
+  },
+  "showcase.tag.openSource.label": {
+    "message": "Open Source"
+  },
+  "showcase.tag.openSource.description": {
+    "message": "Projects with accessible source code and tools"
+  },
+  "showcase.tag.docusaurus.label": {
+    "message": "Docusaurus Showcase"
+  },
+  "showcase.tag.docusaurus.description": {
+    "message": "Docusaurus customization, component development, and performance optimization"
+  },
+  "showcase.tag.dx.label": {
+    "message": "Developer Experience"
+  },
+  "showcase.tag.dx.description": {
+    "message": "Because developers are humans too. Projects that make the developer journey smoother, from first contact to production deployment."
+  },
+  "friends.doccraft.description": {
+    "message": "The Art and Science of Technical Documentation"
+  },
+  "friends.tags.techDocs": {
+    "message": "Technical Docs"
+  },
+  "friends.tags.knowledgeManagement": {
+    "message": "Knowledge Management"
+  },
+  "friends.apiDocsHub.description": {
+    "message": "API Documentation Best Practices and Tools"
+  },
+  "friends.tags.developerExperience": {
+    "message": "Developer Experience"
+  },
+  "friends.devDocsDaily.description": {
+    "message": "Daily Updates on Development Documentation Resources"
+  },
+  "friends.tags.devDocs": {
+    "message": "Dev Documentation"
+  },
+  "friends.tags.tutorial": {
+    "message": "Tutorials"
+  },
+  "friends.uxWritingLab.description": {
+    "message": "UX Writing and Content Design"
+  },
+  "friends.tags.uxWriting": {
+    "message": "UX Writing"
+  },
+  "friends.tags.contentDesign": {
+    "message": "Content Design"
+  },
+  "friends.flowDocs.description": {
+    "message": "Seamless Documentation Experience"
+  },
+  "friends.tags.docTools": {
+    "message": "Documentation Tools"
+  },
+  "friends.tags.collaboration": {
+    "message": "Collaboration"
+  },
+  "about.certs.title": {
+    "message": "认证"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "system mode",
+    "description": "The name for the system color mode"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(opens in new tab)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Expand the dropdown",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Collapse the dropdown",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.SearchModal.searchBox.placeholderText": {
+    "message": "Search docs",
+    "description": "The placeholder text for the main search input field"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAi": {
+    "message": "Ask another question...",
+    "description": "The placeholder text when in AI question mode"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAiStreaming": {
+    "message": "Answering...",
+    "description": "The placeholder text for search box when AI is streaming an answer"
+  },
+  "theme.SearchModal.searchBox.enterKeyHint": {
+    "message": "search",
+    "description": "The hint for the search box enter key text"
+  },
+  "theme.SearchModal.searchBox.enterKeyHintAskAi": {
+    "message": "enter",
+    "description": "The hint for the Ask AI search box enter key text"
+  },
+  "theme.SearchModal.searchBox.searchInputLabel": {
+    "message": "Search",
+    "description": "The ARIA label for search input"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonText": {
+    "message": "Back to keyword search",
+    "description": "The text for back to keyword search button"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonAriaLabel": {
+    "message": "Back to keyword search",
+    "description": "The ARIA label for back to keyword search button"
+  },
+  "theme.SearchModal.startScreen.recentConversationsTitle": {
+    "message": "Recent conversations",
+    "description": "The title for recent conversations"
+  },
+  "theme.SearchModal.startScreen.removeRecentConversationButtonTitle": {
+    "message": "Remove this conversation from history",
+    "description": "The title for remove recent conversation button"
+  },
+  "theme.SearchModal.resultsScreen.askAiPlaceholder": {
+    "message": "Ask AI: ",
+    "description": "The placeholder text for Ask AI input"
+  },
+  "theme.SearchModal.askAiScreen.disclaimerText": {
+    "message": "Answers are generated with AI which can make mistakes. Verify responses.",
+    "description": "The disclaimer text for AI answers"
+  },
+  "theme.SearchModal.askAiScreen.relatedSourcesText": {
+    "message": "Related sources",
+    "description": "The text for related sources"
+  },
+  "theme.SearchModal.askAiScreen.thinkingText": {
+    "message": "Thinking...",
+    "description": "The text when AI is thinking"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonText": {
+    "message": "Copy",
+    "description": "The text for copy button"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonCopiedText": {
+    "message": "Copied!",
+    "description": "The text for copy button when copied"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonTitle": {
+    "message": "Copy",
+    "description": "The title for copy button"
+  },
+  "theme.SearchModal.askAiScreen.likeButtonTitle": {
+    "message": "Like",
+    "description": "The title for like button"
+  },
+  "theme.SearchModal.askAiScreen.dislikeButtonTitle": {
+    "message": "Dislike",
+    "description": "The title for dislike button"
+  },
+  "theme.SearchModal.askAiScreen.thanksForFeedbackText": {
+    "message": "Thanks for your feedback!",
+    "description": "The text for thanks for feedback"
+  },
+  "theme.SearchModal.askAiScreen.preToolCallText": {
+    "message": "Searching...",
+    "description": "The text before tool call"
+  },
+  "theme.SearchModal.askAiScreen.duringToolCallText": {
+    "message": "Searching for ",
+    "description": "The text during tool call"
+  },
+  "theme.SearchModal.askAiScreen.afterToolCallText": {
+    "message": "Searched for",
+    "description": "The text after tool call"
+  },
+  "theme.SearchModal.footer.submitQuestionText": {
+    "message": "Submit question",
+    "description": "The submit question text for footer"
+  },
+  "theme.SearchModal.footer.backToSearchText": {
+    "message": "Back to search",
+    "description": "The back to search text for footer"
+  }
+}
