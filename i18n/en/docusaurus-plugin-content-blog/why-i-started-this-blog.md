@@ -18,11 +18,7 @@ Many tech people have set up blogs, but stopped after a few posts. I hope I can 
 <!-- truncate -->
 
 ## What Will This Blog Cover?
-<img
-  src={require('./images/coffee_relax.png').default}
-  alt="Blog and Life"
-  className="article-banner"
-/>
+![Blog and Life](./images/coffee_relax.png)
 
 <p className="article-banner-caption">
   Image by suksao on Freepik

@@ -21,11 +21,7 @@ image: /blog-images/blog_banner.png
 
 ## 这个博客会写些什么？
 
-<img
-  src={require('./images/coffee_relax.png').default}
-  alt="博客与生活"
-  className="article-banner"
-/>
+![博客与生活](./images/coffee_relax.png)
 
 <p className="article-banner-caption">
   图片来自 suksao | Freepik

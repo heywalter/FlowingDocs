@@ -179,14 +179,6 @@ article p > span > a {
 /**
  * blog banner
  */
-.article-banner {
-  display: block;
-  margin: 3rem auto 0.75rem;
-  width: min(100%, 1100px);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
 .article-banner-caption {
   text-align: center;
   font-size: 0.9rem;
