@@ -184,9 +184,9 @@ const config: Config = {
       copyright: `Copyright © 2026 - ${new Date().getFullYear()} Walter | Built with Docusaurus | <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 2px;">CC BY-NC 4.0</a>`,
     },
     algolia: {
-      appId: 'GV6YN1111111ODMO', // Algolia application ID
-      apiKey: '50303937b0e4630bec4a20a14e3b7872', // Public search API key
-      indexName: 'walter', // Algolia index name
+      appId: 'Y48LY06LB3', // Algolia application ID
+      apiKey: 'cc2a65f5d1b2ea93e357a20ca611e41f', // Public search API key
+      indexName: 'FlowingDocs', // Algolia index name
     },
     prism: {
       theme: themes.oneLight, // Light code-block theme
