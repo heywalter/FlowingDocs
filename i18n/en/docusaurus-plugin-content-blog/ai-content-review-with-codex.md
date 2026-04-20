@@ -25,8 +25,7 @@ The first things human reviewers tend to miss are usually not the big, dramatic 
 - the same term written three different ways
 - product capability descriptions that slowly drift away from reality
 
-<!-- This is a test content for code review. -->
-None of these looks catastrophic on its own. But over time they add up and make a doc set feel more trustworthy. And they rarely appear in one neat place. They are scattered across pages, versions, and pull requests.
+None of these looks catastrophic on its own. But over time they add up and make a doc set feel less trustworthy. And they rarely appear in one neat place. They are scattered across pages, versions, and pull requests.
 
 That is what pushed me toward stronger AI review. Not because I wanted AI to replace people, but because it sits in a very useful middle ground: it understands more context than rules and spell-check tools do, and it is more consistent than asking a human to manually scan every page every time.
 
