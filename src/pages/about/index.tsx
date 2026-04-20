@@ -14,7 +14,7 @@ export default function About() {
         id: 'about.page.title',
       })}
       description={translate({
-        message: '桂陈的个人简历与技术背景',
+        message: 'Walter 的个人简历与技术背景',
         id: 'about.page.description',
       })}
     >
@@ -187,7 +187,7 @@ export default function About() {
               <div className={styles.bioText}>
                 <p>
                   {translate({
-                    message: '我是桂陈（Walter），一名技术内容创作者和技术传播实践者。感谢你来到知流小记！我的工作是让复杂的技术知识变得简单易懂，成为产品与用户之间的桥梁。',
+                    message: '我是 Walter，一名技术内容创作者和技术传播实践者。感谢你来到知流小记！我的工作是让复杂的技术知识变得简单易懂，成为产品与用户之间的桥梁。',
                     id: 'about.intro.paragraph1',
                   })}
                 </p>
