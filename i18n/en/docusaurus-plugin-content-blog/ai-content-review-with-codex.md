@@ -2,7 +2,7 @@
 title: "How I Review Technical Docs with AI: From Lightweight Local Checks to Codex Code Review"
 authors: Walter
 tags: [Technical Writing, AI Review, Docs as Code, Codex, Documentation Workflow]
-image: /blog-images/integrate_codex_code_review.png
+image: https://img.flowingdocs.com/images/integrate_codex_code_review.png
 description: How I built a layered AI review workflow for technical docs using lightweight local checks, Codex Local, Codex Cloud, and AGENTS.md to catch the issues humans miss most often.
 ---
 
