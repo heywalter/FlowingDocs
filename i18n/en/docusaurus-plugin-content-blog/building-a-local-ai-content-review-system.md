@@ -2,12 +2,12 @@
 title: "Building a Local AI Content Review System: From a Small Model to a Web Tool Your Team Will Actually Use"
 authors: Walter
 date: 2026-04-28
-tags: [Technical Writing, AI Review, Chinese Text Correction, Local Models, Documentation Workflow]
+tags: [Technical Writing, AI Review, Technical docs Correction, Local Models, Documentation Workflow]
 image: https://img.flowingdocs.com/images/ai_content_review_system.png
-description: A practical walkthrough of how I built a local AI proofreading system for Chinese technical docs — covering the rule engine, small-model selection, structure protection, the web UI, and the feedback loop that keeps it learning.
+description: A practical walkthrough of how I built a local AI proofreading system for technical content — covering the rule engine, small-model selection, structure protection, the web UI, and the feedback loop that keeps it learning.
 ---
 
-In my last post, [How I Review Technical Docs with AI](/blog/ai-content-review-with-codex), I mentioned in passing that before bringing Codex into the workflow, I had already built a small local AI system for catching typos, terminology mistakes, basic awkward sentences, and the occasional formatting glitch.
+In my last post, [How I Review Technical Docs with AI](./ai-content-review-with-codex.md), I mentioned in passing that before bringing Codex into the workflow, I had already built a small local AI system for catching typos, terminology mistakes, basic awkward sentences, and the occasional formatting glitch.
 
 It was a one-line aside, but a few readers wrote in asking for more. So this post zooms in on that piece: why a local AI content review system is worth building in the first place, how it differs from just calling a hosted LLM, and what it takes to go from a working demo to something a team will actually open every day.
 
@@ -54,12 +54,12 @@ A few weeks of trying it made the answer obvious.
 
 ## How Technical Doc Correction Differs from General Proofreading
 
-When people think about Chinese proofreading, the default mental model is "make the sentence sound better." That assumption falls apart fast in technical docs. A single page might mix:
+When people think about technical content proofreading, the default mental model is "make the sentence sound better." That assumption falls apart fast in technical docs. A single page might mix:
 
 - Markdown or AsciiDoc syntax
 - YAML, JSON, SQL, or shell code blocks
 - API names, parameter names, config keys, error codes
-- Product terminology that mixes Chinese and English on purpose
+- Product terminology that mixes English and Chinese on purpose
 - Image paths, internal links, and heading anchors
 - Command output, log snippets, and config samples
 
@@ -109,7 +109,7 @@ Because the model is small, the entire prototype was built and run on my **home 
 
 ### 2. The Data Service Layer: False Positives and the Feedback Loop
 
-The fastest way to lose users on a Chinese AI review system is **false positives**. If the system keeps flagging your own product names as misspelled, people stop opening it within a week. So false-positive management isn't a polish task — it is what makes the difference between a demo and a tool people trust.
+The fastest way to lose users on a technical content AI review system is **false positives**. If the system keeps flagging your own product names as misspelled, people stop opening it within a week. So false-positive management isn't a polish task — it is what makes the difference between a demo and a tool people trust.
 
 **False-positive management — defining the team's writing boundaries:**
 
@@ -122,7 +122,7 @@ The fastest way to lose users on a Chinese AI review system is **false positives
 The UI doesn't just have accept/reject buttons. Every action is recorded as a structured sample: the surrounding context, the model's suggestion, and what the human actually chose. That data has two uses:
 
 1. **Same-week tuning** — high-frequency false positives roll straight into the whitelist or rule set and the noise drops the next day.
-2. **Periodic fine-tuning** — once enough "what humans actually wanted" samples accumulate, the local small model gets a domain fine-tune. The goal isn't to make it a better generic Chinese teacher. It is to make it more aware of the team's specific context (for example, lowering the model's confidence threshold around a few familiar technical phrasings).
+2. **Periodic fine-tuning** — once enough "what humans actually wanted" samples accumulate, the local small model gets a domain fine-tune. The goal isn't to make it a better generic technical content teacher. It is to make it more aware of the team's specific context (for example, lowering the model's confidence threshold around a few familiar technical phrasings).
 
 ### 3. The User Interaction Layer: Lowering the Usage Barrier
 
@@ -154,7 +154,7 @@ Once typos and formatting noise are gone, the deeper review goes to a stronger m
 
 So the working setup splits AI review into two clear layers:
 
-- **Pre-check (local small model)**: cheap, fast filtering on local hardware. On my test setup (RTX 3060, 12 GB) it processes **on the order of a hundred characters per second** of Chinese text.
+- **Pre-check (local small model)**: cheap, fast filtering on local hardware. On my test setup (RTX 3060, 12 GB) it processes **on the order of a hundred characters per second** of technical content.
 - **Deep check (large model)**: kicks in at key moments like [PR submission](./ai-content-review-with-codex.md), and focuses on structure, context, and technical accuracy.
 
 ## Conclusion: Putting AI in the Right Place
