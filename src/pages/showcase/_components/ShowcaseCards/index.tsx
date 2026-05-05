@@ -35,21 +35,19 @@ function HeadingNoResult() {
   )
 }
 
-/*
 function HeadingFavorites() {
   return (
     <Heading as="h2" className={styles.headingFavorites}>
       <Translate id="showcase.favoritesList.title">最新案例</Translate>
       <FavoriteIcon size="large" style={{ marginLeft: '1rem' }} />
     </Heading>
-  );
+  )
 }
-*/
 
 function HeadingAllSites() {
   return (
     <Heading as="h2">
-      <Translate id="showcase.usersList.allUsers">最新案例</Translate>
+      <Translate id="showcase.usersList.allUsers">所有项目</Translate>
     </Heading>
   )
 }
@@ -94,11 +92,9 @@ export default function ShowcaseCards() {
     <section className="margin-top--lg margin-bottom--xl">
       {filteredProjects.length === sortedShowcase.length
         ? (
-            <>
-              <div className="margin-top--lg">
-                <CardList heading={<HeadingAllSites />} items={otherProjects as ProjectShowcase[]} />
-              </div>
-            </>
+            <div className="margin-top--lg">
+              <CardList heading={<HeadingAllSites />} items={sortedShowcase as ProjectShowcase[]} />
+            </div>
           )
         : (
             <CardList items={filteredProjects as ProjectShowcase[]} />

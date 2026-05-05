@@ -9,7 +9,6 @@
  */
 
 import { translate } from '@docusaurus/Translate'
-import { sortBy } from '@site/src/utils/jsUtils'
 
 export type TagType =
   | 'favorite'
@@ -17,8 +16,27 @@ export type TagType =
   | 'open_source'
   | 'docusaurus'
   | 'dx'
+  | 'ai'
 
 const Showcase = [
+  {
+    title: translate({
+      message: '本地 AI 内容审校系统',
+      id: 'showcase.ai-review.title',
+    }),
+    description: (
+      <>
+        {translate({
+          message: '面向技术文档的本地 AI 审校系统，结合规则引擎与小模型推理，自动检测错别字、术语误写与病句，配套结构保护、Web 管理界面与误报反馈闭环。',
+          id: 'showcase.ai-review.description',
+        })}
+      </>
+    ),
+    preview: 'https://img.flowingdocs.com/images/ai_content_review_system.png',
+    url: '/blog/building-a-local-ai-content-review-system',
+    source: '/blog/building-a-local-ai-content-review-system',
+    tags: ['favorite', 'ai', 'dx'],
+  },  
   {
     title: translate({
       message: 'Flowing Docs 博客实践',
@@ -66,6 +84,17 @@ export const Tags: { [type in TagType]: Tag } = {
     }),
     color: '#ffb300',
   },
+   ai: {
+    label: translate({
+      message: 'AI 实践',
+      id: 'showcase.tag.ai.label',
+    }),
+    description: translate({
+      message: '结合 AI / LLM 的工程化实践与工具',
+      id: 'showcase.tag.ai.description',
+    }),
+    color: '#14b8a6',
+  }, 
   personal_site: {
     label: translate({
       message: '个人博客/主页',
@@ -114,11 +143,5 @@ export const Tags: { [type in TagType]: Tag } = {
 
 export const TagList = Object.keys(Tags) as TagType[]
 
-function sortShowcase() {
-  let result = Showcase
-  result = sortBy(result, project => project.title.toLowerCase())
-  return result
-}
-
-export const sortedShowcase = sortShowcase()
+export const sortedShowcase = Showcase
 export const showcase = Showcase

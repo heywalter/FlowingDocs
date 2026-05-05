@@ -745,6 +745,18 @@
   "showcase.tag.dx.description": {
     "message": "Because developers are humans too. Projects that make the developer journey smoother, from first contact to production deployment."
   },
+  "showcase.ai-review.title": {
+    "message": "Local AI Content Review System"
+  },
+  "showcase.ai-review.description": {
+    "message": "A local AI review system for technical documentation, combining rule engines with small-model inference to detect typos, terminology errors, and grammatical issues — with structure protection, a web management UI, and a feedback loop for continuous improvement."
+  },
+  "showcase.tag.ai.label": {
+    "message": "AI Practice"
+  },
+  "showcase.tag.ai.description": {
+    "message": "Engineering practices and tools powered by AI/LLM"
+  },
   "friends.doccraft.description": {
     "message": "The Art and Science of Technical Documentation"
   },
