@@ -25,7 +25,7 @@ If you work with technical content professionally and want your blog and docs to
 
 ## Getting Started
 
-You'll need Node.js v18 or higher. The official scaffold gets you running in one command:
+You'll need Node.js v20.0 or higher. The official scaffold gets you running in one command:
 
 ```bash
 npx create-docusaurus@latest my-blog classic

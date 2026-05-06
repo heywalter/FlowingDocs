@@ -27,7 +27,7 @@ image: https://img.flowingdocs.com/images/build_blog_with_docusaurus.png
 
 ## 项目初始化
 
-确保本地装了 Node.js（v18 或更高），然后用官方脚手架起一个项目：
+确保本地装了 Node.js（v20.0 或更高），然后用官方脚手架起一个项目：
 
 ```bash
 npx create-docusaurus@latest my-blog classic
