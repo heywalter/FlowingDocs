@@ -1,4 +1,6 @@
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { BLOG_KEYWORDS, getLocalizedKeywords } from '@site/src/lib/seo'
 import { cn } from '@site/src/lib/utils'
 import BackToTopButton from '@theme/BackToTopButton'
 import type { Props } from '@theme/BlogListPage'
@@ -16,10 +18,17 @@ import MyLayout from '../MyLayout'
 function BlogListPageMetadata(props: Props): JSX.Element {
   const { metadata } = props
   const { blogDescription } = metadata
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
 
   return (
     <>
-      <PageMetadata title="Blog" description={blogDescription} />
+      <PageMetadata
+        title="Blog"
+        description={blogDescription}
+        keywords={getLocalizedKeywords(currentLocale, BLOG_KEYWORDS)}
+      />
       <SearchMetadata tag="blog_posts_list" />
     </>
   )

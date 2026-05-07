@@ -8,9 +8,12 @@
 import React from 'react'
 import Translate, { translate } from '@docusaurus/Translate'
 import Link from '@docusaurus/Link'
+import { PageMetadata } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import Heading from '@theme/Heading'
 
+import { getLocalizedKeywords, SHOWCASE_KEYWORDS } from '@site/src/lib/seo'
 import ShowcaseSearchBar from '@site/src/pages/showcase/_components/ShowcaseSearchBar'
 import ShowcaseCards from './_components/ShowcaseCards'
 import ShowcaseFilters from './_components/ShowcaseFilters'
@@ -21,7 +24,7 @@ const TITLE = translate({
 })
 const DESCRIPTION = translate({
   message:
-    '这里是我从事技术传播工作过程中，沉淀的一些项目案例、开发工具与文档工程化的实践。涵盖技术写作、DX 优化、AI 工具集成等方向，持续更新中，欢迎一起聊天吹水',
+    'Flowing Docs 项目与工具展示，整理技术写作、开发者体验、AI 工具集成和文档工程化实践案例，欢迎交流与反馈。',
   id: 'showcase.description',
 })
 
@@ -40,8 +43,13 @@ function ShowcaseHeader() {
 }
 
 export default function Showcase(): JSX.Element {
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
+
   return (
     <Layout title={TITLE} description={DESCRIPTION}>
+      <PageMetadata keywords={getLocalizedKeywords(currentLocale, SHOWCASE_KEYWORDS)} />
       <main className="margin-vert--lg">
         <ShowcaseHeader />
         <ShowcaseFilters />

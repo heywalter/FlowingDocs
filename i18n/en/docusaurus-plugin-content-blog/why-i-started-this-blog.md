@@ -3,6 +3,7 @@ title: "Preface: Why I Finally Decided to Build My Own Blog"
 authors: Walter
 tags: [Getting Started, Technical Writing, Personal Notes]
 image: /blog-images/blog_banner.png
+description: Why I started Flowing Docs, what I plan to write about, and how this blog connects technical writing, developer experience, AI tools, and everyday experiments.
 ---
 
 Hello, I'm Walter Gui, a technical writer. Welcome to my blog, **Flowing Docs**.

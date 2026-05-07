@@ -3,7 +3,7 @@ title: Everyday Information Design Traps That Sneak Up on You – Have You Been 
 authors: Walter
 tags: [User Experience, Information Design, Case Studies, Visual Hierarchy, Interaction Design]
 image: /blog-images/information_design.png
-description: Three real-world examples from Apple’s website, high-speed rail displays, and a commercial sign reveal common information design pitfalls. I break down why they confuse people and share simple, principle-based fixes that dramatically improve clarity and user experience.
+description: Real examples from Apple’s website, train displays, and storefront signs show how information design can confuse users and how small fixes improve clarity.
 ---
 
 As a content creator, my entire job is turning complex information into clear, actionable content. After years of doing this, I’ve developed a serious occupational hazard: I can’t walk past a sign, a screen, or a website without instinctively judging how well (or poorly) the information is designed. It’s basically a reflex at this point.

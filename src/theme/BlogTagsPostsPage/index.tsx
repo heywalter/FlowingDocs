@@ -1,6 +1,8 @@
 import Link from '@docusaurus/Link'
 import Translate, { translate } from '@docusaurus/Translate'
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames, usePluralForm } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { BLOG_KEYWORDS, getBlogTagDescription, getLocalizedKeywords, uniqueKeywords } from '@site/src/lib/seo'
 import { cn } from '@site/src/lib/utils'
 import BackToTopButton from '@theme/BackToTopButton'
 import BlogListPaginator from '@theme/BlogListPaginator'
@@ -43,9 +45,14 @@ function useBlogTagsPostsPageTitle(tag: Props['tag']): string {
 
 function BlogTagsPostsPageMetadata({ tag }: Props): JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
+  const keywords = uniqueKeywords([tag.label, ...getLocalizedKeywords(currentLocale, BLOG_KEYWORDS)])
+
   return (
     <>
-      <PageMetadata title={title} />
+      <PageMetadata title={title} description={getBlogTagDescription(currentLocale, tag.label)} keywords={keywords} />
       <SearchMetadata tag="blog_tags_posts" />
     </>
   )

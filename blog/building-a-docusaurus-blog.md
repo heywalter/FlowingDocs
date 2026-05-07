@@ -3,6 +3,7 @@ title: Docusaurus 个人博客搭建完整指南（2026）：从配置到上线
 authors: Walter
 tags: [Docusaurus, 博客搭建, Netlify, Algolia, Giscus, 建站经验]
 image: https://img.flowingdocs.com/images/build_blog_with_docusaurus.png
+description: 从框架选择、Docusaurus 配置、搜索、评论到 Netlify 部署，记录 Flowing Docs 个人博客搭建过程中的关键设置和实践经验。
 ---
 
 挑静态博客框架期间，对比看过 Hexo、Hugo 等主流方案，最后定了 Docusaurus，主要是刚好满足了几个需求：偶尔写点技术内容、想把博客和文档放在一起、又不打算为了样式从头写 CSS，积累的经验也可以复用至工作中的技术文档项目。

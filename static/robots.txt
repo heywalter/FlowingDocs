@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flowingdocs.com/sitemap.xml
+Sitemap: https://flowingdocs.com/en/sitemap.xml

@@ -3,6 +3,7 @@ title: How to Build a Docusaurus Blog in 2026 — A Complete Setup Guide
 authors: Walter
 tags: [Docusaurus, Netlify, Algolia, Giscus, Blog Setup, Developer Tools]
 image: https://img.flowingdocs.com/images/build_blog_with_docusaurus.png
+description: A practical walkthrough of how I built this blog with Docusaurus, covering site configuration, search, comments, analytics, and Netlify deployment.
 ---
 
 I spent longer than I'd like to admit evaluating static site generators. Hexo, Hugo, Astro, VitePress — I poked at all of them. Docusaurus is what I landed on, and after running it for a while, I don't regret it. It hit the specific combination I needed: write occasionally, keep docs and blog posts under one roof, and not spend a weekend wrestling with CSS just to get a decent theme.

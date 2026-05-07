@@ -5,7 +5,8 @@ export default function BlogPostPageMetadata(): JSX.Element {
   const { assets, metadata } = useBlogPost()
   const { title, description, date, tags, authors, frontMatter } = metadata
 
-  const { keywords } = frontMatter
+  const { keywords: frontMatterKeywords } = frontMatter
+  const keywords = frontMatterKeywords ?? tags.map(tag => tag.label)
   const image = assets.image ?? frontMatter.image
   return (
     <PageMetadata title={title} description={description} keywords={keywords} image={image}>

@@ -1,5 +1,14 @@
 ---
 slug: /
+description: Flowing Docs documentation hub for technical writing, Docusaurus blog setup, AI documentation tools, and documentation engineering practices.
+keywords:
+  - Flowing Docs
+  - documentation hub
+  - technical writing
+  - Docusaurus
+  - AI documentation tools
+  - documentation engineering
+  - Docs as Code
 ---
 
 # Flowing Docs Documentation Hub

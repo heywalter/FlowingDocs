@@ -1,7 +1,9 @@
 import Link from '@docusaurus/Link'
 import Translate, { translate } from '@docusaurus/Translate'
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { Icon } from '@iconify/react'
+import { BLOG_ARCHIVE_DESCRIPTION, BLOG_KEYWORDS, getLocalizedKeywords, getLocalizedText } from '@site/src/lib/seo'
 import { cn } from '@site/src/lib/utils'
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage'
 import styles from './styles.module.css'
@@ -100,21 +102,20 @@ function listPostsByYears(blogPosts: readonly ArchiveBlogPost[]): YearProp[] {
 }
 
 export default function BlogArchive({ archive }: Props) {
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
   const title = translate({
     id: 'theme.blog.archive.title',
     message: 'Archive',
     description: 'The page & hero title of the blog archive page',
   })
-  const description = translate({
-    id: 'theme.blog.archive.description',
-    message: 'Archive',
-    description: 'The page & hero description of the blog archive page',
-  })
+  const description = getLocalizedText(currentLocale, BLOG_ARCHIVE_DESCRIPTION)
 
   const years = listPostsByYears(archive.blogPosts)
   return (
     <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagsListPage)}>
-      <PageMetadata title={title} description={description} />
+      <PageMetadata title={title} description={description} keywords={getLocalizedKeywords(currentLocale, BLOG_KEYWORDS)} />
       <MyLayout>
         <h2 className={styles.archiveTitle}>
           <Icon icon="carbon:blog" width={24} height={24} />

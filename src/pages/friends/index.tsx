@@ -5,7 +5,9 @@ import { translate } from '@docusaurus/Translate'
 import { Friend, friends as friendsData } from '@site/data/friends'
 import Link from '@docusaurus/Link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useColorMode } from '@docusaurus/theme-common'
+import { PageMetadata, useColorMode } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { FRIENDS_KEYWORDS, getLocalizedKeywords } from '@site/src/lib/seo'
 import styles from './styles.module.css'
 
 const TITLE = translate({
@@ -13,7 +15,7 @@ const TITLE = translate({
   id: 'friends.page.title',
 })
 const DESCRIPTION = translate({
-  message: '优秀的技术文档社区，共同进步',
+  message: 'Flowing Docs 友链页面，收录技术文档、技术写作、开发者体验相关社区和个人网站。',
   id: 'friends.page.description',
 })
 const ADD_FRIEND_URL = 'https://github.com/yourusername/blog/edit/main/data/friends.tsx'
@@ -255,6 +257,9 @@ function EmptyState() {
 export default function FriendLink(): JSX.Element {
   const ref = useRef<HTMLDivElement>(null)
   const [isInfoExpanded, setIsInfoExpanded] = useState(false)
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
 
   const toggleInfoExpanded = () => {
     setIsInfoExpanded(!isInfoExpanded)
@@ -262,6 +267,7 @@ export default function FriendLink(): JSX.Element {
 
   return (
     <Layout title={TITLE} description={DESCRIPTION} wrapperClassName={styles.friendsWrapper}>
+      <PageMetadata keywords={getLocalizedKeywords(currentLocale, FRIENDS_KEYWORDS)} />
       <motion.main ref={ref} className={styles.mainContent}>
         <FriendHeader />
         {friends.length > 0 ? <FriendCards /> : <EmptyState />}

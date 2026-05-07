@@ -1,5 +1,14 @@
 ---
 slug: /
+description: Flowing Docs 文档中心，整理技术写作、Docusaurus 博客搭建、AI 文档工具和文档工程化实践。
+keywords:
+  - Flowing Docs
+  - 文档中心
+  - 技术写作
+  - Docusaurus
+  - AI 文档工具
+  - 文档工程
+  - Docs as Code
 ---
 
 # Flowing Docs 文档中心（建设中）

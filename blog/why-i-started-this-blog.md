@@ -3,7 +3,7 @@ title: 写在前面：为什么我决定搭一个属于自己的博客？
 authors: Walter
 tags: [博客起步, 个人记录, 技术写作]
 image: /blog-images/blog_banner.png
-
+description: 记录我为什么开始搭建 Flowing Docs / 知流小记，以及这个博客未来会关注的技术写作、开发者体验、AI 工具和生活实践方向。
 ---
 
 你好，我是 Walter，欢迎来到我的博客 Flowing Docs / 知流小记。

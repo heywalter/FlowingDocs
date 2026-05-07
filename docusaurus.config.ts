@@ -41,15 +41,6 @@ function getSiteDescription() {
   }
 }
 
-function getMetaDescription() {
-  switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
-    case 'en':
-      return 'Technical documentation engineer sharing content development and user experience practices.'
-    default:
-      return '技术内容创作者分享内容开发与用户体验实践。'
-  }
-}
-
 function getBlogDescription() {
   switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
     case 'en':
@@ -72,8 +63,9 @@ const config: Config = {
   title: getSiteTitle(), // Site title, shown in the browser tab and elsewhere
   tagline: getSiteTagline(),
   titleDelimiter: '-', // Delimiter used in the page title
-  url: 'https://flowingdocs.com/', // Primary domain for your site
+  url: 'https://flowingdocs.com', // Primary domain for your site
   baseUrl: '/', // Base path where the site is served
+  trailingSlash: true, // Match Netlify's deployed URL shape and generated canonical URLs
   favicon: 'img/favicon.ico', // Path to the favicon
   organizationName: 'heywalter', // GitHub org or username
   projectName: 'flowingdocs', // Project name (used in some URLs)
@@ -86,36 +78,6 @@ const config: Config = {
   themeConfig: {
     // Main theme configuration
     image: 'img/logo.webp', // Default social share image
-    metadata: [ // Keywords for SEO
-      {
-        name: 'keywords',
-        content: [
-          'technical documentation engineering',
-          'API documentation design',
-          'developer experience optimization',
-          'AI-powered technical writing',
-          'open source documentation systems',
-          'docs-as-code',
-          'user experience writing',
-          'technical communication',
-          'Flowing Docs',
-        ].join(', '),
-      },
-      {
-        name: 'keywords',
-        content: [
-          '技术文档工程化',
-          'API 文档设计',
-          '开发者体验优化',
-          'AI 技术写作',
-          '开源文档系统',
-          '文档即代码',
-          '用户体验写作',
-          '技术传播',
-          '知流小记',
-        ].join(', '),
-      },
-    ],
     docs: {
       sidebar: {
         hideable: true, // Allows the docs sidebar to be collapsible
@@ -243,6 +205,7 @@ const config: Config = {
         },
         sitemap: {
           priority: 0.5, // Default priority for sitemap
+          ignorePatterns: ['/search', '/search/**', '/en/search', '/en/search/**'],
         },
         gtag: {
           trackingID: 'G-TW8Q38798D', // Google Analytics Measurement ID
@@ -331,16 +294,6 @@ const config: Config = {
           }
         },
       }
-    },
-  ],
-
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'description',
-        content: getMetaDescription(),
-      },
     },
   ],
 
