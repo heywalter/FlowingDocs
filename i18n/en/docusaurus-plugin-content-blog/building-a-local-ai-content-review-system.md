@@ -4,7 +4,7 @@ authors: Walter
 date: 2026-04-28
 tags: [Technical Writing, AI Review, Technical docs Correction, Local Models, Documentation Workflow]
 image: https://img.flowingdocs.com/images/ai_content_review_system.png
-description: A practical walkthrough of how I built a local AI proofreading system for technical content — covering the rule engine, small-model selection, structure protection, the web UI, and the feedback loop that keeps it learning.
+description: How I built a local AI proofreading system for technical docs, from rule design and model choice to structure protection, web UI, and feedback loops.
 ---
 
 In my last post, [How I Review Technical Docs with AI](./ai-content-review-with-codex.md), I mentioned in passing that before bringing Codex into the workflow, I had already built a small local AI system for catching typos, terminology mistakes, basic awkward sentences, and the occasional formatting glitch.
@@ -33,7 +33,7 @@ Before going further, here is roughly what the result looks like, just so the ne
 
 :::tip
 
-- This local system isn't the whole answer. As I described in the [previous post](./ai-content-review-with-codex), it is the first lightweight line of defense. Heavier work — context consistency, structural reasoning, bilingual translation checks — still goes to a stronger model like Codex during PR review. The two layers complement each other.
+- This local system isn't the whole answer. As I described in the [previous post](./ai-content-review-with-codex.md), it is the first lightweight line of defense. Heavier work — context consistency, structural reasoning, bilingual translation checks — still goes to a stronger model like Codex during PR review. The two layers complement each other.
 - I'm still cleaning up and de-sensitizing the codebase. Once that is done, the core pieces will land as an open-source project or example repo, so other teams with similar needs can fork and adapt it.
 
 :::

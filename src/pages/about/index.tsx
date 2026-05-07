@@ -2,11 +2,18 @@ import React from 'react'
 import Layout from '@theme/Layout'
 import { Icon } from '@iconify/react'
 import { translate } from '@docusaurus/Translate'
+import { PageMetadata } from '@docusaurus/theme-common'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Comment from '@site/src/components/Comment'
 import social from '@site/data/social'
+import { ABOUT_KEYWORDS, getLocalizedKeywords } from '@site/src/lib/seo'
 import styles from './styles.module.css'
 
 export default function About() {
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext()
+
   return (
     <Layout
       title={translate({
@@ -14,10 +21,11 @@ export default function About() {
         id: 'about.page.title',
       })}
       description={translate({
-        message: 'Walter 的个人简历与技术背景',
+        message: '了解 Walter Gui 在技术文档工程、内容设计、开发者体验与 AI 文档工具方面的实践。',
         id: 'about.page.description',
       })}
     >
+      <PageMetadata keywords={getLocalizedKeywords(currentLocale, ABOUT_KEYWORDS)} />
       <div className={styles.pageContainer}>
         <div className={styles.profileCard}>
           {/* Left Column: Avatar & Stats */}
@@ -49,7 +57,7 @@ export default function About() {
                   id: 'about.sidebar.skills',
                 })}
               </h3>
-              
+
               <div className={styles.techStackContainer}>
                 {/* Core Skills Group */}
                 <div className={styles.techGroup}>
@@ -183,7 +191,7 @@ export default function About() {
                   id: 'about.role.title',
                 })}
               </p>
-              
+
               <div className={styles.bioText}>
                 <p>
                   {translate({
@@ -197,7 +205,7 @@ export default function About() {
                     id: 'about.intro.paragraph2',
                   })}
                 </p>
-                
+
                 <div className={styles.quoteBox}>
                   <Icon icon="ri:double-quotes-l" className={styles.quoteIcon} />
                   <blockquote>
@@ -254,7 +262,7 @@ export default function About() {
                     <p>{translate({ message: '和产品团队深入沟通，了解功能的使用场景和业务价值，让内容不仅说明"怎么做"，更传达"为什么"。', id: 'about.work.feature1.description' })}</p>
                   </div>
                 </div>
-                
+
                 <div className={styles.workItem}>
                   <div className={styles.workIconWrapper}>
                     <Icon icon="ri:code-box-line" />

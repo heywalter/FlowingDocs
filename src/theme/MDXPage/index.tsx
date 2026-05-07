@@ -12,13 +12,13 @@ export default function MDXPage(props: Props): JSX.Element {
   const {
     metadata: { title, description, frontMatter },
   } = MDXPageContent
-  const { wrapperClassName, hide_table_of_contents: hideTableOfContents } = frontMatter
+  const { wrapperClassName, hide_table_of_contents: hideTableOfContents, keywords } = frontMatter
 
   return (
     <HtmlClassNameProvider
       className={cn(wrapperClassName ?? ThemeClassNames.wrapper.mdxPages, ThemeClassNames.page.mdxPage)}
     >
-      <PageMetadata title={title} description={description} />
+      <PageMetadata title={title} description={description} keywords={keywords} />
       <Layout>
         <main className="container--fluid margin-vert--lg container">
           <div className={cn('row', styles.mdxPageWrapper)}>

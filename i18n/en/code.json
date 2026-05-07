@@ -3,7 +3,7 @@
     "message": "About Me"
   },
   "about.page.description": {
-    "message": "An introduction to Walter"
+    "message": "Learn about Walter Gui's work in documentation engineering, content design, developer experience, and AI documentation tools."
   },
   "about.header.title": {
     "message": "About Me"
@@ -135,7 +135,7 @@
     "message": "Friend Links"
   },
   "friends.page.description": {
-    "message": "A network of great tech doc communities, learning and growing together"
+    "message": "Flowing Docs friend links for technical documentation, technical writing, developer experience communities, and personal sites."
   },
   "friends.siteInfo.description": {
     "message": "The art and science of technical documentation"
@@ -172,7 +172,7 @@
     "message": "Projects & Tools Showcase"
   },
   "showcase.description": {
-    "message": "A collection of projects, tools, and documentation engineering practices from my technical communication career. Covering technical writing, DX optimization, and AI integration. Continuously updated—let's connect and share ideas."
+    "message": "A curated collection of Flowing Docs projects, tools, and documentation engineering practices across technical writing, DX, and AI workflows."
   },
   "showcase.header.button": {
     "message": "💬 Send Feedback / Leave a Comment"

@@ -1,4 +1,5 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { PageMetadata } from '@docusaurus/theme-common'
 import Layout from '@theme/Layout'
 import BlogSection from '../components/landing/BlogSection'
 import FeaturesSection from '../components/landing/FeaturesSection'
@@ -6,14 +7,43 @@ import Hero from '../components/landing/Hero'
 import ProjectSection from '../components/landing/ProjectSection'
 import Particles from '../components/magicui/particles'
 
+const HOME_KEYWORDS = {
+  'zh-Hans': [
+    '技术文档',
+    '技术写作',
+    '内容设计',
+    '开发者体验',
+    '文档工程',
+    'Docs as Code',
+    'Docusaurus',
+    'AI 技术写作',
+    '知流小记',
+    'Flowing Docs',
+  ],
+  'en': [
+    'technical documentation',
+    'technical writing',
+    'content design',
+    'developer experience',
+    'documentation engineering',
+    'Docs as Code',
+    'Docusaurus',
+    'AI technical writing',
+    'Flowing Docs',
+  ],
+}
+
 export default function Home() {
   const {
+    i18n,
     siteConfig: { customFields, tagline },
   } = useDocusaurusContext()
   const { description } = customFields as { description: string }
+  const keywords = i18n.currentLocale === 'en' ? HOME_KEYWORDS.en : HOME_KEYWORDS['zh-Hans']
 
   return (
     <Layout title={tagline} description={description}>
+      <PageMetadata keywords={keywords} />
       <main>
         <Hero />
         <Particles className="absolute inset-0" quantity={100} ease={80} color="#ffffff" refresh />
