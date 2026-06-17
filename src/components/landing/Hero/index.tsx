@@ -1,5 +1,6 @@
 import React from 'react'
 import { Variants, motion } from 'framer-motion'
+import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
 import HeroMain from './img/hero_main.svg'
 import styles from './styles.module.css'
@@ -7,7 +8,10 @@ import SocialLinks from '@site/src/components/SocialLinks'
 import { Icon, IconProps } from '@iconify/react'
 
 interface LogoWithLink extends IconProps {
-  url: string
+  boxClassName?: string
+  iconStyle?: React.CSSProperties
+  to: string
+  label: string
 }
 
 const variants: Variants = {
@@ -30,12 +34,21 @@ function Logos() {
     {
       icon: 'logos:docusaurus',
       style: { left: '20%', top: '20%' },
-      url: '/docs?tag=docusaurus',
+      to: '/blog/tags/docusaurus',
+      label: 'Docusaurus',
     },
     {
       icon: 'logos:asciidoctor',
       style: { right: '20%', top: '10%' },
-      url: '/docs?tag=asciidoc',
+      to: '/blog/tags/asciidoc',
+      label: 'AsciiDoc',
+    },
+    {
+      icon: 'simple-icons:openai',
+      boxClassName: styles.aiBox,
+      iconStyle: { fontSize: '2.15rem' },
+      to: '/blog/tags/ai',
+      label: 'AI',
     },
   ]
 
@@ -43,15 +56,15 @@ function Logos() {
     <>
       {logos.map((logo, index) => (
         <motion.div
-          className={styles.box}
+          className={`${styles.box} ${logo.boxClassName ?? ''}`}
           style={logo.style}
           key={index}
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
-          <a href={logo.url} target="_blank" rel="noopener noreferrer">
-            <Icon icon={logo.icon} style={{ fontSize: '3rem' }} />
-          </a>
+          <Link to={logo.to} aria-label={`View ${logo.label} posts`}>
+            <Icon icon={logo.icon} style={logo.iconStyle ?? { fontSize: '3rem' }} />
+          </Link>
         </motion.div>
       ))}
     </>

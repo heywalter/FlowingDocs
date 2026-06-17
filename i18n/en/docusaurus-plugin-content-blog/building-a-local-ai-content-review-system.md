@@ -2,7 +2,7 @@
 title: "Building a Local AI Content Review System: From a Small Model to a Web Tool Your Team Will Actually Use"
 authors: Walter
 date: 2026-04-28
-tags: [Technical Writing, AI Review, Technical docs Correction, Local Models, Documentation Workflow]
+tags: [Technical Writing, AI, AI Review, Technical docs Correction, Local Models, Documentation Workflow, asciidoc]
 image: https://img.flowingdocs.com/images/ai_content_review_system.png
 description: How I built a local AI proofreading system for technical docs, from rule design and model choice to structure protection, web UI, and feedback loops.
 ---

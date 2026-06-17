@@ -1,7 +1,7 @@
 ---
 title: 技术文档 AI 审核实践：从本地轻量校验到 Codex Code Review
 authors: Walter
-tags: [技术文档, AI 审校, Doc-as-Code, Codex, 文档治理]
+tags: [技术文档, AI, AI 审校, Doc-as-Code, Codex, 文档治理]
 image: https://img.flowingdocs.com/images/integrate_codex_code_review.png
 description: 结合本地小模型 LLM 轻量校验、Codex Local 与 Codex Cloud，分享一套适用于 Doc-as-Code 技术文档的 AI 审校流程，以及 AGENTS.md 规则设计的落地经验。
 ---

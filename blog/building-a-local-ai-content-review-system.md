@@ -2,7 +2,7 @@
 title: 从零构建本地 AI 内容审校系统：小模型推理到工程化落地
 authors: Walter
 date: 2026-04-28
-tags: [技术文档, AI 审校, 中文纠错, 本地模型, 文档工程]
+tags: [技术文档, AI, AI 审校, 中文纠错, 本地模型, 文档工程, asciidoc]
 image: https://img.flowingdocs.com/images/ai_content_review_system-cn.png
 description: 从技术文档审校中的错别字、术语误写和误报问题出发，分享一套本地中文 AI 文档纠错系统的设计思路，包括规则引擎、小模型、保护机制、Web 管理界面和持续反馈。
 ---
