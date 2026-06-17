@@ -1,7 +1,7 @@
 ---
 title: 别让 AI 写的文档误导用户：从单次 Prompt 到高可信文档工程化实践
 authors: Walter
-tags: [技术写作, AI, Docs-as-Code, AI Agent, 文档工程化, 自动化验证]
+tags: [技术写作, AI, Doc-as-Code, AI Agent, 文档工程化, 自动化验证]
 image: https://img.flowingdocs.com/images/ai_docs_engineering_practice.png
 description: AI 能快速生成文档初稿，但如何保证其准确性与边界可控？本文分享了从单次 Prompt 试水、结构化受控生成，再到自动化 Harness 验证的文档工程化实践，探讨大模型时代下文档工程师的价值演进。
 ---
