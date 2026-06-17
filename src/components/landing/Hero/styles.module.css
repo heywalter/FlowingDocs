@@ -121,6 +121,29 @@
   transition: filter 0.3s ease-in-out;
 }
 
+.aiBox {
+  left: 8%;
+  top: 42%;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid rgba(var(--ifm-color-primary-rgb), 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 34px rgba(var(--ifm-color-primary-rgb), 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.aiBox a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-color-primary-light);
+}
+
+.aiBox:hover {
+  filter: drop-shadow(0 0 10px rgba(var(--ifm-color-primary-rgb), 0.38));
+}
+
 .wave {
   animation: wave 2.5s ease-in-out infinite, float 4s ease-in-out infinite;
   transform-origin: 70% 70%;
@@ -227,6 +250,12 @@
   .box {
     @apply w-12 h-12;
   }
+
+  .aiBox {
+    right: 12%;
+    left: auto;
+    top: 28%;
+  }
 }
 
 @media (max-width: 570px) {
@@ -236,6 +265,11 @@
 
   .background {
     @apply pt-8;
+  }
+
+  .aiBox {
+    right: 9%;
+    top: 31%;
   }
 
   .background svg {
