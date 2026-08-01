@@ -142,7 +142,7 @@ volumes:
 docker compose up -d
 ```
 
-Navigate to `http://<server-ip>:8080` and follow the setup wizard to create an admin account. AIO pulls and initializes several sub-containers on first run; allow 10–15 minutes.
+Navigate to `https://<server-ip>:8080`. Your browser will warn about AIO's self-signed certificate; continue past the warning, then follow the setup wizard to create an admin account. AIO pulls and initializes several sub-containers on first run; allow 10–15 minutes.
 
 ### Step 4: Configure client access
 
@@ -154,7 +154,13 @@ Add the local domain to your hosts file:
 192.168.1.100  data.local
 ```
 
-The first time you visit `https://data.local`, the browser will flag the certificate as untrusted. Export the Caddy-generated certificate from the browser (`.crt`) and install it as a trusted root at the system level. After that, the lock icon stays green.
+The first time you visit `https://data.local`, the browser will flag the certificate as untrusted. Do not export the site certificate shown by the browser. Instead, export Caddy's root CA from the container and install it as a trusted root on every client:
+
+```bash
+docker cp caddy:/data/caddy/pki/authorities/local/root.crt ./caddy-local-root.crt
+```
+
+Import `caddy-local-root.crt` into each client's trusted root certificate store. Browsers and desktop clients can then validate the certificate for `data.local`.
 
 :::tip Remote access
 Port forwarding with DDNS is one approach. I use VPN instead — connect back home first, then access Nextcloud as if I'm on the local network. More secure than exposing a port directly.
@@ -162,13 +168,14 @@ Port forwarding with DDNS is one approach. I use VPN instead — connect back ho
 
 ### Step 5: Configure backups
 
-AIO ships with BorgBackup (a deduplicating incremental backup tool — only changed data is stored, so backups stay compact). Enable automatic backups from the **Backup** tab in the admin panel (`https://<server-ip>:8080`) and set a schedule. The schedule uses UTC — to back up at 4 AM local time, enter `20:00`.
+AIO ships with BorgBackup (a deduplicating incremental backup tool — only changed data is stored, so backups stay compact). Enable automatic backups from the **Backup** tab in the admin panel (`https://<server-ip>:8080`) and set a schedule. The schedule uses UTC: to back up at 4 AM in a UTC+8 time zone, enter `20:00`; convert from UTC for any other time zone.
 
 If you have a second NAS for off-site copies, mount it over CIFS (a network file-sharing protocol — compatible with Synology, QNAP, and Windows file shares):
 
 ```bash
 sudo apt install -y cifs-utils
 
+sudo mkdir -p /etc/cifs-creds
 sudo bash -c 'cat > /etc/cifs-creds/nc-backup.creds <<EOF
 username=your_username
 password=your_password

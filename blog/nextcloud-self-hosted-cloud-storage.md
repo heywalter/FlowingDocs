@@ -142,7 +142,7 @@ volumes:
 docker compose up -d
 ```
 
-首次访问 `http://服务器IP:8080`，按向导创建管理员账户。AIO 版本首次启动要拉取并初始化多个子容器，等 10-15 分钟。
+首次访问 `https://服务器IP:8080`，浏览器会提示 AIO 的自签名证书，确认继续访问后按向导创建管理员账户。AIO 版本首次启动要拉取并初始化多个子容器，等 10-15 分钟。
 
 ### 步骤四：配置客户端访问
 
@@ -154,7 +154,13 @@ docker compose up -d
 192.168.1.100  data.local
 ```
 
-首次访问 `https://data.local` 浏览器会提示证书不信任，把 Caddy 生成的内网证书导出来，系统级安装为受信任根证书，之后就正常了。
+首次访问 `https://data.local` 浏览器会提示证书不信任。不要导出浏览器展示的站点证书；从 Caddy 容器导出根证书，并在每台客户端系统级安装为受信任根证书：
+
+```bash
+docker cp caddy:/data/caddy/pki/authorities/local/root.crt ./caddy-local-root.crt
+```
+
+将 `caddy-local-root.crt` 导入客户端的受信任根证书存储后，浏览器和桌面客户端就能正常验证 `data.local` 的证书。
 
 :::tip 外网访问
 路由器端口转发 + DDNS 是一种做法，也可以用 VPN 工具连回家再访问——不需要把端口直接暴露在公网上，安全一些。
@@ -162,13 +168,14 @@ docker compose up -d
 
 ### 步骤五：备份配置
 
-AIO 内置了 BorgBackup（增量去重备份工具，只备份有变化的部分，节省空间），在管理界面（`https://服务器IP:8080`）的 Backup 标签启用自动备份，设置触发时间。注意界面是 UTC——想凌晨 4 点备份，填 `20:00`。
+AIO 内置了 BorgBackup（增量去重备份工具，只备份有变化的部分，节省空间），在管理界面（`https://服务器IP:8080`）的 Backup 标签启用自动备份，设置触发时间。注意界面使用 UTC：例如本地时区为 UTC+8，想凌晨 4 点备份，填 `20:00`；其他时区按与 UTC 的时差换算。
 
 如果有另一台 NAS，可以用 CIFS（网络文件共享协议，Windows 和群晖、威联通都支持）挂载过去做异机备份：
 
 ```bash
 sudo apt install -y cifs-utils
 
+sudo mkdir -p /etc/cifs-creds
 sudo bash -c 'cat > /etc/cifs-creds/nc-backup.creds <<EOF
 username=你的用户名
 password=你的密码
