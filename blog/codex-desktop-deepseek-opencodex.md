@@ -9,7 +9,7 @@ description: 记录我如何用 opencodex 在 Codex Desktop 的同一个任务�
 
 我在 Codex Desktop 里经常遇到一种情况，任务已经完成大半，只剩几处简单修改，此时更想临时换一个响应快、成本低的模型，把收尾工作做完。
 
-DeepSeek V4 Flash 已经可以通过 Responses API 直接接入 Codex，但我之前切换 provider 时遇到过另一个问题：聊天记录没有消失，原来的任务却不再出现在同一个入口里。后来我改用 [opencodex](https://github.com/lidge-jun/opencodex) 管理模型路由，才把“临时换模型”和“继续当前任务”这两件事放到了一起。这篇文章记录我的设置过程，以及几条容易误判的启动日志。
+目前火热的 DeepSeek V4 Flash 正式版，已经可以通过 Responses API 直接接入 Codex，但我之前切换 provider 时遇到聊天记录消失的问题，使用起来不够丝滑，后来我改用 [opencodex](https://github.com/lidge-jun/opencodex) 管理模型路由，才把“临时换模型”和“继续当前任务”这两件事放到了一起。这篇文章记录我的设置过程，以及几条容易误判的启动日志。
 
 <!--truncate-->
 
