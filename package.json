@@ -56,7 +56,6 @@
     "docusaurus-plugin-image-zoom": "^2.0.0",
     "framer-motion": "^12.34.2",
     "mini-svg-data-uri": "^1.4.4",
-    "motion": "^11.18.1",
     "ora": "^8.1.1",
     "postcss": "^8.5.1",
     "prism-react-renderer": "^2.4.1",

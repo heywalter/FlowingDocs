@@ -37,39 +37,16 @@
 .hero_text {
   font-size: calc(1.5em + 1.2vw);
   position: relative;
-  animation: textGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-  0% {
-    text-shadow: 0 0 5px rgba(var(--ifm-color-primary-rgb), 0.3);
-  }
-  100% {
-    text-shadow: 0 0 20px rgba(var(--ifm-color-primary-rgb), 0.6),
-                 0 0 30px rgba(var(--ifm-color-primary-rgb), 0.4);
-  }
 }
 
 .name {
-  --lighting-size: 300px;
-  --lighting-color: var(--ifm-color-primary);
-  --lighting-highlight-color: var(--ifm-color-primary-lightest);
-
-  background-image: radial-gradient(
-    var(--lighting-highlight-color),
-    var(--lighting-color),
-    var(--lighting-color)
+  background-image: linear-gradient(
+    90deg,
+    var(--ifm-color-primary),
+    var(--ifm-color-primary-lightest)
   );
-  background-size: var(--lighting-size) var(--lighting-size);
-  background-repeat: no-repeat;
-  background-position-x: calc(
-    var(--x) - var(--mouse-x) - calc(var(--lighting-size) / 2)
-  );
-  background-position-y: calc(
-    var(--y) - var(--mouse-y) - calc(var(--lighting-size) / 2)
-  );
-  background-color: var(--lighting-color);
   color: transparent;
+  -webkit-background-clip: text;
   background-clip: text;
 }
 

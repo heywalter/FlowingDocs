@@ -30,12 +30,7 @@ const FEATURES: FeatureItem[] = [
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
           {/* 动态背景网格 */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-          
-          {/* 浮动装饰元素 */}
-          <div className="absolute left-4 top-4 size-3 rounded-full bg-blue-400/60 animate-pulse" />
-          <div className="absolute right-6 top-8 size-2 rounded-full bg-indigo-400/40 animate-bounce" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-6 left-8 size-4 rounded-full bg-purple-400/30 animate-pulse" style={{ animationDelay: '1s' }} />
-          
+
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
@@ -89,26 +84,6 @@ const FEATURES: FeatureItem[] = [
         
         {/* 内容区域 */}
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
-          {/* 神经网络风格背景 */}
-          <div className="absolute inset-0">
-            <div className="absolute left-8 top-6 size-1 rounded-full bg-purple-400/60 animate-ping" />
-            <div className="absolute right-12 top-12 size-1 rounded-full bg-pink-400/60 animate-ping" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute left-16 bottom-16 size-1 rounded-full bg-violet-400/60 animate-ping" style={{ animationDelay: '1s' }} />
-            <div className="absolute right-8 bottom-8 size-1 rounded-full bg-fuchsia-400/60 animate-ping" style={{ animationDelay: '1.5s' }} />
-            
-            {/* 连接线 */}
-            <svg className="absolute inset-0 size-full opacity-20" viewBox="0 0 200 200">
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#ec4899" stopOpacity="0.3" />
-                </linearGradient>
-              </defs>
-              <path d="M30 30 Q100 80 170 50" stroke="url(#lineGradient)" strokeWidth="1" fill="none" className="animate-pulse" />
-              <path d="M50 150 Q120 100 180 130" stroke="url(#lineGradient)" strokeWidth="1" fill="none" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
-            </svg>
-          </div>
-          
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
@@ -162,28 +137,6 @@ const FEATURES: FeatureItem[] = [
         
         {/* 内容区域 */}
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
-          {/* 用户旅程路径背景 */}
-          <div className="absolute inset-0">
-            {/* 路径点 */}
-            <div className="absolute left-6 top-8 size-2 rounded-full bg-emerald-400/70 animate-pulse" />
-            <div className="absolute left-20 top-16 size-2 rounded-full bg-teal-400/70 animate-pulse" style={{ animationDelay: '0.3s' }} />
-            <div className="absolute right-20 top-12 size-2 rounded-full bg-cyan-400/70 animate-pulse" style={{ animationDelay: '0.6s' }} />
-            <div className="absolute right-8 bottom-12 size-2 rounded-full bg-emerald-400/70 animate-pulse" style={{ animationDelay: '0.9s' }} />
-            
-            {/* 连接路径 */}
-            <svg className="absolute inset-0 size-full opacity-30" viewBox="0 0 200 200">
-              <defs>
-                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#14b8a6" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.4" />
-                </linearGradient>
-              </defs>
-              <path d="M20 40 Q60 20 100 60 T180 80" stroke="url(#pathGradient)" strokeWidth="2" fill="none" strokeDasharray="5,5" className="animate-pulse" />
-              <path d="M40 160 Q100 140 160 120" stroke="url(#pathGradient)" strokeWidth="2" fill="none" strokeDasharray="3,3" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
-            </svg>
-          </div>
-          
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
