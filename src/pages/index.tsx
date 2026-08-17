@@ -1,13 +1,11 @@
-import { lazy, Suspense } from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { PageMetadata } from '@docusaurus/theme-common'
 import Layout from '@theme/Layout'
 import BlogSection from '../components/landing/BlogSection'
+import FeaturesSection from '../components/landing/FeaturesSection'
 import Hero from '../components/landing/Hero'
+import ProjectSection from '../components/landing/ProjectSection'
 import Particles from '../components/magicui/particles'
-
-const ProjectSection = lazy(() => import('../components/landing/ProjectSection'))
-const FeaturesSection = lazy(() => import('../components/landing/FeaturesSection'))
 
 const HOME_KEYWORDS = {
   'zh-Hans': [
@@ -53,10 +51,8 @@ export default function Home() {
         <div className="relative">
           <div className="mx-auto max-w-7xl bg-background lg:px-8">
             <BlogSection />
-            <Suspense fallback={null}>
-              <ProjectSection />
-              <FeaturesSection />
-            </Suspense>
+            <ProjectSection />
+            <FeaturesSection />
           </div>
           <div
             className="absolute inset-0 -z-50 bg-grid-slate-50 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.3))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"
