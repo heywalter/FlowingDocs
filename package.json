@@ -27,6 +27,8 @@
     "start": "docusaurus start",
     "start:en": "docusaurus start --locale en",
     "build": "docusaurus build",
+    "prebuild": "node scripts/generate-thumbnails.mjs",
+    "thumbs": "node scripts/generate-thumbnails.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear && rimraf changelog",
@@ -66,6 +68,7 @@
     "react-github-calendar": "^4.5.4",
     "react-popper": "^2.3.0",
     "react-tweet": "^3.2.1",
+    "sharp": "^0.35.3",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.17"
   },
