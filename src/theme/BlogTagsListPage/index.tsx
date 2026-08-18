@@ -1,6 +1,6 @@
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames, translateTagsPageTitle } from '@docusaurus/theme-common'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { BLOG_KEYWORDS, BLOG_TAGS_DESCRIPTION, getLocalizedKeywords, getLocalizedText } from '@site/src/lib/seo'
 import { cn } from '@site/src/lib/utils'
 import type { Props } from '@theme/BlogTagsListPage'

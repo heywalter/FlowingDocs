@@ -6,7 +6,7 @@ import {
   parseLines,
   useCodeWordWrap,
 } from '@docusaurus/theme-common/internal'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { cn } from '@site/src/lib/utils'
 import Container from '@theme/CodeBlock/Container'
 import type { Props } from '@theme/CodeBlock/Content/String'
