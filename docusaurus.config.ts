@@ -297,13 +297,6 @@ const config: Config = {
     },
   ],
 
-  stylesheets: [
-    // External fonts
-    'https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Normal.min.css',
-    'https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Medium.min.css',
-    'https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Semibold.min.css',
-  ],
-
   i18n: {
     defaultLocale: 'zh-Hans', // Default site locale
     locales: ['zh-Hans', 'en'], // Supported locales

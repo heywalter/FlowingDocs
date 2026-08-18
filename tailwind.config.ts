@@ -5,7 +5,7 @@ import plugin from 'tailwindcss/plugin'
 const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
 const twConfig: Config = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './data/**/*.{js,jsx,ts,tsx}'],
   darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
@@ -63,17 +63,7 @@ const twConfig: Config = {
         },
       )
     }),
-    addVariablesForColors,
   ],
 }
 
 export default twConfig
-
-function addVariablesForColors({ addBase, theme }) {
-  const allColors = flattenColorPalette(theme('colors'))
-  const newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]))
-
-  addBase({
-    ':root': newVars,
-  })
-}

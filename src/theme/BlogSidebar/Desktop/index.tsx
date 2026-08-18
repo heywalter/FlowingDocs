@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link'
 import { translate } from '@docusaurus/Translate'
 import { BlogSidebarItemList, useVisibleBlogSidebarItems } from '@docusaurus/plugin-content-blog/client'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { cn } from '@site/src/lib/utils'
 import type { Props as BlogSidebarContentProps } from '@theme/BlogSidebar/Content'
 import BlogSidebarContent from '@theme/BlogSidebar/Content'

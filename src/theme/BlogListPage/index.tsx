@@ -9,7 +9,7 @@ import BlogPostItems from '@theme/BlogPostItems'
 import SearchMetadata from '@theme/SearchMetadata'
 
 import Translate from '@docusaurus/Translate'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { type ViewType, useViewType } from '@site/src/hooks/useViewType'
 import BlogPostGridItems from '../BlogPostGridItems'
 

@@ -5,7 +5,7 @@ import Translate from '@docusaurus/Translate'
 import HeroMain from './img/hero_main.svg'
 import styles from './styles.module.css'
 import SocialLinks from '@site/src/components/SocialLinks'
-import { Icon, IconProps } from '@iconify/react'
+import { Icon, IconProps } from '@site/src/components/Icon'
 
 interface LogoWithLink extends IconProps {
   boxClassName?: string
@@ -89,20 +89,9 @@ function Name() {
       initial="hidden"
       animate="visible"
       variants={variants}
-      onMouseMove={(e) => {
-        e.currentTarget.style.setProperty('--x', `${e.clientX}px`)
-        e.currentTarget.style.setProperty('--y', `${e.clientY}px`)
-      }}
     >
       <Translate id="homepage.hero.greet">你好，</Translate>
-      <span
-        className={styles.name}
-        onMouseMove={(e) => {
-          const bounding = e.currentTarget.getBoundingClientRect()
-          e.currentTarget.style.setProperty('--positionX', `${bounding.x}px`)
-          e.currentTarget.style.setProperty('--positionY', `${bounding.y}px`)
-        }}
-      >
+      <span className={styles.name}>
         <Translate id="homepage.hero.name">世界</Translate>
       </span>
       <span className={styles.wave}>👋</span>

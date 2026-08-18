@@ -1,6 +1,6 @@
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { cn } from '@site/src/lib/utils'
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink'
 import Tag from '@theme/Tag'

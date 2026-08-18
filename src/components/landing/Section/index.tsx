@@ -1,6 +1,6 @@
 import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
-import { Icon } from '@iconify/react'
+import { Icon } from '@site/src/components/Icon'
 import type React from 'react'
 
 interface SectionProps {

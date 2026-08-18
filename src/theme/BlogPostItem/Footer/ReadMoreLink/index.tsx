@@ -1,6 +1,6 @@
 import Link from '@docusaurus/Link'
 import Translate, { translate } from '@docusaurus/Translate'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import type { Props } from '@theme/BlogPostItem/Footer/ReadMoreLink'
 import React from 'react'
 

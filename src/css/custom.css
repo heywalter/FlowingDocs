@@ -13,7 +13,8 @@
     --ifm-color-primary-lighter: #7b67ff;
     --ifm-color-primary-lightest: #a395ff;
     --ifm-code-font-size: 95%;
-    --ifm-font-family-base: misans, ui-sans-serif, system-ui, -apple-system;
+    --ifm-font-family-base: ui-sans-serif, system-ui, -apple-system, 'PingFang SC',
+      'Microsoft YaHei', sans-serif;
     --ifm-heading-font-family: ui-sans-serif, system-ui, -apple-system;
     --ifm-navbar-background-color: white;
     --ifm-navbar-shadow: 0 4px 28px rgb(0 0 0 / 10%);
@@ -92,8 +93,8 @@ body {
 }
 
 body {
-  font-family: misans, system-ui, -apple-system, 'PingFang SC',
-    'Microsoft YaHei';
+  font-family: ui-sans-serif, system-ui, -apple-system, 'PingFang SC',
+    'Microsoft YaHei', sans-serif;
 }
 
 .navbar__item {

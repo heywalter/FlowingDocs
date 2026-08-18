@@ -4,7 +4,7 @@ import type { BlogPost } from '@docusaurus/plugin-content-blog'
 import { usePluginData } from '@docusaurus/useGlobalData'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { cn } from '@site/src/lib/utils'
-import Image from '@theme/IdealImage'
+import { resolveThumbnail } from '@site/src/lib/thumbnails'
 import { motion } from 'framer-motion'
 import React from 'react'
 import { Section } from '../Section'
@@ -15,8 +15,10 @@ export function BlogItem({ post }: { post: BlogPost }) {
   const {
     metadata: { permalink, frontMatter, title, description },
   } = post
-  
-  const imageUrl = useBaseUrl(frontMatter.image)
+
+  const cover = resolveThumbnail(frontMatter.image ?? '')
+  const imageUrl = useBaseUrl(cover)
+  const fallbackUrl = useBaseUrl(frontMatter.image ?? '')
 
   return (
     <motion.div
@@ -28,8 +30,19 @@ export function BlogItem({ post }: { post: BlogPost }) {
       viewport={{ once: true }}
     >
       {frontMatter.image && (
-        <Link href={permalink} className="max-h-[240px] w-full cursor-pointer overflow-hidden object-cover">
-          <Image img={imageUrl} alt={title} />
+        <Link href={permalink} className="block w-full cursor-pointer overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={title}
+            loading="lazy"
+            className="aspect-video w-full object-cover"
+            onError={(event) => {
+              // 开发环境未生成缩略图时，回退到图库原图
+              if (event.currentTarget.src !== fallbackUrl) {
+                event.currentTarget.src = fallbackUrl
+              }
+            }}
+          />
         </Link>
       )}
       <div className="card__body">
@@ -60,7 +73,7 @@ export default function BlogSection(): JSX.Element {
   return (
     <Section title={<Translate id="homepage.blog.title">近期博客</Translate>} icon="ri:quill-pen-line" href="/blog">
       <div className="grid grid-cols-1 gap-4 p-3 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+        {posts.map(post => (
           <BlogItem key={post.id} post={post} />
         ))}
       </div>

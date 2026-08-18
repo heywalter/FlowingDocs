@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react'
+import { Icon } from '@site/src/components/Icon'
 import social from '@site/data/social'
 import Tooltip from '@site/src/components/Tooltip'
 import React from 'react'

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '@theme/Layout'
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import { translate } from '@docusaurus/Translate'
 import { PageMetadata } from '@docusaurus/theme-common'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -168,7 +168,7 @@ export default function About() {
                       <span>ClickHouse</span>
                     </div>
                     <div className={styles.techTag}>
-                      <Icon icon="simple-icons:alibaba" style={{ color: '#FF6600' }} />
+                      <Icon icon="simple-icons:alibabacloud" style={{ color: '#FF6600' }} />
                       <span>Aliyun ACP</span>
                     </div>
                     <div className={styles.techTag}>

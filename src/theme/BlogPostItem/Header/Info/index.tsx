@@ -5,7 +5,7 @@ import { useDateTimeFormat } from '@docusaurus/theme-common/internal'
 import { cn } from '@site/src/lib/utils'
 import type { Props } from '@theme/BlogPostItem/Header/Info'
 
-import { Icon } from '@iconify/react'
+import Icon from '@site/src/components/Icon'
 import Tag from '@site/src/theme/Tag'
 
 // Very simple pluralization: probably good enough for now

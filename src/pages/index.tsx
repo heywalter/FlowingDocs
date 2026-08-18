@@ -46,7 +46,7 @@ export default function Home() {
       <PageMetadata keywords={keywords} />
       <main>
         <Hero />
-        <Particles className="absolute inset-0" quantity={100} ease={80} color="#ffffff" refresh />
+        <Particles className="absolute inset-0" quantity={40} ease={80} color="#ffffff" refresh />
 
         <div className="relative">
           <div className="mx-auto max-w-7xl bg-background lg:px-8">

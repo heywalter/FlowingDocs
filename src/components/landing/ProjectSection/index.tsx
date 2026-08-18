@@ -1,6 +1,8 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import React from 'react'
 import { type ProjectShowcase, sortedShowcase } from '@site/data/showcase'
 import Marquee from '@site/src/components/magicui/marquee'
+import { resolveThumbnail } from '@site/src/lib/thumbnails'
 import { Section } from '../Section'
 
 /**
@@ -20,27 +22,37 @@ const removeHttp = (url: string | undefined | null): string => {
  * @param item - The project data of type ProjectShowcas.
  * @returns A JSX element representing the project card.
  */
-const ProjectCard = ({ item }: { item: ProjectShowcase }) => (
-  <div className="mx-2 h-full w-48 md:w-96">
-    <a
-      className="flex flex-col hover:no-underline"
-      href={item.url}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <img
-        src={item.preview || ''}
-        alt={item.title}
-        className="h-[120px] w-full rounded-lg object-cover md:h-[240px]"
-        loading="lazy"
-      />
-      <div className="w-full py-2 text-center">
-        <h2 className="m-0 truncate text-xl font-normal">{item.title}</h2>
-        <p className="m-0 truncate text-primary">{removeHttp(item.url)}</p>
-      </div>
-    </a>
-  </div>
-)
+const ProjectCard = ({ item }: { item: ProjectShowcase }) => {
+  const raw = item.preview ?? ''
+  const imageUrl = useBaseUrl(resolveThumbnail(raw))
+  const fallbackUrl = useBaseUrl(raw)
+  return (
+    <div className="mx-2 h-full w-48 md:w-96">
+      <a
+        className="flex flex-col hover:no-underline"
+        href={item.url}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src={imageUrl}
+          alt={item.title}
+          className="h-[120px] w-full rounded-lg object-cover md:h-[240px]"
+          loading="lazy"
+          onError={(event) => {
+            if (event.currentTarget.src !== fallbackUrl) {
+              event.currentTarget.src = fallbackUrl
+            }
+          }}
+        />
+        <div className="w-full py-2 text-center">
+          <h2 className="m-0 truncate text-xl font-normal">{item.title}</h2>
+          <p className="m-0 truncate text-primary">{removeHttp(item.url)}</p>
+        </div>
+      </a>
+    </div>
+  )
+}
 
 /**
  * Slider component for displaying a list of projects.
