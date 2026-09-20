@@ -1,7 +1,7 @@
 ---
 title: "DocSifter Is Now Open Source: A Local AI Reviewer Built for Chinese Technical Docs"
 authors: Walter
-date: 2026-09-18
+date: 2026-09-20
 tags: [Technical Writing, AI, AI Review, Chinese Text Correction, Local Models, Documentation Workflow, Open Source]
 image: https://img.flowingdocs.com/images/ai_reviewer_open_source.png
 description: The local AI doc review system I've been writing about for the past year is now open source. Here's what it does, why it's designed the way it is, and how to get it running.

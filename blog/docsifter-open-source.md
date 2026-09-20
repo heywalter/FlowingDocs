@@ -1,7 +1,7 @@
 ---
 title: 开源了：一套专为中文技术文档设计的本地 AI 审校工具
 authors: Walter
-date: 2026-09-18
+date: 2026-09-20
 tags: [技术文档, AI, AI 审校, 中文纠错, 本地模型, 文档工程, 开源]
 image: https://img.flowingdocs.com/images/ai_reviewer_open_source.png
 description: 曾经说要开源的那个本地 AI 文档审校系统，现在正式开源了。这篇文章聊聊它是什么、为什么这么设计，以及你可以如何直接用起来。
