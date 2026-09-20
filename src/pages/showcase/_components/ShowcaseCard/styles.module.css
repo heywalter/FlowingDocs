@@ -42,10 +42,16 @@
 }
 
 .showcaseCardSrcBtn {
-  margin-left: 6px;
   padding-left: 12px;
   padding-right: 12px;
   border: none;
+}
+
+.showcaseCardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .showcaseCardSrcBtn:focus-visible {

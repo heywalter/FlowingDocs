@@ -3,17 +3,21 @@ title: 开源了：一套专为中文技术文档设计的本地 AI 审校工具
 authors: Walter
 date: 2026-09-20
 tags: [技术文档, AI, AI 审校, 中文纠错, 本地模型, 文档工程, 开源]
-image: https://img.flowingdocs.com/images/ai_reviewer_open_source.png
+image: https://img.flowingdocs.com/images/docsifter-zh-poster.jpg
 description: 曾经说要开源的那个本地 AI 文档审校系统，现在正式开源了。这篇文章聊聊它是什么、为什么这么设计，以及你可以如何直接用起来。
 ---
 
-在[上一篇文章](/blog/building-a-local-ai-content-review-system)的结尾，我留了一句话：
+在技术文档的写作与发布流程里，内容审校向来是一件性价比极低但又不得不做的事：人工逐字挑错费时费力，而直接拿通用 AI 或云端大模型去纠错，又极容易踩雷——模型分不清技术边界，随手就把代码注释改崩、把行内参数名翻译掉，或者把 `API 网关` 自作聪明改成 `API 网管`。更不用说在很多正式发版前，包含未公开架构的文档根本过不了公网 API 的数据安全合规。
 
-> 目前这套系统还在内部整理和脱敏中，后续会优先将核心能力以开源项目或示例仓库的形式发布，方便有类似需求的团队参考和二次开发。
+过去这一年，为了在我们内部一个近 38 万字的技术文档库里安全落地自动化审校，我折腾了一套“本地优先、轻量小模型推理、带代码结构保护”的审校系统。
 
-今天，这件事做完了。
+在[上一篇文章](/blog/building-a-local-ai-content-review-system)分享完架构思路后，不少读者在后台问代码什么时候能放出来。为了让它从一个内部“能跑就行”的粗糙脚本，变成任何人在本地拉下来都能开箱即用的工具，过去几个月我把核心逻辑重新梳理脱敏，补齐了 Web 界面、Docker、CI 测试与误报过滤机制。
 
-[DocSifter](https://github.com/heywalter/docsifter) 正式开源，MIT 协议。
+今天，这件事终于干完了。
+
+[DocSifter](https://github.com/heywalter/docsifter) 正式开源，采用 MIT 协议。
+
+想先看它怎么工作，可以直接打开[交互式产品演示](pathname:///demos/docsifter/index.html)。
 
 <!--truncate-->
 
@@ -21,7 +25,7 @@ description: 曾经说要开源的那个本地 AI 文档审校系统，现在正
 
 简单说，DocSifter 是一个专为技术文档设计的“体检”工具：给它一个 Markdown、AsciiDoc 或纯文本文档目录，它结合规则引擎和本地中文小模型，挑出里面的错别字、术语误写和不通顺的表达，生成一份带修改建议对比和质量指标的 HTML 报告。支持 CLI、Web 界面和 GitHub PR webhook 三种接入方式。
 
-读过前两篇文章的话，对这个系统应该已经有印象了。这篇主要补充设计上的取舍，以及怎么快速跑起来。
+读过前两篇文章的话，对它的思路应该已经有印象了。这篇主要补充背后的设计取舍，以及怎么在本地快速跑起来。
 
 ## 为什么不直接用现成工具
 

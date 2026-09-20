@@ -21,19 +21,29 @@ export type TagType =
 const Showcase = [
   {
     title: translate({
-      message: 'DocSifter - 本地 AI 文档审校工具',
+      message: 'DocSifter - 技术文档本地审校工具',
       id: 'showcase.ai-review.title',
     }),
     description: (
       <>
         {translate({
-          message: '面向技术文档的本地 AI 审校系统，结合规则引擎与小模型推理，自动检测错别字、术语误写与病句，配套结构保护、Web 管理界面与误报反馈闭环。',
+          message: '面向中文技术文档的本地审校工具：先隔离代码、SQL 与标记语法，再由规则和本地小模型筛出文字问题；疑难项可按需交给大模型复核，误报记录可复用和导出。',
           id: 'showcase.ai-review.description',
         })}
       </>
     ),
-    preview: 'https://img.flowingdocs.com/images/ai_reviewer_open_source.png',
-    url: '/blog/docsifter-open-source',
+    preview: translate({
+      message: 'https://img.flowingdocs.com/images/docsifter-zh-poster.jpg',
+      id: 'showcase.ai-review.preview',
+    }),
+    url: translate({
+      message: '/demos/docsifter/index.html',
+      id: 'showcase.ai-review.demoUrl',
+    }),
+    article: translate({
+      message: '/blog/docsifter-open-source',
+      id: 'showcase.ai-review.articleUrl',
+    }),
     source: 'https://github.com/heywalter/docsifter',
     tags: ['favorite', 'open_source', 'ai', 'dx'],
   },
@@ -62,6 +72,7 @@ export type ProjectShowcase = {
   description: JSX.Element
   preview: string | null
   url: string
+  article?: string | null
   source: string | null
   tags: TagType[]
 }
