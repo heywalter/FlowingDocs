@@ -21,7 +21,7 @@ export type TagType =
 const Showcase = [
   {
     title: translate({
-      message: '本地 AI 内容审校系统',
+      message: 'DocSifter - 本地 AI 文档审校工具',
       id: 'showcase.ai-review.title',
     }),
     description: (
@@ -32,11 +32,11 @@ const Showcase = [
         })}
       </>
     ),
-    preview: 'https://img.flowingdocs.com/images/ai_content_review_system.png',
-    url: '/blog/building-a-local-ai-content-review-system',
-    source: '/blog/building-a-local-ai-content-review-system',
-    tags: ['favorite', 'ai', 'dx'],
-  },  
+    preview: 'https://img.flowingdocs.com/images/ai_reviewer_open_source.png',
+    url: '/blog/docsifter-open-source',
+    source: 'https://github.com/heywalter/docsifter',
+    tags: ['favorite', 'open_source', 'ai', 'dx'],
+  },
   {
     title: translate({
       message: 'Flowing Docs 博客实践',
@@ -84,7 +84,7 @@ export const Tags: { [type in TagType]: Tag } = {
     }),
     color: '#ffb300',
   },
-   ai: {
+  ai: {
     label: translate({
       message: 'AI 实践',
       id: 'showcase.tag.ai.label',
@@ -94,7 +94,7 @@ export const Tags: { [type in TagType]: Tag } = {
       id: 'showcase.tag.ai.description',
     }),
     color: '#14b8a6',
-  }, 
+  },
   personal_site: {
     label: translate({
       message: '个人博客/主页',
