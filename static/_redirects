@@ -1,0 +1,20 @@
+# 按浏览器/操作系统首选语言，把英文访客从中文站入口送到英文站。
+# 由 Netlify CDN 节点直接完成，无闪烁、不依赖 JS。
+#
+# 三点说明：
+# 1. 302 后面的 `!` 是强制标志。静态站这些路径都已存在 index.html，不加 `!` 的话
+#    规则会被文件"遮蔽"（shadowing）而不生效。
+# 2. 源路径刻意只写入口页，不写 `/*`：一是 `/en/` 自身会命中 `/*` 变成 `/en/en/`
+#    死循环，二是中英文 tag slug 不同（/blog/tags/技术文档/ 在英文站不存在），
+#    深链批量转发会产生 404。文章链接保持分享者给出的语言版本。
+# 3. 用户在导航栏语言下拉里手动选过语言后，src/clientModules/localePreference.ts
+#    会写入 nf_lang cookie，Netlify 优先采信 cookie，下面的规则即自动失效。
+#
+# Language=en 会命中所有 en-* （en-US / en-GB ...）；Netlify 只看 Accept-Language
+# 的第一个语言，忽略 q 权重值。
+
+/          /en/           302!  Language=en
+/blog      /en/blog/      302!  Language=en
+/docs      /en/docs/      302!  Language=en
+/showcase  /en/showcase/  302!  Language=en
+/about     /en/about/     302!  Language=en
