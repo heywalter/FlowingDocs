@@ -1,17 +1,17 @@
 ---
-title: "DocSifter Is Now Open Source: A Local AI Reviewer Built for Chinese Technical Docs"
+title: "DocSifter: A Lightweight, Local-First AI Reviewer for Technical Docs"
 authors: Walter
 date: 2026-09-20
 tags: [Technical Writing, AI, AI Review, Chinese Text Correction, Local Models, Documentation Workflow, Open Source]
 image: https://img.flowingdocs.com/images/docsifter-en-poster.jpg
-description: The local AI doc review system I've been writing about for the past year is now open source. Here's what it does, why it's designed the way it is, and how to get it running.
+description: DocSifter is a lightweight, local-first review tool we built for technical docs. Focuses on code protection, offline small-model correction, and false-positive filtering.
 ---
 
 Reviewing technical documentation is often a frustrating trade-off. Manual proofreading is slow and tedious, but feeding documentation to generic AI or cloud LLMs quickly turns into an engineering headache. Generic grammar checkers don't understand code syntax—they happily translate inline API parameters, rewrite code comments, or rename terms like `principal` to `principle` in your IAM guides. On top of that, unreleased features and internal architecture docs often cannot be sent to third-party cloud APIs due to privacy and compliance boundaries.
 
 Over the past year, I built and ran a local-first, small-model review pipeline across an internal repository of roughly 380,000 characters of technical docs—designed specifically to protect code fences, respect custom terminology, and run entirely offline.
 
-Near the end of my [earlier architecture post](/en/blog/building-a-local-ai-content-review-system), I promised to clean up the code and release the core engine once it was properly decoupled from our private infrastructure. After months of refactoring—adding a web UI, Docker support, CI pipelines, and a persistent false-positive feedback loop—that work is complete.
+Following my [earlier architecture post](/en/blog/building-a-local-ai-content-review-system), a few folks asked if the code would be available. It originally started as a rough internal script that was "just good enough for us," so I spent the past few months cleaning it up, decoupling it from our private setup, and adding tests. Today, DocSifter is open source under the MIT license, and I hope it serves as a helpful reference for teams tackling similar challenges.
 
 [DocSifter](https://github.com/heywalter/docsifter) is now open source under the MIT license.
 
