@@ -70,26 +70,38 @@ function ShowcaseCard({ user }: { user: ProjectShowcase }) {
       <div className="card__body">
         <div className={clsx(styles.showcaseCardHeader)}>
           <Heading as="h4" className={styles.showcaseCardTitle}>
-            <Link href={user.url} className={styles.showcaseCardLink}>
+            <a href={user.url} className={styles.showcaseCardLink}>
               {user.title}
-            </Link>
+            </a>
           </Heading>
           {user.tags.includes('favorite') && (
             <FavoriteIcon size="medium" style={{ marginRight: '0.25rem' }} />
           )}
-          {user.source && (
-            <Link
-              href={user.source}
-              className={clsx(
-                'button button--secondary button--sm',
-                styles.showcaseCardSrcBtn,
-              )}
-            >
-              <Translate id="showcase.card.sourceLink">获取详细资料</Translate>
-            </Link>
-          )}
         </div>
         <p className={styles.showcaseCardBody}>{user.description}</p>
+        {(user.article || user.source) && (
+          <div className={styles.showcaseCardActions}>
+            {user.article && (
+              <Link
+                href={user.article}
+                className="button button--primary button--sm"
+              >
+                <Translate id="showcase.card.articleLink">项目介绍</Translate>
+              </Link>
+            )}
+            {user.source && (
+              <Link
+                href={user.source}
+                className={clsx(
+                  'button button--secondary button--sm',
+                  styles.showcaseCardSrcBtn,
+                )}
+              >
+                <Translate id="showcase.card.sourceLink">GitHub ↗</Translate>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
       <ul className={clsx('card__footer', styles.cardFooter)}>
         <ShowcaseCardTag tags={user.tags} />

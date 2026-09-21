@@ -259,7 +259,10 @@
     "description": "The ARIA label for the main navigation"
   },
   "showcase.card.sourceLink": {
-    "message": "Get Details"
+    "message": "GitHub ↗"
+  },
+  "showcase.card.articleLink": {
+    "message": "Project Story"
   },
   "showcase.usersList.noResult": {
     "message": "No results"
@@ -746,10 +749,19 @@
     "message": "Because developers are humans too. Projects that make the developer journey smoother, from first contact to production deployment."
   },
   "showcase.ai-review.title": {
-    "message": "Local AI Content Review System"
+    "message": "DocSifter - Local Review for Technical Docs"
   },
   "showcase.ai-review.description": {
-    "message": "A local AI review system for technical documentation, combining rule engines with small-model inference to detect typos, terminology errors, and grammatical issues — with structure protection, a web management UI, and a feedback loop for continuous improvement."
+    "message": "A local review tool for Chinese technical documentation. It protects code, SQL, and markup before rules and a local small model flag text issues; optional large-model review handles difficult cases, and false-positive decisions can be reused or exported."
+  },
+  "showcase.ai-review.preview": {
+    "message": "https://img.flowingdocs.com/images/docsifter-en-poster.jpg"
+  },
+  "showcase.ai-review.demoUrl": {
+    "message": "/demos/docsifter/index-en.html"
+  },
+  "showcase.ai-review.articleUrl": {
+    "message": "/en/blog/docsifter-open-source"
   },
   "showcase.tag.ai.label": {
     "message": "AI Practice"

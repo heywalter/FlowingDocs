@@ -297,6 +297,8 @@ const config: Config = {
     },
   ],
 
+  clientModules: ['./src/clientModules/localePreference.ts'], // Records the visitor's explicit locale choice
+
   i18n: {
     defaultLocale: 'zh-Hans', // Default site locale
     locales: ['zh-Hans', 'en'], // Supported locales

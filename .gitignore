@@ -22,3 +22,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-error.log*
+
+# Demo page working files. They live under static/, so anything committed here
+# is served at flowingdocs.com/demos/... -- build notes and QA records are not
+# for that. The pages and their media are committed; these are not.
+static/demos/docsifter/README.md
+static/demos/docsifter/design-qa.md
+static/demos/docsifter/build_english.py
+
+# The demo videos are served from img.flowingdocs.com, not from this repo: 40 MB
+# of mp4 in a 4 MB repository would outweigh everything else in it, permanently.
+# Posters stay here, at 35 KB each, so the player has a frame before it loads.
+static/demos/docsifter/media/*.mp4
