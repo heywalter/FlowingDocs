@@ -132,6 +132,9 @@ html[lang="en"] .guard-lines{font-size:12px;line-height:2.2}
 (()=>{
 'use strict';
 const $=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)];
+// Static demos do not load the Docusaurus client module. Persist an explicit
+// language choice before navigation so Netlify's entry-page redirect respects it.
+document.addEventListener('click',event=>{const link=event.target instanceof Element?event.target.closest('a[lang]'):null;if(link?.lang)document.cookie=`nf_lang=${link.lang}; path=/; max-age=31536000; samesite=lax`;},true);
 const film=$('#film'),view=$('.viewport'),rig=$('.rig'),paper=$('.sheet-prose'),guard=$('.sheet-guard'),back=$('.sheet-back');
 const copies=all('[data-copy]'),rail=all('.chapter-rail button');
 const orange=$('.orange-wash'),reviewWash=$('.review-wash'),night=$('.night-wash'),day=$('.day-wash'),word=$('.back-word'),localWord=$('.back-word.local'),reviewWord=$('.back-word.review');
