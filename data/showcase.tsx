@@ -49,6 +49,34 @@ const Showcase = [
   },
   {
     title: translate({
+      message: 'DSH Domain Proxy - 域名分流与耗时观测',
+      id: 'showcase.dsh-proxy.title',
+    }),
+    description: (
+      <>
+        {translate({
+          message: '为 DeepSeek Harness 打造的域名分流插件：让指定 API 域名精准走本地代理（免改 Provider 与 Key），并实时记录请求路径、首字延迟（TTFT）与流式吐字速率。',
+          id: 'showcase.dsh-proxy.description',
+        })}
+      </>
+    ),
+    preview: translate({
+      message: 'https://cdn.jsdelivr.net/npm/dsh-domain-proxy@0.1.1/docs/images/config.jpg',
+      id: 'showcase.dsh-proxy.preview',
+    }),
+    url: translate({
+      message: '/blog/dsh-domain-proxy-open-source',
+      id: 'showcase.dsh-proxy.url',
+    }),
+    article: translate({
+      message: '/blog/dsh-domain-proxy-open-source',
+      id: 'showcase.dsh-proxy.articleUrl',
+    }),
+    source: 'https://github.com/heywalter/dsh-domain-proxy',
+    tags: ['favorite', 'open_source', 'ai', 'dx'],
+  },
+  {
+    title: translate({
       message: 'Flowing Docs 博客实践',
       id: 'showcase.flowingdocs.title',
     }),
