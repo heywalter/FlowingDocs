@@ -59,6 +59,8 @@
     --ifm-color-primary-light: hsl(251, 100%, 80%);
     --ifm-color-primary-lighter: hsl(251, 100%, 88%);
     --ifm-color-primary-darkest: hsl(251, 100%, 65%);
+    --ifm-link-color: hsl(251, 100%, 80%);
+    --ifm-link-hover-color: hsl(251, 100%, 88%);
     --ifm-heading-color: hsl(0deg 0% 95%);
     --ifm-menu-color: #f0f3f6;
     --ifm-text-color: var(--ifm-menu-color);
@@ -311,3 +313,173 @@ div[class^='announcementBar_'] {
   height: 2.8rem; /* default: 2rem */
   width: auto;
 }
+
+/* Keep the label column of Markdown tables from collapsing into vertical text. Widget tables carry classes and are left alone. */
+.theme-doc-markdown table:not([class]) th:first-child,
+.theme-doc-markdown table:not([class]) td:first-child {
+  min-width: 6.5em;
+}
+
+/* Plain code in Markdown table cells is slightly smaller, so parameter names fit without breaking mid-word. */
+.theme-doc-markdown table:not([class]) td code:not([class]),
+.theme-doc-markdown table:not([class]) th code:not([class]) {
+  font-size: 0.85em;
+  overflow-wrap: break-word;
+}
+
+/* Long doc titles wrap to three lines at the default size; tighten them on doc pages only. */
+[class*='docItemContainer'] header h1 {
+  font-size: clamp(1.85rem, 2.4vw + 0.8rem, 2.3rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+/* Light-mode syntax tokens: darker shades of the same hues so they pass 4.5:1 on the light code background. */
+html:not([data-theme='dark']) pre .token.punctuation { color: #3b7a3a !important; }
+html:not([data-theme='dark']) pre .token.property { color: #c4392c !important; }
+html:not([data-theme='dark']) pre .token.operator { color: #2f63d6 !important; }
+html:not([data-theme='dark']) pre .token.number,
+html:not([data-theme='dark']) pre .token.key,
+html:not([data-theme='dark']) pre .token.atrule { color: #9a5a00 !important; }
+html:not([data-theme='dark']) pre .token.string { color: #3b7a3a !important; }
+html:not([data-theme='dark']) pre .token.comment { color: #5f6672 !important; }
+
+/* Dark-mode syntax tokens that were just under 4.5:1 on the dark code background. */
+html[data-theme='dark'] pre .token.comment { color: #9aa1ae !important; }
+html[data-theme='dark'] pre .token.property { color: #ef8a92 !important; }
+
+/* Between the desktop TOC breakpoint and 1199px, narrow the doc sidebar so the article and TOC fit. */
+@media (min-width: 997px) and (max-width: 1199px) {
+  :root { --doc-sidebar-width: 240px; }
+}
+
+/* Shared site identity: navigation, reading pages, and project listings. */
+:root {
+  --site-paper: #faf8f4; --site-ink: #151722; --site-muted: #65656e;
+  --site-rule: #dbd8d2; --site-accent: #5830ec; --site-panel: #fffefa;
+  --site-display: 'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC', Georgia, serif;
+  --content-background: var(--site-paper); --ifm-background-color: var(--site-paper);
+  --ifm-background-surface-color: var(--site-panel); --ifm-font-color-base: var(--site-ink);
+  --ifm-heading-color: var(--site-ink); --ifm-text-color: var(--site-ink);
+  --ifm-secondary-text-color: var(--site-muted); --ifm-menu-color: var(--site-muted);
+  --ifm-color-primary: var(--site-accent); --ifm-link-color: var(--site-accent);
+  --ifm-link-hover-color: var(--site-accent); --ifm-border-color: var(--site-rule);
+  --ifm-toc-border-color: var(--site-rule); --ifm-navbar-background-color: var(--site-paper);
+  --ifm-navbar-height: 82px; --ifm-navbar-shadow: none;
+  --ifm-footer-background-color: var(--site-paper); --ifm-card-background-color: var(--site-panel);
+  --ifm-font-weight-bold: 650; --ifm-heading-font-weight: 650;
+  --ifm-container-width: 1280px; --ifm-container-width-xl: 1280px;
+  --blog-item-background-color: var(--site-panel); --blog-item-shadow: none;
+}
+html[data-theme='dark'] {
+  --site-paper: #201f23; --site-ink: #f2efe9; --site-muted: #b7b3bd;
+  --site-rule: #45414b; --site-accent: #b4a0ff; --site-panel: #28262c;
+  --ifm-background-color: var(--site-paper); --content-background: var(--site-paper);
+  --ifm-heading-color: var(--site-ink); --ifm-menu-color: var(--site-muted);
+  --ifm-color-primary: var(--site-accent); --ifm-link-color: var(--site-accent);
+  --ifm-link-hover-color: #cec1ff; --ifm-border-color: var(--site-rule);
+  --ifm-navbar-background-color: var(--site-paper); --blog-item-background-color: var(--site-panel);
+}
+body { background: var(--site-paper); color: var(--site-ink); -webkit-font-smoothing: antialiased; }
+:where(a, button, input, select, summary):focus-visible { outline: 2px solid var(--site-accent); outline-offset: 4px; }
+h1 { font-family: var(--site-display); letter-spacing: -.025em; }
+.site-page { width: calc(100% - 96px); max-width: 1280px; margin: 0 auto; padding: 46px 0 60px; }
+.site-page-heading { margin-bottom: 32px; padding-bottom: 30px; border-bottom: 1px solid var(--site-rule); }
+.site-page-heading h1 { margin: 0 0 14px; font-family: var(--site-display); font-weight: 700; font-size: clamp(34px, 4vw, 54px); line-height: 1.25; letter-spacing: -.025em; }
+.site-page-heading p { color: var(--site-muted); font-size: 17px; line-height: 1.8; max-width: 720px; margin: 0; }
+.site-page-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 20px; font-size: 14px; }
+.site-page > .container, .site-page section > .container { padding: 0; }
+.site-reading { width: calc(100% - 96px); max-width: 1120px; margin: 0 auto; padding: 44px 0 64px; display: grid; grid-template-columns: minmax(0, 800px) minmax(150px, 220px); gap: 60px; }
+.site-reading > main { min-width: 0; }
+.site-reading:not(:has(> aside)) { display: block; max-width: 800px; }
+.site-reading article header h1 { font-family: var(--site-display); font-weight: 700; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.4; letter-spacing: -.025em; }
+.site-reading article { padding: 0; }
+.site-reading .markdown { font-size: 17px; line-height: 1.95; }
+.site-reading .markdown h2 { font-family: var(--site-display); font-weight: 700; margin-top: 2.4em; }
+.site-reading aside .table-of-contents { top: calc(var(--ifm-navbar-height) + 24px); }
+.site-reading .pagination-nav { margin-top: 32px; }
+.pagination-nav__link { box-shadow: none; border: 1px solid var(--site-rule); border-radius: 6px; }
+.navbar-sidebar { background: var(--site-paper); }
+.navbar-sidebar__brand { height: 82px; border-bottom: 1px solid var(--site-rule); box-shadow: none; gap: 12px; }
+.navbar-sidebar__brand > a { margin-right: auto; }
+.menu__link[aria-current='page'] { color: var(--site-accent); background: var(--ifm-color-emphasis-100); }
+.theme-doc-sidebar-container { border-right-color: var(--site-rule) !important; }
+.theme-doc-markdown > header h1 { font-size: clamp(30px, 3vw, 44px); line-height: 1.4; }
+@media (max-width: 996px) { :root { --ifm-navbar-height: 70px; } .site-page, .site-reading { width: calc(100% - 48px); } .site-reading { display: block; max-width: 800px; } .site-reading > aside { display: none; } .navbar-sidebar__brand { height: 70px; } }
+@media (max-width: 600px) { .site-page, .site-reading { width: calc(100% - 40px); padding: 30px 0 40px; } .site-page-heading { padding-bottom: 24px; margin-bottom: 24px; } .site-page-heading p, .site-reading .markdown { font-size: 16px; } }
+
+.site-topic-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; gap: 0 36px; }
+.site-topic-list li { border-bottom: 1px solid var(--site-rule); }
+.site-topic-list a { padding: 16px 0; display: flex; justify-content: space-between; gap: 16px; color: var(--site-ink); }
+.site-topic-list a:hover { color: var(--site-accent); }
+.site-topic-list span { color: var(--site-muted); font-size: 13px; }
+@media (max-width: 800px) { .site-topic-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; } }
+@media (max-width: 500px) { .site-topic-list { grid-template-columns: 1fr; } }
+
+.site-showcase .container { max-width: none; padding-left: 0; padding-right: 0; }
+
+
+/* Shared feedback for navigation and browse links; prose stays still. */
+:root {
+  --site-motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --site-motion-fast: 180ms;
+  --site-motion-link: 260ms;
+  --site-motion-image: 380ms;
+}
+.site-link.site-link, .site-page-links a {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .25em;
+  transition: color var(--site-motion-fast), text-decoration-color var(--site-motion-link) var(--site-motion-ease);
+}
+/* Inline prose links need a visible cue before hover, including on touchscreens. */
+.site-link.site-inline-link { text-decoration-color: currentColor; }
+.site-link.site-link:focus-visible, .site-page-links a:focus-visible,
+.site-link.site-link[aria-current='page'] {
+  color: var(--site-accent);
+  text-decoration-color: currentColor;
+}
+.site-link [data-link-arrow] { transition: transform var(--site-motion-link) var(--site-motion-ease); }
+.site-link:focus-visible [data-link-arrow] { transform: translateX(3px); }
+.site-link:active [data-link-arrow] { transform: translateX(1px); }
+.site-disclosure > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+  transition: color var(--site-motion-fast);
+}
+.site-disclosure > summary::-webkit-details-marker { display: none; }
+.site-disclosure > summary::marker { content: ''; }
+.site-disclosure > summary > svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  transition: transform var(--site-motion-fast) var(--site-motion-ease);
+}
+.site-disclosure[open] > summary > svg { transform: rotate(90deg); }
+.site-disclosure > summary:focus-visible { color: var(--site-accent); }
+@media (hover: hover) and (pointer: fine) {
+  .site-link.site-link:hover, .site-page-links a:hover { color: var(--site-accent); text-decoration-color: currentColor; }
+  .site-link:hover [data-link-arrow] { transform: translateX(3px); }
+  .site-disclosure > summary:hover { color: var(--site-accent); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-disclosure[open] > :not(summary) { animation: siteDisclosureEnter 180ms var(--site-motion-ease); }
+}
+@keyframes siteDisclosureEnter { from { opacity: .65; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .site-link.site-link, .site-page-links a, .site-link [data-link-arrow],
+  .site-disclosure > summary, .site-disclosure > summary > svg { transition: none !important; }
+  .site-link [data-link-arrow] { transform: none !important; }
+  .site-disclosure[open] > :not(summary) { animation: none !important; }
+}
+
+/* Keep a useful article rail on wide screens without narrowing mobile prose. */
+.site-reading.site-reading-with-history { max-width: 1440px; grid-template-columns: 224px minmax(0, 1fr) 190px; gap: 36px; }
+.site-reading.site-reading-with-history:not(:has(> .site-reading-toc)) { display: grid; max-width: 1150px; grid-template-columns: 224px minmax(0, 800px); }
+@media (min-width: 997px) and (max-width: 1199px) { .site-reading.site-reading-with-history { max-width: 1120px; grid-template-columns: minmax(0, 1fr) 180px; gap: 0 32px; } .site-reading.site-reading-with-history:not(:has(> .site-reading-toc)) { grid-template-columns: minmax(0, 800px); } }
+@media (max-width: 996px) { .site-reading.site-reading-with-history, .site-reading.site-reading-with-history:not(:has(> .site-reading-toc)) { display: block; max-width: 800px; } .site-reading.site-reading-with-history > aside[data-blog-sidebar] { display: block; } }

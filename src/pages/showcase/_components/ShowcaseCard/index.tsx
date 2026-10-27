@@ -9,11 +9,11 @@ import React from 'react'
 import clsx from 'clsx'
 import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
-import Image from '@theme/IdealImage'
 import { Tags, TagList, type TagType, type ProjectShowcase } from '@site/data/showcase'
 import { sortBy } from '@site/src/utils/jsUtils'
 import Heading from '@theme/Heading'
-import FavoriteIcon from '../FavoriteIcon'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import { resolveThumbnail } from '@site/src/lib/thumbnails'
 import styles from './styles.module.css'
 
 function TagItem({
@@ -27,7 +27,7 @@ function TagItem({
 }) {
   return (
     <li className={styles.tag} title={description}>
-      <span className={styles.textLabel}>{label.toLowerCase()}</span>
+      <span className={styles.textLabel}>{label}</span>
       <span className={styles.colorLabel} style={{ backgroundColor: color }} />
     </li>
   )
@@ -62,29 +62,28 @@ function getCardImage(user: ProjectShowcase): string {
 
 function ShowcaseCard({ user }: { user: ProjectShowcase }) {
   const image = getCardImage(user)
+  const { i18n: { currentLocale } } = useDocusaurusContext()
+  const localUrl = (url: string) => currentLocale === 'en' && url.startsWith('/blog/') ? '/en' + url : url
   return (
-    <li key={user.title} className="card shadow--md">
+    <li key={user.title} className={styles.card}>
       <div className={clsx('card__image', styles.showcaseCardImage)}>
-        <Image img={image} alt={user.title} />
+        <img src={resolveThumbnail(image)} alt="" width="640" height="360" loading="lazy" onError={(event) => { if (event.currentTarget.getAttribute('src') !== image) event.currentTarget.src = image }} />
       </div>
       <div className="card__body">
         <div className={clsx(styles.showcaseCardHeader)}>
-          <Heading as="h4" className={styles.showcaseCardTitle}>
-            <a href={user.url} className={styles.showcaseCardLink}>
+          <Heading as="h2" className={styles.showcaseCardTitle}>
+            <a href={localUrl(user.url)} className={`${styles.showcaseCardLink} site-link`}>
               {user.title}
             </a>
           </Heading>
-          {user.tags.includes('favorite') && (
-            <FavoriteIcon size="medium" style={{ marginRight: '0.25rem' }} />
-          )}
         </div>
         <p className={styles.showcaseCardBody}>{user.description}</p>
         {(user.article || user.source) && (
           <div className={styles.showcaseCardActions}>
             {user.article && (
               <Link
-                href={user.article}
-                className="button button--primary button--sm"
+                href={localUrl(user.article)}
+                className="button button--primary button--sm site-link"
               >
                 <Translate id="showcase.card.articleLink">项目介绍</Translate>
               </Link>
@@ -93,7 +92,7 @@ function ShowcaseCard({ user }: { user: ProjectShowcase }) {
               <Link
                 href={user.source}
                 className={clsx(
-                  'button button--secondary button--sm',
+                  'button button--secondary button--sm site-link',
                   styles.showcaseCardSrcBtn,
                 )}
               >

@@ -165,7 +165,7 @@
     "message": "Apply for a Friend Link"
   },
   "showcase.filters.resultCount": {
-    "message": "{sitesCount} case studies",
+    "message": "1 project|{sitesCount} projects",
     "description": "Label for the number of sites found on the showcase. Simplified for single plural form support in zh-Hans."
   },
   "showcase.title": {
@@ -268,7 +268,7 @@
     "message": "No results"
   },
   "showcase.usersList.allUsers": {
-    "message": "All Showcases"
+    "message": "All projects"
   },
   "showcase.filters.title": {
     "message": "Quick Filters"
@@ -716,7 +716,7 @@
     "message": "Flowing Docs Blog Practice"
   },
   "showcase.flowingdocs.description": {
-    "message": "A personal blog built with Docusaurus, focusing on technical writing, developer experience, and content maintainability. Features include dark mode, PWA support, Giscus comments, and SEO optimization."
+    "message": "A personal website built with Docusaurus, with notes on work, tools, and everyday life, along with its bilingual content, interactive examples, and maintenance."
   },
   "showcase.tag.favorite.label": {
     "message": "Featured Projects"

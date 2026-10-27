@@ -1,0 +1,5 @@
+.filters { margin: -4px 0 30px; padding: 20px 24px; border: 1px solid var(--site-rule); border-radius: 8px; background: var(--site-panel); }
+.filters > section { margin: 0 0 16px !important; }
+:global(.site-showcase) { padding-top: 32px; }
+:global(.site-showcase .site-page-heading) { margin-bottom: 24px; padding-bottom: 24px; }
+@media (max-width: 600px) { .filters { padding: 18px 16px; margin-bottom: 24px; } }

@@ -1,0 +1,467 @@
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8px 0 40px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lab-accent);
+  background: var(--lab-tint);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 750;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  color: var(--lab-ink);
+}
+
+.lead {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--lab-muted);
+  margin-bottom: 24px;
+}
+
+/* Workbench Layout */
+.workbench {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 24px 0 36px;
+}
+
+/* Control Center Card */
+.controlCard {
+  background: var(--lab-surface);
+  border: 1px solid var(--lab-line);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lab-ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--lab-accent);
+  background: var(--lab-tint);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Preset Switcher */
+.presetBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.presetBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--lab-paper);
+  border: 1px solid var(--lab-line);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lab-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.presetBtn:hover {
+  border-color: var(--lab-accent);
+  color: var(--lab-accent);
+}
+
+.presetBtn[data-active='true'] {
+  background: var(--lab-tint);
+  border-color: var(--lab-accent);
+  color: var(--lab-accent);
+  box-shadow: 0 0 0 1px var(--lab-accent);
+}
+
+/* Form Controls */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--lab-ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tokenLabel {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  color: var(--lab-accent);
+  background: var(--lab-tint);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.input {
+  background: var(--lab-paper);
+  border: 1px solid var(--lab-line);
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--lab-ink);
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 2px var(--lab-tint);
+}
+
+.textarea {
+  background: var(--lab-paper);
+  border: 1px solid var(--lab-line);
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lab-ink);
+  resize: vertical;
+  min-height: 64px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 2px var(--lab-tint);
+}
+
+.toggleRow {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--lab-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--lab-ink);
+  cursor: pointer;
+}
+
+.toggleLabel input {
+  accent-color: var(--lab-accent);
+  cursor: pointer;
+}
+
+/* Manuals Preview Section */
+.manualsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .manualsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.manualCard {
+  background: var(--lab-paper);
+  border: 1px solid var(--lab-line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.manualHeader {
+  padding: 12px 16px;
+  background: var(--lab-surface);
+  border-bottom: 1px solid var(--lab-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manualTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.manualDocTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lab-ink);
+  margin: 0;
+}
+
+.manualSubtitle {
+  font-size: 0.75rem;
+  color: var(--lab-muted);
+}
+
+.envPill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.envProd {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.envStaging {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.manualBody {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--lab-ink);
+}
+
+.manualBody p {
+  margin: 0;
+}
+
+/* Variable Token Highlight */
+.tokenHighlight {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(101, 65, 237, 0.12);
+  color: var(--lab-accent);
+  font-weight: 600;
+  border: 1px solid rgba(101, 65, 237, 0.25);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.tokenPulse {
+  animation: tokenPulseGlow 0.7s ease-out;
+}
+
+@keyframes tokenPulseGlow {
+  0% {
+    transform: scale(0.97);
+    background: rgba(101, 65, 237, 0.35);
+    box-shadow: 0 0 8px rgba(101, 65, 237, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    background: rgba(101, 65, 237, 0.12);
+    box-shadow: none;
+  }
+}
+
+/* Admonition / Callout Snippet */
+.calloutBlock {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  border-left: 3px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calloutShared {
+  background: rgba(101, 65, 237, 0.05);
+  border-left-color: var(--lab-accent);
+  border-top: 1px solid var(--lab-line);
+  border-right: 1px solid var(--lab-line);
+  border-bottom: 1px solid var(--lab-line);
+}
+
+.calloutOverride {
+  background: rgba(245, 158, 11, 0.05);
+  border-left-color: #f59e0b;
+  border-top: 1px solid var(--lab-line);
+  border-right: 1px solid var(--lab-line);
+  border-bottom: 1px solid var(--lab-line);
+}
+
+.calloutHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.calloutTitle {
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.snippetTag {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--lab-surface);
+  border: 1px solid var(--lab-line);
+  color: var(--lab-muted);
+}
+
+.calloutText {
+  margin: 0;
+  color: var(--lab-ink);
+}
+
+/* Architecture comparison cards */
+.archGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+
+@media (max-width: 768px) {
+  .archGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archCard {
+  background: var(--lab-surface);
+  border: 1px solid var(--lab-line);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.archCard h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lab-ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.archCard p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--lab-muted);
+}
+
+.archTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--lab-accent);
+  background: var(--lab-tint);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.scopeNote { font-size: 13px; line-height: 1.7; color: var(--lab-muted); border-left: 3px solid var(--lab-line); padding-left: 12px; }
+.fieldLabel { flex-wrap: wrap; gap: 6px; }
+.manualHeader { flex-wrap: wrap; gap: 8px; }
+.manualTitleGroup { min-width: 0; }
+.manualSubtitle, .snippetTag, .tokenHighlight { overflow-wrap: anywhere; max-width: 100%; }
+.input, .textarea { min-width: 0; width: 100%; }
+.presetBtn { min-height: 44px; }
+.envProd { color: #08734f; }
+.envStaging { color: #925008; }
+:global([data-theme='dark']) .envProd { color: #79ddb6; }
+:global([data-theme='dark']) .envStaging { color: #ffd083; }
+@media (max-width: 650px) {
+  .input, .textarea { font-size: 16px; }
+  .controlCard, .manualBody { padding: 16px; }
+  .tokenLabel { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { .tokenPulse { animation: none; } }

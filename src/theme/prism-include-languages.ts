@@ -1,6 +1,6 @@
 import siteConfig from '@generated/docusaurus.config'
 import type * as PrismNamespace from 'prismjs'
-import type { Optional } from 'utility-types'
+type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 export default function prismIncludeLanguages(PrismObject: typeof PrismNamespace): void {
   const {

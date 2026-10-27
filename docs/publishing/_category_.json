@@ -1,0 +1,8 @@
+{
+  "label": "静态站点生成器",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "publishing/index"
+  }
+}

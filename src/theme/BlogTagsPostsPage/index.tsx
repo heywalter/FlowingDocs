@@ -1,17 +1,17 @@
-import Link from '@docusaurus/Link'
-import Translate, { translate } from '@docusaurus/Translate'
+import { translate } from '@docusaurus/Translate'
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames, usePluralForm } from '@docusaurus/theme-common'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { BLOG_KEYWORDS, getBlogTagDescription, getLocalizedKeywords, uniqueKeywords } from '@site/src/lib/seo'
 import { cn } from '@site/src/lib/utils'
 import BackToTopButton from '@theme/BackToTopButton'
 import BlogListPaginator from '@theme/BlogListPaginator'
-import BlogPostItems from '@theme/BlogPostItems'
+import BlogPostGridItems from '../BlogPostGridItems'
 import type { Props } from '@theme/BlogTagsPostsPage'
 import Heading from '@theme/Heading'
 import SearchMetadata from '@theme/SearchMetadata'
 
 import MyLayout from '../MyLayout'
+import BlogBrowseNav from '@site/src/components/BlogBrowseNav'
 
 // Very simple pluralization: probably good enough for now
 function useBlogPostsPlural() {
@@ -43,7 +43,7 @@ function useBlogTagsPostsPageTitle(tag: Props['tag']): string {
   )
 }
 
-function BlogTagsPostsPageMetadata({ tag }: Props): JSX.Element {
+function BlogTagsPostsPageMetadata({ tag }: Props): React.JSX.Element {
   const title = useBlogTagsPostsPageTitle(tag)
   const {
     i18n: { currentLocale },
@@ -58,25 +58,23 @@ function BlogTagsPostsPageMetadata({ tag }: Props): JSX.Element {
   )
 }
 
-function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props): JSX.Element {
-  const title = useBlogTagsPostsPageTitle(tag)
+function BlogTagsPostsPageContent({ tag, items, sidebar, listMetadata }: Props): React.JSX.Element {
+  const { i18n: { currentLocale } } = useDocusaurusContext()
+  const en = currentLocale === 'en'
   return (
     <MyLayout>
-      <header className={cn('mb-4')}>
-        <Heading as="h1">{title}</Heading>
-        <Link href={tag.allTagsPath}>
-          <Translate id="theme.tags.tagsPageLink" description="The label of the link targeting the tag list page">
-            View All Tags
-          </Translate>
-        </Link>
+      <header className="site-page-heading">
+        <Heading as="h1">{tag.label}</Heading>
+        <p>{en ? `${tag.count} ${tag.count === 1 ? 'article' : 'articles'} on this topic.` : `这个话题下有 ${tag.count} 篇文章。`}</p>
+        <BlogBrowseNav />
       </header>
-      <BlogPostItems items={items} />
+      <BlogPostGridItems items={items} />
       <BlogListPaginator metadata={listMetadata} />
       <BackToTopButton />
     </MyLayout>
   )
 }
-export default function BlogTagsPostsPage(props: Props): JSX.Element {
+export default function BlogTagsPostsPage(props: Props): React.JSX.Element {
   return (
     <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagPostListPage)}>
       <BlogTagsPostsPageMetadata {...props} />

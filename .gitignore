@@ -34,3 +34,10 @@ static/demos/docsifter/build_english.py
 # of mp4 in a 4 MB repository would outweigh everything else in it, permanently.
 # Posters stay here, at 35 KB each, so the player has a frame before it loads.
 static/demos/docsifter/media/*.mp4
+
+# Local design notes and reproducible publication outputs.
+/design-qa.md
+/static/llms/
+/static/llms.txt
+/static/llms-full.txt
+/static/docs/publishing-starter.zip

@@ -1,19 +1,23 @@
-.blogTags a {
-  @apply p-px border-0 text-inherit hover:text-primary;
+.list { margin-bottom: 36px; }
+.article { display: grid; grid-template-columns: minmax(180px, 28%) minmax(0, 1fr); gap: 36px; padding: 30px 0; border-bottom: 1px solid var(--site-rule); }
+.article:first-child { padding-top: 0; }
+.article:not(:has(.cover)) { grid-template-columns: 1fr; }
+.cover { display: block; align-self: start; overflow: hidden; border-radius: 4px; }
+.cover img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; transition: transform var(--site-motion-image) var(--site-motion-ease); }
+.body { min-width: 0; }
+.meta { display: flex; gap: 14px; color: var(--site-muted); font-size: 13px; }
+.meta span { color: var(--site-accent); }
+.body h2 { font-family: var(--site-display); font-weight: 700; font-size: clamp(23px, 2.1vw, 30px); line-height: 1.45; margin: 10px 0 12px; letter-spacing: -.02em; }
+.body h2 a { color: var(--site-ink); }
+.body h2 a:hover { color: var(--site-accent); }
+.body p { color: var(--site-muted); font-size: 15px; line-height: 1.85; margin: 0; }
+.tags { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 15px; font-size: 12px; }
+.tags a { color: var(--site-muted); text-decoration: underline; text-decoration-color: var(--site-rule); text-underline-offset: 4px; }
+.tags a:hover { color: var(--site-accent); }
+@media (max-width: 850px) { .article { gap: 24px; } }
+@media (max-width: 600px) { .article { grid-template-columns: 1fr; gap: 18px; padding: 25px 0; } .cover { max-width: 100%; } .body h2 { font-size: 25px; margin-top: 8px; } .body p { font-size: 15px; } }
+.article:has(h2 a:focus-visible) .cover img { transform: scale(1.025); }
+@media (hover: hover) and (pointer: fine) {
+  .cover:hover img, .article:has(h2 a:hover) .cover img { transform: scale(1.025); }
 }
-
-.blogSticky:after {
-  opacity: 1;
-  border: 10px solid var(--ifm-color-primary);
-  border-block-end: 10px solid transparent;
-  border-inline-start: 10px solid transparent;
-  border-start-end-radius: 8px;
-  position: absolute;
-  inset-block-start: 1px;
-  inset-inline-end: 1px;
-  transition: all 0.3s cubic-bezier(0.845, 0.045, 0.355, 1);
-  border-block-end: 10px solid transparent;
-  border-inline-start: 10px solid transparent;
-  border-start-end-radius: 6px;
-  content: '';
-}
+@media (prefers-reduced-motion: reduce) { .cover img { transition: none; transform: none !important; } }

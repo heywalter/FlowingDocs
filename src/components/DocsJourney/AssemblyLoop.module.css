@@ -1,0 +1,613 @@
+.loop {
+  margin: 0 0 2.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  column-gap: 36px;
+  align-items: center;
+  padding: 18px;
+  background-color: var(--panel-bg);
+  background-image: radial-gradient(var(--line) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.wires {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.track {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.flowIn,
+.flowOut {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 12;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.packetIn,
+.packetOut {
+  fill: var(--accent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stage[data-step='2'] .flowIn,
+.stage[data-step='5'] .flowIn,
+.stage[data-step='3'] .flowOut,
+.stage[data-step='4'] .flowOut,
+.stage[data-step='5'] .flowOut {
+  opacity: 1;
+  animation: flow 0.9s linear infinite;
+}
+
+.stage[data-step='2'] .packetIn,
+.stage[data-step='5'] .packetIn,
+.stage[data-step='3'] .packetOut,
+.stage[data-step='4'] .packetOut,
+.stage[data-step='5'] .packetOut {
+  opacity: 1;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+.col {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.card {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.9s ease,
+    border-color 0.4s ease, box-shadow 0.5s ease;
+}
+
+.tag {
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mdLine {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.hash {
+  margin-right: 4px;
+  color: var(--accent);
+}
+
+.ln {
+  width: 90%;
+  height: 6px;
+  margin-top: 6px;
+  background: var(--panel-bg);
+  border-radius: 3px;
+}
+
+.lnShort {
+  width: 60%;
+}
+
+.tree {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.swatchRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.swatchLabel {
+  margin-left: 2px;
+}
+
+.old {
+  display: inline;
+}
+
+.new {
+  display: none;
+}
+
+.src {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.stage[data-step='1'] .src {
+  opacity: 1;
+  transform: none;
+  animation: float 3.4s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.stage[data-step='2'] .src {
+  opacity: 0;
+  transform: translateX(calc(100% + 36px)) scale(0.9);
+  filter: blur(2px);
+}
+
+.stage[data-step='5'] .src {
+  opacity: 1;
+  transform: none;
+}
+
+.stage[data-step='5'] .srcContent {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.stage[data-step='5'] .old {
+  display: none;
+}
+
+.stage[data-step='5'] .new {
+  display: inline;
+  padding: 0 3px;
+  color: var(--ink);
+  border-radius: 4px;
+  background-image: linear-gradient(rgba(245, 158, 11, 0.28), rgba(245, 158, 11, 0.28));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: sweep 0.9s ease-out 0.3s both;
+}
+
+@keyframes sweep {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.gen {
+  position: relative;
+  border-color: var(--line);
+  transition: opacity 0.6s ease, border-color 0.4s ease, box-shadow 0.5s ease;
+}
+
+.stage[data-step='2'] .gen,
+.stage[data-step='5'] .gen {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.segments {
+  display: flex;
+  gap: 4px;
+  margin: 6px 0 10px;
+}
+
+.segment {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  background: var(--panel-bg);
+  border-radius: 3px;
+}
+
+.segment i {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.stage[data-step='2'] .segment i,
+.stage[data-step='5'] .segment i {
+  animation: fillSegment 0.5s ease-out both;
+  animation-delay: calc(var(--i) * 0.45s);
+}
+
+.stage[data-step='3'] .segment i,
+.stage[data-step='4'] .segment i,
+.stage[data-step='5'] .segment i {
+  transform: scaleX(1);
+}
+
+@keyframes fillSegment {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.status {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  list-style: none;
+}
+
+.stage[data-step='2'] .steps li {
+  animation: stepOn 0.4s ease both;
+  animation-delay: calc(var(--i) * 0.45s);
+}
+
+.stage[data-step='3'] .steps li,
+.stage[data-step='4'] .steps li,
+.stage[data-step='5'] .steps li {
+  color: var(--ink);
+}
+
+@keyframes stepOn {
+  from {
+    color: var(--muted);
+  }
+  to {
+    color: var(--ink);
+  }
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.stage[data-step='3'] .file,
+.stage[data-step='4'] .file,
+.stage[data-step='5'] .file {
+  opacity: 1;
+  animation: stamp 0.6s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+  animation-delay: var(--d);
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stage[data-step='5'] .fileUpdated {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  animation: stamp 0.6s cubic-bezier(0.2, 1.3, 0.4, 1) both, ring 1.6s ease-out 0.7s 1;
+  animation-delay: var(--d), 0.7s;
+}
+
+@keyframes ring {
+  from {
+    box-shadow: 0 0 0 0 var(--accent-glow);
+  }
+  to {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+.tagNew,
+.tagSame {
+  display: none;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 999px;
+}
+
+.tagNew {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.14);
+}
+
+.tagSame {
+  color: var(--muted);
+}
+
+:global([data-theme='dark']) .tagNew {
+  color: #6ee7b7;
+}
+
+.stage[data-step='5'] .tagNew,
+.stage[data-step='5'] .tagSame {
+  display: inline-block;
+}
+
+.browser {
+  margin-top: 10px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stage[data-step='4'] .browser,
+.stage[data-step='5'] .browser {
+  opacity: 1;
+  transform: none;
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--line);
+  border-radius: 50%;
+}
+
+.url {
+  margin-left: 6px;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browserBody {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.browserBody h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bodyText {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.stage[data-step='4'] .bodyText,
+.stage[data-step='5'] .bodyText {
+  animation: reveal 1s ease-out 0.2s both;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.caption {
+  flex: 1;
+  min-width: 14em;
+  min-height: 3em;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  animation: captionIn 0.6s ease both;
+}
+
+@keyframes captionIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots span {
+  width: 6px;
+  height: 6px;
+  background: var(--line);
+  border-radius: 999px;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.dots span[data-on='true'] {
+  width: 18px;
+  background: var(--accent);
+}
+
+.pause {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pause:hover {
+  background: var(--card-bg);
+}
+
+.pause:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.stage[data-paused='true'] * {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 640px) {
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .wires,
+  .track,
+  .flowIn,
+  .flowOut,
+  .packetIn,
+  .packetOut {
+    display: none;
+  }
+
+  .stage > .col:first-of-type {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .srcContent {
+    grid-column: 1 / -1;
+  }
+
+  .card {
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage *,
+  .stage *::before,
+  .stage *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .wires {
+    display: none;
+  }
+}
+
+/* Keep the explanation readable even between animation phases. */
+.stage .src, .stage[data-step] .src { opacity: 1; transform: none; filter: none; animation: none; }
+.stage .file, .stage[data-step] .file, .stage .browser, .stage[data-step] .browser { opacity: 1; transform: none; animation: none; }
+.stage .flowIn, .stage .flowOut { opacity: .35; }
+.loop { margin-bottom: 1.25rem; }
+.controls { flex-wrap: wrap; gap: .75rem; }
+.caption { flex-basis: 100%; min-height: 1.5em; animation: none; }
+.stepChoices { display: flex; gap: .3rem; flex-wrap: wrap; }
+.stepChoices button { font: inherit; font-size: .75rem; min-height: 36px; border: 1px solid var(--line); border-radius: 5px; padding: .35rem .6rem; background: var(--card-bg); color: var(--muted-strong); cursor: pointer; }
+.stepChoices button[aria-pressed='true'] { color: var(--accent); background: var(--accent-light); border-color: var(--accent); }
+.stepChoices button:focus-visible, .pause:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.stage .bodyText, .stage[data-step] .bodyText { animation: none; clip-path: none; }

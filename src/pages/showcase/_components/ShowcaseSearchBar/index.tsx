@@ -6,19 +6,21 @@
  */
 
 import { type ReactNode } from 'react'
-import { translate } from '@docusaurus/Translate'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { useSearchName } from '@site/src/pages/showcase/_utils'
 import styles from './styles.module.css'
 
 export default function ShowcaseSearchBar(): ReactNode {
   const [searchName, setSearchName] = useSearchName()
+  const { i18n: { currentLocale } } = useDocusaurusContext()
+  const label = currentLocale === 'en' ? 'Search projects' : '搜索项目'
   return (
     <div className={styles.searchBar}>
+      <label htmlFor="project-search">{label}</label>
       <input
-        placeholder={translate({
-          message: 'Search for site name...',
-          id: 'showcase.searchBar.placeholder',
-        })}
+        id="project-search"
+        type="search"
+        placeholder={currentLocale === 'en' ? 'Project name' : '输入项目名称'}
         value={searchName}
         onInput={(e) => {
           setSearchName(e.currentTarget.value)

@@ -1,110 +1,30 @@
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames } from '@docusaurus/theme-common'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import BlogBrowseNav from '@site/src/components/BlogBrowseNav'
 import { BLOG_KEYWORDS, getLocalizedKeywords } from '@site/src/lib/seo'
-import { cn } from '@site/src/lib/utils'
-import BackToTopButton from '@theme/BackToTopButton'
 import type { Props } from '@theme/BlogListPage'
 import BlogListPaginator from '@theme/BlogListPaginator'
-import BlogPostItems from '@theme/BlogPostItems'
 import SearchMetadata from '@theme/SearchMetadata'
-
-import Translate from '@docusaurus/Translate'
-import Icon from '@site/src/components/Icon'
-import { type ViewType, useViewType } from '@site/src/hooks/useViewType'
 import BlogPostGridItems from '../BlogPostGridItems'
-
 import MyLayout from '../MyLayout'
 
-function BlogListPageMetadata(props: Props): JSX.Element {
-  const { metadata } = props
-  const { blogDescription } = metadata
-  const {
-    i18n: { currentLocale },
-  } = useDocusaurusContext()
-
+export default function BlogListPage({ metadata, items }: Props) {
+  const { i18n: { currentLocale } } = useDocusaurusContext()
+  const en = currentLocale === 'en'
+  const title = en ? 'Articles' : '文章'
   return (
-    <>
-      <PageMetadata
-        title="Blog"
-        description={blogDescription}
-        keywords={getLocalizedKeywords(currentLocale, BLOG_KEYWORDS)}
-      />
+    <HtmlClassNameProvider className={`${ThemeClassNames.wrapper.blogPages} ${ThemeClassNames.page.blogListPage}`}>
+      <PageMetadata title={title} description={metadata.blogDescription} keywords={getLocalizedKeywords(currentLocale, BLOG_KEYWORDS)} />
       <SearchMetadata tag="blog_posts_list" />
-    </>
-  )
-}
-
-function ViewTypeSwitch({
-  viewType,
-  toggleViewType,
-}: {
-  viewType: ViewType
-  toggleViewType: (viewType: ViewType) => void
-}): JSX.Element {
-  return (
-    <div className="my-4 flex items-center justify-center">
-      <Icon
-        icon="ph:list"
-        width="24"
-        height="24"
-        onClick={() => toggleViewType('list')}
-        color={viewType === 'list' ? 'var(--ifm-color-primary)' : '#ccc'}
-        className="cursor-pointer transition duration-500"
-      />
-      <Icon
-        icon="ph:grid-four"
-        width="24"
-        height="24"
-        onClick={() => toggleViewType('grid')}
-        color={viewType === 'grid' ? 'var(--ifm-color-primary)' : '#ccc'}
-        className="cursor-pointer transition duration-500"
-      />
-    </div>
-  )
-}
-
-function BlogListPageContent(props: Props) {
-  const { metadata, items } = props
-
-  const { viewType, toggleViewType } = useViewType()
-
-  const isListView = viewType === 'list'
-  const isGridView = viewType === 'grid'
-
-  return (
-    <MyLayout>
-      <h2 className="h2 mb-4 flex items-center justify-center text-center">
-        <Translate id="theme.blog.title.new">博客</Translate>
-      </h2>
-      <p className="mb-4 text-center">
-        <Translate id="theme.blog.subtitle">
-          代码人生：编织技术与生活的博客之旅
-        </Translate>
-      </p>
-      <ViewTypeSwitch viewType={viewType} toggleViewType={toggleViewType} />
-      <div className="row">
-        <div className="col col--12">
-          <>
-            {isListView && (
-              <div className="mb-4">
-                <BlogPostItems items={items} />
-              </div>
-            )}
-            {isGridView && <BlogPostGridItems items={items} />}
-          </>
-          <BlogListPaginator metadata={metadata} />
-        </div>
-      </div>
-      <BackToTopButton />
-    </MyLayout>
-  )
-}
-
-export default function BlogListPage(props: Props): JSX.Element {
-  return (
-    <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogListPage)}>
-      <BlogListPageMetadata {...props} />
-      <BlogListPageContent {...props} />
+      <MyLayout>
+        <header className="site-page-heading">
+          <h1>{title}</h1>
+          <p>{en ? 'Work experience, tools I’ve tried, personal projects, and everyday notes.' : '工作中的经验，试过的工具，做过的项目，也有一些日常记录。'}</p>
+          <BlogBrowseNav active="articles" />
+        </header>
+        <BlogPostGridItems items={items} />
+        <BlogListPaginator metadata={metadata} />
+      </MyLayout>
     </HtmlClassNameProvider>
   )
 }

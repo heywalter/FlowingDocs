@@ -48,7 +48,7 @@
     "description": "The label of footer link with label=友链 linking to friends"
   },
   "copyright": {
-    "message": "\n        <p>Copyright © 2026 - ${new Date().getFullYear()} Walter | Built with Docusaurus. “Sharing the warmth of technology, connecting the value of knowledge.”</p>\n      ",
+    "message": "Copyright © 2026 Walter · CC BY-NC 4.0",
     "description": "The footer copyright"
   }
 }

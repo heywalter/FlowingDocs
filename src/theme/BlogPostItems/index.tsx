@@ -19,7 +19,7 @@ const variants: Variants = {
   }),
 }
 
-export default function BlogPostItems({ items, component: BlogPostItemComponent = BlogPostItem }: Props): JSX.Element {
+export default function BlogPostItems({ items, component: BlogPostItemComponent = BlogPostItem }: Props): React.JSX.Element {
   return (
     <>
       {items.map(({ content: BlogPostContent }, i) => (

@@ -5,6 +5,8 @@ date: 2026-08-07
 tags: [Codex, DeepSeek, opencodex, AI Tools, Model Routing, macOS]
 image: https://img.flowingdocs.com/images/switch-model-to-deepseek-in-codex-desktop-en.png
 description: How I use opencodex to switch to DeepSeek within an active Codex Desktop task, troubleshoot startup messages, and restore the native Codex setup.
+homepage_title: "Using DeepSeek in Codex Desktop"
+homepage_description: "Switch to a lighter model for the final edits without losing your active task context."
 ---
 
 I often reach the same point in Codex Desktop: most of a task is done, only a few small edits remain, and I would rather finish with a faster, less expensive model.

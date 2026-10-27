@@ -3,7 +3,7 @@ import BlogPostItemHeaderInfo from '@theme/BlogPostItem/Header/Info'
 import BlogPostItemHeaderTitle from '@theme/BlogPostItem/Header/Title'
 import BlogPostItemHeaderAuthors from '@theme/BlogPostItem/Header/Authors'
 
-export default function BlogPostItemHeader(): JSX.Element {
+export default function BlogPostItemHeader(): React.JSX.Element {
   const { isBlogPostPage } = useBlogPost()
   return (
     <header style={{ position: 'relative', zIndex: 2 }}>

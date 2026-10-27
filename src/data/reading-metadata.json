@@ -1,0 +1,312 @@
+{
+  "markdownPaths": {
+    "/docs/": "/llms/zh/docs/index.md",
+    "/docs/markup/": "/llms/zh/docs/markup.md",
+    "/docs/information-design/": "/llms/zh/docs/information-design.md",
+    "/docs/information-design/concept/": "/llms/zh/docs/information-design/concept.md",
+    "/docs/information-design/task/": "/llms/zh/docs/information-design/task.md",
+    "/docs/information-design/reference/": "/llms/zh/docs/information-design/reference.md",
+    "/docs/publishing/": "/llms/zh/docs/publishing.md",
+    "/blog/ai-content-review-with-codex/": "/llms/zh/blog/ai-content-review-with-codex.md",
+    "/blog/ai-docs-engineering-practice/": "/llms/zh/blog/ai-docs-engineering-practice.md",
+    "/blog/building-a-docusaurus-blog/": "/llms/zh/blog/building-a-docusaurus-blog.md",
+    "/blog/building-a-local-ai-content-review-system/": "/llms/zh/blog/building-a-local-ai-content-review-system.md",
+    "/blog/codex-desktop-deepseek-opencodex/": "/llms/zh/blog/codex-desktop-deepseek-opencodex.md",
+    "/blog/docsifter-open-source/": "/llms/zh/blog/docsifter-open-source.md",
+    "/blog/dsh-domain-proxy-open-source/": "/llms/zh/blog/dsh-domain-proxy-open-source.md",
+    "/blog/interesting-information-design-traps/": "/llms/zh/blog/interesting-information-design-traps.md",
+    "/blog/nextcloud-self-hosted-cloud-storage/": "/llms/zh/blog/nextcloud-self-hosted-cloud-storage.md",
+    "/blog/why-i-started-this-blog/": "/llms/zh/blog/why-i-started-this-blog.md",
+    "/en/docs/": "/llms/en/docs/index.md",
+    "/en/docs/markup/": "/llms/en/docs/markup.md",
+    "/en/docs/information-design/": "/llms/en/docs/information-design.md",
+    "/en/docs/information-design/concept/": "/llms/en/docs/information-design/concept.md",
+    "/en/docs/information-design/task/": "/llms/en/docs/information-design/task.md",
+    "/en/docs/information-design/reference/": "/llms/en/docs/information-design/reference.md",
+    "/en/docs/publishing/": "/llms/en/docs/publishing.md",
+    "/en/blog/ai-content-review-with-codex/": "/llms/en/blog/ai-content-review-with-codex.md",
+    "/en/blog/ai-docs-engineering-practice/": "/llms/en/blog/ai-docs-engineering-practice.md",
+    "/en/blog/building-a-docusaurus-blog/": "/llms/en/blog/building-a-docusaurus-blog.md",
+    "/en/blog/building-a-local-ai-content-review-system/": "/llms/en/blog/building-a-local-ai-content-review-system.md",
+    "/en/blog/codex-desktop-deepseek-opencodex/": "/llms/en/blog/codex-desktop-deepseek-opencodex.md",
+    "/en/blog/docsifter-open-source/": "/llms/en/blog/docsifter-open-source.md",
+    "/en/blog/dsh-domain-proxy-open-source/": "/llms/en/blog/dsh-domain-proxy-open-source.md",
+    "/en/blog/interesting-information-design-traps/": "/llms/en/blog/interesting-information-design-traps.md",
+    "/en/blog/nextcloud-self-hosted-cloud-storage/": "/llms/en/blog/nextcloud-self-hosted-cloud-storage.md",
+    "/en/blog/why-i-started-this-blog/": "/llms/en/blog/why-i-started-this-blog.md"
+  },
+  "tagAlternates": {
+    "/blog/tags/ai-审校/": {
+      "zh-Hans": "/blog/tags/ai-审校/",
+      "en": "/en/blog/tags/ai-review/"
+    },
+    "/en/blog/tags/ai-review/": {
+      "zh-Hans": "/blog/tags/ai-审校/",
+      "en": "/en/blog/tags/ai-review/"
+    },
+    "/blog/tags/本地模型/": {
+      "zh-Hans": "/blog/tags/本地模型/",
+      "en": "/en/blog/tags/local-models/"
+    },
+    "/en/blog/tags/local-models/": {
+      "zh-Hans": "/blog/tags/本地模型/",
+      "en": "/en/blog/tags/local-models/"
+    },
+    "/blog/tags/文档工程化/": {
+      "zh-Hans": "/blog/tags/文档工程化/",
+      "en": "/en/blog/tags/documentation-engineering/"
+    },
+    "/en/blog/tags/documentation-engineering/": {
+      "zh-Hans": "/blog/tags/文档工程化/",
+      "en": "/en/blog/tags/documentation-engineering/"
+    },
+    "/blog/tags/doc-as-code/": {
+      "zh-Hans": "/blog/tags/doc-as-code/",
+      "en": "/en/blog/tags/docs-as-code/"
+    },
+    "/en/blog/tags/docs-as-code/": {
+      "zh-Hans": "/blog/tags/doc-as-code/",
+      "en": "/en/blog/tags/docs-as-code/"
+    },
+    "/blog/tags/ai-agent/": {
+      "zh-Hans": "/blog/tags/ai-agent/",
+      "en": "/en/blog/tags/ai-agents/"
+    },
+    "/en/blog/tags/ai-agents/": {
+      "zh-Hans": "/blog/tags/ai-agent/",
+      "en": "/en/blog/tags/ai-agents/"
+    },
+    "/blog/tags/自动化验证/": {
+      "zh-Hans": "/blog/tags/自动化验证/",
+      "en": "/en/blog/tags/automated-validation/"
+    },
+    "/en/blog/tags/automated-validation/": {
+      "zh-Hans": "/blog/tags/自动化验证/",
+      "en": "/en/blog/tags/automated-validation/"
+    },
+    "/blog/tags/私有云/": {
+      "zh-Hans": "/blog/tags/私有云/",
+      "en": "/en/blog/tags/self-hosted/"
+    },
+    "/en/blog/tags/self-hosted/": {
+      "zh-Hans": "/blog/tags/私有云/",
+      "en": "/en/blog/tags/self-hosted/"
+    },
+    "/blog/tags/自建服务器/": {
+      "zh-Hans": "/blog/tags/自建服务器/",
+      "en": "/en/blog/tags/home-server/"
+    },
+    "/en/blog/tags/home-server/": {
+      "zh-Hans": "/blog/tags/自建服务器/",
+      "en": "/en/blog/tags/home-server/"
+    },
+    "/blog/tags/个人知识库/": {
+      "zh-Hans": "/blog/tags/个人知识库/",
+      "en": "/en/blog/tags/knowledge-base/"
+    },
+    "/en/blog/tags/knowledge-base/": {
+      "zh-Hans": "/blog/tags/个人知识库/",
+      "en": "/en/blog/tags/knowledge-base/"
+    },
+    "/blog/tags/家庭实验室/": {
+      "zh-Hans": "/blog/tags/家庭实验室/",
+      "en": "/en/blog/tags/home-lab/"
+    },
+    "/en/blog/tags/home-lab/": {
+      "zh-Hans": "/blog/tags/家庭实验室/",
+      "en": "/en/blog/tags/home-lab/"
+    },
+    "/blog/tags/博客搭建/": {
+      "zh-Hans": "/blog/tags/博客搭建/",
+      "en": "/en/blog/tags/blog-setup/"
+    },
+    "/en/blog/tags/blog-setup/": {
+      "zh-Hans": "/blog/tags/博客搭建/",
+      "en": "/en/blog/tags/blog-setup/"
+    },
+    "/blog/tags/建站经验/": {
+      "zh-Hans": "/blog/tags/建站经验/",
+      "en": "/en/blog/tags/developer-tools/"
+    },
+    "/en/blog/tags/developer-tools/": {
+      "zh-Hans": "/blog/tags/建站经验/",
+      "en": "/en/blog/tags/developer-tools/"
+    },
+    "/blog/tags/博客起步/": {
+      "zh-Hans": "/blog/tags/博客起步/",
+      "en": "/en/blog/tags/getting-started/"
+    },
+    "/en/blog/tags/getting-started/": {
+      "zh-Hans": "/blog/tags/博客起步/",
+      "en": "/en/blog/tags/getting-started/"
+    },
+    "/blog/tags/个人记录/": {
+      "zh-Hans": "/blog/tags/个人记录/",
+      "en": "/en/blog/tags/personal-notes/"
+    },
+    "/en/blog/tags/personal-notes/": {
+      "zh-Hans": "/blog/tags/个人记录/",
+      "en": "/en/blog/tags/personal-notes/"
+    },
+    "/blog/tags/ai-工具/": {
+      "zh-Hans": "/blog/tags/ai-工具/",
+      "en": "/en/blog/tags/ai-tools/"
+    },
+    "/en/blog/tags/ai-tools/": {
+      "zh-Hans": "/blog/tags/ai-工具/",
+      "en": "/en/blog/tags/ai-tools/"
+    },
+    "/blog/tags/模型路由/": {
+      "zh-Hans": "/blog/tags/模型路由/",
+      "en": "/en/blog/tags/model-routing/"
+    },
+    "/en/blog/tags/model-routing/": {
+      "zh-Hans": "/blog/tags/模型路由/",
+      "en": "/en/blog/tags/model-routing/"
+    },
+    "/blog/tags/用户体验/": {
+      "zh-Hans": "/blog/tags/用户体验/",
+      "en": "/en/blog/tags/user-experience/"
+    },
+    "/en/blog/tags/user-experience/": {
+      "zh-Hans": "/blog/tags/用户体验/",
+      "en": "/en/blog/tags/user-experience/"
+    },
+    "/blog/tags/信息设计/": {
+      "zh-Hans": "/blog/tags/信息设计/",
+      "en": "/en/blog/tags/information-design/"
+    },
+    "/en/blog/tags/information-design/": {
+      "zh-Hans": "/blog/tags/信息设计/",
+      "en": "/en/blog/tags/information-design/"
+    },
+    "/blog/tags/案例分析/": {
+      "zh-Hans": "/blog/tags/案例分析/",
+      "en": "/en/blog/tags/case-studies/"
+    },
+    "/en/blog/tags/case-studies/": {
+      "zh-Hans": "/blog/tags/案例分析/",
+      "en": "/en/blog/tags/case-studies/"
+    },
+    "/blog/tags/视觉层级/": {
+      "zh-Hans": "/blog/tags/视觉层级/",
+      "en": "/en/blog/tags/visual-hierarchy/"
+    },
+    "/en/blog/tags/visual-hierarchy/": {
+      "zh-Hans": "/blog/tags/视觉层级/",
+      "en": "/en/blog/tags/visual-hierarchy/"
+    },
+    "/blog/tags/交互设计/": {
+      "zh-Hans": "/blog/tags/交互设计/",
+      "en": "/en/blog/tags/interaction-design/"
+    },
+    "/en/blog/tags/interaction-design/": {
+      "zh-Hans": "/blog/tags/交互设计/",
+      "en": "/en/blog/tags/interaction-design/"
+    },
+    "/blog/tags/ai/": {
+      "zh-Hans": "/blog/tags/ai/",
+      "en": "/en/blog/tags/ai/"
+    },
+    "/en/blog/tags/ai/": {
+      "zh-Hans": "/blog/tags/ai/",
+      "en": "/en/blog/tags/ai/"
+    },
+    "/blog/tags/algolia/": {
+      "zh-Hans": "/blog/tags/algolia/",
+      "en": "/en/blog/tags/algolia/"
+    },
+    "/en/blog/tags/algolia/": {
+      "zh-Hans": "/blog/tags/algolia/",
+      "en": "/en/blog/tags/algolia/"
+    },
+    "/blog/tags/asciidoc/": {
+      "zh-Hans": "/blog/tags/asciidoc/",
+      "en": "/en/blog/tags/asciidoc/"
+    },
+    "/en/blog/tags/asciidoc/": {
+      "zh-Hans": "/blog/tags/asciidoc/",
+      "en": "/en/blog/tags/asciidoc/"
+    },
+    "/blog/tags/codex/": {
+      "zh-Hans": "/blog/tags/codex/",
+      "en": "/en/blog/tags/codex/"
+    },
+    "/en/blog/tags/codex/": {
+      "zh-Hans": "/blog/tags/codex/",
+      "en": "/en/blog/tags/codex/"
+    },
+    "/blog/tags/deep-seek/": {
+      "zh-Hans": "/blog/tags/deep-seek/",
+      "en": "/en/blog/tags/deep-seek/"
+    },
+    "/en/blog/tags/deep-seek/": {
+      "zh-Hans": "/blog/tags/deep-seek/",
+      "en": "/en/blog/tags/deep-seek/"
+    },
+    "/blog/tags/docker/": {
+      "zh-Hans": "/blog/tags/docker/",
+      "en": "/en/blog/tags/docker/"
+    },
+    "/en/blog/tags/docker/": {
+      "zh-Hans": "/blog/tags/docker/",
+      "en": "/en/blog/tags/docker/"
+    },
+    "/blog/tags/docusaurus/": {
+      "zh-Hans": "/blog/tags/docusaurus/",
+      "en": "/en/blog/tags/docusaurus/"
+    },
+    "/en/blog/tags/docusaurus/": {
+      "zh-Hans": "/blog/tags/docusaurus/",
+      "en": "/en/blog/tags/docusaurus/"
+    },
+    "/blog/tags/giscus/": {
+      "zh-Hans": "/blog/tags/giscus/",
+      "en": "/en/blog/tags/giscus/"
+    },
+    "/en/blog/tags/giscus/": {
+      "zh-Hans": "/blog/tags/giscus/",
+      "en": "/en/blog/tags/giscus/"
+    },
+    "/blog/tags/mac-os/": {
+      "zh-Hans": "/blog/tags/mac-os/",
+      "en": "/en/blog/tags/mac-os/"
+    },
+    "/en/blog/tags/mac-os/": {
+      "zh-Hans": "/blog/tags/mac-os/",
+      "en": "/en/blog/tags/mac-os/"
+    },
+    "/blog/tags/netlify/": {
+      "zh-Hans": "/blog/tags/netlify/",
+      "en": "/en/blog/tags/netlify/"
+    },
+    "/en/blog/tags/netlify/": {
+      "zh-Hans": "/blog/tags/netlify/",
+      "en": "/en/blog/tags/netlify/"
+    },
+    "/blog/tags/nextcloud/": {
+      "zh-Hans": "/blog/tags/nextcloud/",
+      "en": "/en/blog/tags/nextcloud/"
+    },
+    "/en/blog/tags/nextcloud/": {
+      "zh-Hans": "/blog/tags/nextcloud/",
+      "en": "/en/blog/tags/nextcloud/"
+    },
+    "/blog/tags/opencodex/": {
+      "zh-Hans": "/blog/tags/opencodex/",
+      "en": "/en/blog/tags/opencodex/"
+    },
+    "/en/blog/tags/opencodex/": {
+      "zh-Hans": "/blog/tags/opencodex/",
+      "en": "/en/blog/tags/opencodex/"
+    },
+    "/blog/tags/rag/": {
+      "zh-Hans": "/blog/tags/rag/",
+      "en": "/en/blog/tags/rag/"
+    },
+    "/en/blog/tags/rag/": {
+      "zh-Hans": "/blog/tags/rag/",
+      "en": "/en/blog/tags/rag/"
+    }
+  }
+}

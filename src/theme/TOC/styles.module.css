@@ -28,3 +28,5 @@
   font-size: 0.9rem;
   color: var(--ifm-color-emphasis-600);
 }
+
+.label { font-size: 13px; font-weight: 600; color: var(--site-muted); margin: 0 0 12px; }

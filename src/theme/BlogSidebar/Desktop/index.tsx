@@ -21,7 +21,7 @@ const ListComponent: BlogSidebarContentProps['ListComponent'] = ({ items }) => {
   )
 }
 
-export default function BlogSidebarDesktop({ sidebar }: Props): JSX.Element {
+export default function BlogSidebarDesktop({ sidebar }: Props): React.JSX.Element {
   const items = useVisibleBlogSidebarItems(sidebar.items)
 
   const handleBack = () => {

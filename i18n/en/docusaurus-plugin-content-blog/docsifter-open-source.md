@@ -5,6 +5,8 @@ date: 2026-09-20
 tags: [Technical Writing, AI, AI Review, Chinese Text Correction, Local Models, Documentation Workflow, Open Source]
 image: https://img.flowingdocs.com/images/docsifter-en-poster.jpg
 description: DocSifter is a lightweight, local-first review tool we built for technical docs. Focuses on code protection, offline small-model correction, and false-positive filtering.
+homepage_title: "DocSifter: a local tool for reviewing technical docs"
+homepage_description: "Notes on building a local review tool for technical docs: shielding code blocks and filtering false positives."
 ---
 
 Reviewing technical documentation is often a frustrating trade-off. Manual proofreading is slow and tedious, but feeding documentation to generic AI or cloud LLMs quickly turns into an engineering headache. Generic grammar checkers don't understand code syntax—they happily translate inline API parameters, rewrite code comments, or rename terms like `principal` to `principle` in your IAM guides. On top of that, unreleased features and internal architecture docs often cannot be sent to third-party cloud APIs due to privacy and compliance boundaries.

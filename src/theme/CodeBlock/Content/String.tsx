@@ -10,9 +10,9 @@ import Icon from '@site/src/components/Icon'
 import { cn } from '@site/src/lib/utils'
 import Container from '@theme/CodeBlock/Container'
 import type { Props } from '@theme/CodeBlock/Content/String'
-import CopyButton from '@theme/CodeBlock/CopyButton'
+import CopyButton from '../CopyButton'
 import Line from '@theme/CodeBlock/Line'
-import WordWrapButton from '@theme/CodeBlock/WordWrapButton'
+import WordWrapButton from '../WordWrapButton'
 import { Highlight, type Language } from 'prism-react-renderer'
 import React from 'react'
 
@@ -25,7 +25,7 @@ function normalizeLanguage(language: string | undefined): string | undefined {
   return language?.toLowerCase()
 }
 
-function parseIcon(metastring?: string): JSX.Element | null {
+function parseIcon(metastring?: string): React.JSX.Element | null {
   const iconRegex = /icon=(?<quote>["'])(?<icon>.*?)\1/
 
   const icon = metastring?.match(iconRegex)?.groups?.icon ?? ''
@@ -42,7 +42,7 @@ export default function CodeBlockString({
   title: titleProp,
   showLineNumbers: showLineNumbersProp,
   language: languageProp,
-}: Props): JSX.Element {
+}: Props): React.JSX.Element {
   const {
     prism: { defaultLanguage, magicComments },
   } = useThemeConfig()
@@ -63,7 +63,7 @@ export default function CodeBlockString({
     language,
     magicComments,
   })
-  const showLineNumbers = showLineNumbersProp ?? containsLineNumbers(metastring)
+  const showLineNumbers = Boolean(showLineNumbersProp ?? containsLineNumbers(metastring))
 
   return (
     <Container

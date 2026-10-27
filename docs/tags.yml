@@ -1,0 +1,69 @@
+architecture:
+  label: "架构设计"
+  permalink: /architecture
+asciidoc:
+  label: "AsciiDoc"
+  permalink: /asciidoc
+concept-topics:
+  label: "概念文档"
+  permalink: /concept-topics
+content-reuse:
+  label: "内容复用"
+  permalink: /content-reuse
+data-dictionaries:
+  label: "数据字典"
+  permalink: /data-dictionaries
+dita:
+  label: "DITA"
+  permalink: /dita
+docs-as-code:
+  label: "Docs-as-Code"
+  permalink: /docs-as-code
+documentation-engineering:
+  label: "文档工程"
+  permalink: /documentation-engineering
+docusaurus:
+  label: "Docusaurus"
+  permalink: /docusaurus
+information-design:
+  label: "信息设计"
+  permalink: /information-design
+layout-components:
+  label: "组件设计"
+  permalink: /layout-components
+markup-languages:
+  label: "标记语言"
+  permalink: /markup-languages
+mental-models:
+  label: "心智模型"
+  permalink: /mental-models
+mysql:
+  label: "MySQL"
+  permalink: /mysql
+parameter-contracts:
+  label: "参数契约"
+  permalink: /parameter-contracts
+quality-gates:
+  label: "质量门禁"
+  permalink: /quality-gates
+reference-topics:
+  label: "参考文档"
+  permalink: /reference-topics
+sop-standards:
+  label: "SOP规范"
+  permalink: /sop-standards
+static-sites:
+  label: "静态站点"
+  permalink: /static-sites
+task-topics:
+  label: "操作文档"
+  permalink: /task-topics
+technical-writing:
+  label: "技术写作"
+  permalink: /technical-writing
+tooling-tradeoffs:
+  label: "工具选型"
+  permalink: /tooling-tradeoffs
+user-experience:
+  label: "用户体验"
+  permalink: /user-experience

@@ -1,0 +1,71 @@
+---
+title: 文档标记语言：Markdown、AsciiDoc 与 DITA 的能力与取舍
+sidebar_label: 文档标记语言
+sidebar_position: 1
+description: "Markdown、AsciiDoc 与 DITA 标记语言的对照实践：剖析跨行跨列单元格合并、条件属性包含与片段复用、DITA Topic/Map 模块化组织逻辑与选型取舍。"
+keywords:
+  - 文档标记语言
+  - Markdown
+  - AsciiDoc
+  - DITA
+  - 单一数据源
+  - 内容复用
+  - 表格排版
+  - 模块化写作
+  - 技术写作
+image: /img/flowingdocs.png
+tags:
+  - markup-languages
+  - asciidoc
+  - dita
+  - content-reuse
+hide_title: true
+hide_table_of_contents: true
+---
+
+import MarkupWorkshop from '@site/src/components/MarkupWorkshop';
+
+<MarkupWorkshop>
+
+## 格式特性与实践定位
+
+选择格式时，可以先看文档需要怎样排版、复用和发布：
+
+- **Markdown**：语法简洁，常用于 README、博客和 API 说明。标准语法没有合并单元格、变量和内容复用机制；需要这些能力时，通常借助 HTML、扩展或构建工具。
+- **AsciiDoc**：支持表格跨行跨列、文档属性和 `include`。多处使用相同参数或说明片段、需要组合多份文件时，这些功能便于集中维护内容。
+- **DITA**：用 XML 按主题组织内容，通过 Topic 和 Map 组合文档，并用 `conref` 等机制复用内容。适合需要结构校验、内容复用和多种输出格式的文档；同时需要维护对应的编辑与发布工具链。可参考 [OASIS DITA 概述](https://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html)。
+
+工作台上方提供两条演练路径：“**基础撰写**”用于实时对照 Markdown 与 AsciiDoc 的排版差异；“**DITA · 组织多份说明**”用于体验如何通过 Topic 与 Map 编排交付整套产品手册。
+
+关于表格排版：Markdown 的管道表格遵循 [GFM 扩展规范](https://github.github.com/gfm/#tables-extension-)，无合并语法；练习中采用内嵌 HTML 的 `rowspan` 与 `colspan` 实现，需注意目标渲染平台是否开启 HTML 过滤。AsciiDoc 则[原生支持跨行跨列语法](https://docs.asciidoctor.org/asciidoc/latest/tables/span-cells/)。
+
+## 把练习用于自己的文档 {#database-docs}
+
+工作台借用 **MySQL 8.0 场景**比较文档结构。这些片段用于写作练习，不是完整的生产运维流程。你可以把其中的结构用于自己的说明：
+
+- **参数字典与存储引擎对照** → 数据库关键参数或 API 规约清单（数据类型、默认值、生效作用域）。
+- **初始化与启停 Runbook** → 服务集群部署、证书轮换或故障恢复流程（强调前置依赖、执行动作与验证回执）。
+- **控制台报错与原样输出** → CLI 控制台日志、连接状态码与排错指引。
+
+无论选用哪种标记语言，工具能校验的只是语法有效性。技术文档的完整性仍取决于是否清晰交代了前置条件、执行结果与异常退路。
+
+## 按需求深入查阅 {#format-resources}
+
+根据实际遇到的文档工程问题，推荐继续探索对应方向：
+
+| 遇到场景 | 推荐技术路径与资料 |
+| --- | --- |
+| 编写开源项目 README、团队协作笔记 | 参考 [CommonMark](https://commonmark.org/help/) 与 [GFM 规范](https://github.github.com/gfm/)，确认团队渲染引擎支持的扩展列表。 |
+| 多处跨文档引用相同产品名称、版本号或警告片段 | 参见工作台左侧“内容复用”示例，深入查阅 [AsciiDoc 属性系统](https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes/) 与 [include 指令](https://docs.asciidoctor.org/asciidoc/latest/directives/include/)。 |
+| 在文档正文中嵌入交互式 React 组件 | 学习 [MDX 规范](https://mdxjs.com/docs/what-is-mdx/)，需要配合现代静态站点生成器（如 Docusaurus、Next.js）进行构建支持。 |
+| 企业级产品线需要模块化组装多套交付手册 | 进入工作台“DITA 路径”熟悉 Topic 与 Map 架构，导出项目后可直接在专业编写工具（如 Oxygen XML Editor）中深入实践。 |
+
+### 离线练习包与工程迁移
+
+你可以通过顶部的下载操作导出当前编辑状态：
+- **只下载源文件**：保留编辑草稿，使用站点全局资源路径。
+- **下载练习包（含资源）**：将配套矢量图一并打包为相对路径，解压后可直接放入本地静态构建环境中验证。
+
+在选型后续的发布工具时，推荐阅读[静态站点生成器选型指南](../publishing/index.md)；若关注文本结构背后的信息传达效率，可参考[信息表达实践](../information-design/index.mdx)。
+
+</MarkupWorkshop>

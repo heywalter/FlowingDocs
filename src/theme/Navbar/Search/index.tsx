@@ -4,6 +4,6 @@ import React from 'react'
 
 import styles from './styles.module.css'
 
-export default function NavbarSearch({ children, className }: Props): JSX.Element {
+export default function NavbarSearch({ children, className }: Props): React.JSX.Element {
   return <div className={clsx(className, styles.navbarSearchContainer)}>{children}</div>
 }

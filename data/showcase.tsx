@@ -55,7 +55,7 @@ const Showcase = [
     description: (
       <>
         {translate({
-          message: '基于 Docusaurus 构建的个人博客，聚焦技术写作、开发者体验与内容可维护性，支持暗黑模式、PWA、Giscus 评论、SEO 优化等功能。',
+          message: '基于 Docusaurus 搭建的个人网站，记录工作、工具与生活。这里也整理网站的中英文内容、交互组件和维护过程。',
           id: 'showcase.flowingdocs.description',
         })}
       </>
@@ -69,7 +69,7 @@ const Showcase = [
 
 export type ProjectShowcase = {
   title: string
-  description: JSX.Element
+  description: React.ReactNode
   preview: string | null
   url: string
   article?: string | null

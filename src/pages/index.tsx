@@ -1,36 +1,11 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { PageMetadata } from '@docusaurus/theme-common'
 import Layout from '@theme/Layout'
-import BlogSection from '../components/landing/BlogSection'
-import FeaturesSection from '../components/landing/FeaturesSection'
-import Hero from '../components/landing/Hero'
-import ProjectSection from '../components/landing/ProjectSection'
-import Particles from '../components/magicui/particles'
+import EditorialHome from '../components/landing/EditorialHome'
 
 const HOME_KEYWORDS = {
-  'zh-Hans': [
-    '技术文档',
-    '技术写作',
-    '内容设计',
-    '开发者体验',
-    '文档工程',
-    'Docs as Code',
-    'Docusaurus',
-    'AI 技术写作',
-    '知流小记',
-    'Flowing Docs',
-  ],
-  'en': [
-    'technical documentation',
-    'technical writing',
-    'content design',
-    'developer experience',
-    'documentation engineering',
-    'Docs as Code',
-    'Docusaurus',
-    'AI technical writing',
-    'Flowing Docs',
-  ],
+  'zh-Hans': ['Walter', '知流小记', 'Flowing Docs', '个人博客', 'AI 工具', '自托管', '技术写作', '个人项目', '生活记录'],
+  'en': ['Walter', 'Flowing Docs', 'personal blog', 'AI tools', 'self-hosting', 'technical writing', 'personal projects', 'everyday life'],
 }
 
 export default function Home() {
@@ -44,22 +19,7 @@ export default function Home() {
   return (
     <Layout title={tagline} description={description}>
       <PageMetadata keywords={keywords} />
-      <main>
-        <Hero />
-        <Particles className="absolute inset-0" quantity={40} ease={80} color="#ffffff" refresh />
-
-        <div className="relative">
-          <div className="mx-auto max-w-7xl bg-background lg:px-8">
-            <BlogSection />
-            <ProjectSection />
-            <FeaturesSection />
-          </div>
-          <div
-            className="absolute inset-0 -z-50 bg-grid-slate-50 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.3))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"
-            style={{ backgroundPosition: '10px 10px;' }}
-          />
-        </div>
-      </main>
+      <EditorialHome />
     </Layout>
   )
 }

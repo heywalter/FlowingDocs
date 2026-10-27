@@ -1,0 +1,480 @@
+/* Only the interactive course takes over the documentation canvas. */
+:global(body):has(.workshop) :global(.theme-doc-sidebar-container),
+:global(body):has(.workshop) :global(.theme-doc-breadcrumbs),
+:global(body):has(.workshop) :global(.theme-doc-footer),
+:global(body):has(.workshop) :global(.pagination-nav),
+:global(body):has(.workshop) :global(.footer) { display: none; }
+:global(main):has(.workshop) { width: 100%; max-width: none; }
+:global(.container):has(.workshop) { max-width: none !important; width: 100%; padding: 0 !important; }
+:global(.row):has(.workshop) { margin: 0; display: block; }
+:global(.col):has(.workshop) { max-width: none !important; width: 100%; padding: 0; }
+:global(article):has(.workshop) { margin: 0; }
+:global(body):has(.workshop) :global(.navbar) { box-shadow: none; border-bottom: 1px solid #e7e9ef; transform: none !important; }
+.workshop {
+  --lab-ink: #253044;
+  --lab-muted: #657187;
+  --lab-accent: #6541ed;
+  --lab-paper: #fff;
+  --lab-surface: #f7f8fa;
+  --lab-line: #e4e7ed;
+  --lab-tint: #f1ecff;
+  --lab-success: #21865a;
+  --editor-height: clamp(360px, calc(100dvh - 340px), 560px);
+  display: grid; grid-template-columns: 236px minmax(0, 1fr);
+  width: 100%; min-height: calc(100dvh - var(--ifm-navbar-height));
+  color: var(--lab-ink); background: var(--lab-paper);
+  font: 14px/1.7 var(--ifm-font-family-base);
+}
+:global([data-theme='dark']) .workshop {
+  --lab-ink: #e8eaf3; --lab-muted: #a3abc0; --lab-accent: #b49bff;
+  --lab-paper: #181a22; --lab-surface: #212430; --lab-line: #363b4c;
+  --lab-tint: #302641; --lab-success: #76d3a6;
+}
+.workshop h1, .workshop h2, .workshop h3 { color: var(--lab-ink); letter-spacing: -.025em; }
+.workshop h2 { font-size: 25px; line-height: 1.4; font-weight: 650; margin: 0 0 10px; }
+.workshop h3 { font-size: 18px; margin: 20px 0 10px; }
+.workshop p { margin: 0 0 12px; }
+.workshop button, .workshop select { font: inherit; }
+.workshop button { cursor: pointer; }
+.workshop button:disabled { cursor: default; opacity: .4; }
+.workshop button:focus-visible, .workshop a:focus-visible, .workshop select:focus-visible, .workshop summary:focus-visible { outline: 2px solid var(--lab-accent); outline-offset: 3px; }
+.workshop button:hover:not(:disabled) { background-color: var(--lab-tint); }
+.workshop svg { width: 17px; height: 17px; flex: 0 0 auto; }
+.workshop a { color: var(--lab-accent); }
+.rail { border-right: 1px solid var(--lab-line); padding: 30px 18px 24px; height: calc(100dvh - var(--ifm-navbar-height)); position: sticky; top: var(--ifm-navbar-height); overflow-y: auto; display: flex; flex-direction: column; }
+.railTitle { padding: 0 10px; margin-bottom: 27px; }
+.workshop .backToDocs { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; margin-bottom: 12px; color: var(--lab-muted); font-size: 12px; text-decoration: none; }
+.workshop .backToDocs:hover { color: var(--lab-accent); text-decoration: underline; text-underline-offset: 3px; }
+.railTitle h1 { font-size: 22px; font-weight: 680; line-height: 1.5; margin: 0 0 8px; }
+.railTitle p { color: var(--lab-muted); font-size: 12px; margin: 0; }
+.steps { display: flex; flex-direction: column; gap: 3px; }
+.steps button { display: flex; align-items: center; gap: 12px; min-height: 39px; padding: 8px 10px; text-align: left; border: 0; border-left: 3px solid transparent; border-radius: 5px; background: transparent; color: var(--lab-ink); font-size: 13px; }
+.steps button > span { width: 22px; flex-shrink: 0; font: 12px ui-monospace, monospace; color: var(--lab-muted); }
+.steps button[aria-current] { background: var(--lab-tint); border-left-color: var(--lab-accent); color: var(--lab-accent); font-weight: 650; }
+.steps button[aria-current] > span { color: inherit; }
+.railBottom { margin-top: 28px; padding: 0 10px; }
+.progress { display: flex; align-items: center; gap: 16px; color: var(--lab-muted); font-size: 12px; margin-bottom: 28px; white-space: nowrap; }
+.progress progress { width: 100%; min-width: 0; height: 6px; border: 0; border-radius: 8px; overflow: hidden; accent-color: var(--lab-accent); }
+.progress progress::-webkit-progress-bar { background: var(--lab-line); border-radius: 8px; }
+.progress progress::-webkit-progress-value { background: var(--lab-accent); border-radius: 8px; }
+.railBottom > button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 0; border: 0; background: transparent; color: var(--lab-muted); font-size: 13px; text-align: left; }
+.railBottom > button[aria-current] { color: var(--lab-accent); font-weight: 600; }
+.railBottom > button:first-of-type { border-top: 1px solid var(--lab-line); padding-top: 22px; }
+.main { min-width: 0; padding: 0 30px 24px; scroll-margin-top: var(--ifm-navbar-height); }
+.toolbar { min-height: 75px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; border-bottom: 1px solid var(--lab-line); }
+.toolbarTitle { font-size: 12px; color: var(--lab-muted); }
+.toolbarActions { display: flex; gap: 18px; align-items: center; }
+.selector { display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--lab-muted); white-space: nowrap; }
+.selector select, .mobilePicker select { border: 1px solid var(--lab-line); background: var(--lab-paper); color: var(--lab-ink); padding: 9px 12px; border-radius: 5px; min-height: 38px; }
+.deviceIntro { display: flex; align-items: center; gap: 22px; margin: 0 0 22px; padding-bottom: 20px; border-bottom: 1px solid var(--lab-line); }
+.deviceIntro img { flex: 0 0 160px; width: 160px; height: 124px; object-fit: cover; border-radius: 6px; background: white; }
+.deviceIntro strong { display: block; font-size: 19px; color: var(--lab-ink); font-weight: 650; margin-bottom: 6px; }
+.deviceIntro p { max-width: 580px; color: var(--lab-muted); margin: 0 0 4px; font-size: 13px; }
+.deviceIntro span { font-size: 0.75rem; color: var(--lab-muted); }
+.lessonHeader { margin-bottom: 22px; }
+.lessonHeader > p { color: var(--lab-muted); max-width: 940px; font-size: 14px; margin-bottom: 12px; }
+.lessonHeader .hint { font-size: 12px; line-height: 1.8; color: var(--lab-muted); }
+.tableModes { display: flex; gap: 18px; margin: 14px 0; }
+.tableModes button { padding: 3px 0 6px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--lab-muted); font-size: 12px; }
+.tableModes button[aria-pressed='true'] { border-bottom-color: var(--lab-accent); color: var(--lab-accent); font-weight: 650; }
+.syntaxHints { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; color: var(--lab-muted); font-size: 13px; }
+.syntaxHints > span { display: flex; align-items: center; gap: 8px; }
+.syntaxHints code { padding: 2px 7px; color: var(--lab-accent); border: 0; background: var(--lab-tint); font-weight: 600; }
+.syntaxHints small { font-size: 12px; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.editorColumn { min-width: 0; }
+.editorPane, .previewPane { min-width: 0; border: 1px solid var(--lab-line); border-radius: 5px; overflow: hidden; background: var(--lab-paper); }
+.paneHeader { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 16px; background: var(--lab-surface); border-bottom: 1px solid var(--lab-line); font-size: 12px; }
+.paneHeader label { font-weight: 600; margin: 0; white-space: nowrap; }
+.paneHeader > span:last-child { margin-left: auto; font-size: 0.75rem; color: var(--lab-muted); white-space: nowrap; }
+.paneHeader button { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border: 0; color: var(--lab-muted); background: transparent; text-align: left; padding: 0; font-size: 0.75rem; }
+.sourceEditor { height: var(--editor-height); position: relative; overflow: hidden; background: var(--lab-paper); }
+.sourceEditor .paint, .sourceEditor textarea { margin: 0; padding: 20px 20px 20px 58px; border: 0; border-radius: 0; font: 13px/26px ui-monospace, SFMono-Regular, Consolas, 'PingFang SC', monospace; letter-spacing: 0; tab-size: 4; text-align: left; white-space: pre; overflow-wrap: normal; word-break: normal; }
+.sourceEditor .paint { position: absolute; inset: 0 auto auto 0; min-width: 100%; width: max-content; overflow: visible; color: var(--lab-muted); background: transparent; pointer-events: none; }
+.codeLine { display: block; position: relative; height: 26px; }
+.lineNumber { position: absolute; width: 30px; text-align: right; left: -42px; color: #929baa; font-size: 0.75rem; user-select: none; }
+.activeLine { color: var(--lab-ink); background: var(--lab-tint); }
+.codeHeading, .codeMark { color: var(--lab-accent); font-weight: 600; }
+.codeAttribute { color: #16847e; }
+.sourceEditor textarea { position: absolute; inset: 0; width: 100%; height: 100%; resize: none; background: transparent; color: transparent; caret-color: var(--lab-ink); outline: none; -webkit-text-fill-color: transparent; }
+.sourceEditor textarea::selection { background: #8766eb44; }
+.sourceEditor:focus-within { box-shadow: inset 0 0 0 2px var(--lab-accent); }
+.paper { height: calc(var(--editor-height) + 116px); position: relative; overflow: auto; padding: 25px; font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
+.paper h1 { font-size: 27px; font-weight: 680; line-height: 1.5; margin: 0 0 22px; }
+.paper h2 { font-size: 21px; margin: 24px 0 14px; font-weight: 650; }
+.paper h2:first-child { margin-top: 0; }
+.paper h3 { font-size: 17px; }
+.paper p { margin: 0 0 16px; }
+.paper strong { font-weight: 700; }
+.paper ol, .paper ul { padding-left: 1.5em; margin: 0 0 18px; }
+.paper li { padding-left: 2px; margin-bottom: 7px; }
+.paper li p { margin: 0; }
+.paper li ul { margin: 8px 0; }
+.paper img { display: block; max-width: 100%; height: auto; margin: 16px auto; }
+.paper table { display: table; width: 100%; font-size: 12px; margin-bottom: 20px; border-collapse: collapse; }
+.paper th, .paper td { padding: 9px 10px; border: 1px solid var(--lab-line); }
+.paper th { background: var(--lab-surface); text-align: left; }
+.paper tr { background: var(--lab-paper); }
+.paper td[rowspan], .paper td[colspan] { background: var(--lab-tint); vertical-align: middle; }
+.paper td p { margin: 0; }
+.paper blockquote, .paper :global(.admonitionblock) { margin: 18px 0; padding: 10px 14px; border-left: 3px solid var(--lab-accent); background: var(--lab-surface); color: var(--lab-muted); }
+.paper :global(.admonitionblock) table { margin: 0; }
+.paper :global(.admonitionblock) td { border: 0; padding: 4px; }
+.paper :global(.task-list-item) { list-style: none; }
+.paper input { accent-color: var(--lab-accent); margin-right: 6px; }
+.workshop pre:not(.paint) { border-radius: 4px; background: var(--lab-surface); color: var(--lab-ink); padding: 18px; font-size: 12px; line-height: 1.9; white-space: pre-wrap; overflow-wrap: anywhere; }
+.workshop pre code { background: transparent; border: 0; padding: 0; }
+.primary, .secondary, .textButton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; border-radius: 5px; padding: 8px 13px; font-size: 12px !important; white-space: nowrap; }
+.primary { color: #fff; border: 1px solid #6541ed; background: #6541ed; font-weight: 600; }
+.workshop .primary:hover:not(:disabled) { background: #5431d7; }
+.secondary { color: var(--lab-ink); border: 1px solid var(--lab-line); background: var(--lab-paper); }
+.textButton { color: var(--lab-muted); border: 0; background: transparent; padding-left: 0; padding-right: 0; }
+.actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 18px 0 10px; }
+.feedback, .success { font-size: 12px; padding: 8px 0; }
+.feedback strong, .success strong { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.success { color: var(--lab-success); }
+.feedback ul { list-style: none; padding: 0; margin: 8px 0; }
+.feedback li { display: flex; align-items: baseline; gap: 8px; margin: 5px 0; }
+.incomplete { width: 17px; text-align: center; }
+.help { border-top: 1px solid var(--lab-line); margin-top: 12px; padding-top: 12px; font-size: 12px; }
+.help > div { display: flex; justify-content: space-between; align-items: center; }
+.help p { color: var(--lab-muted); }
+.navigation { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 0; }
+.saveNote { color: var(--lab-muted); font-size: 0.75rem; text-align: center; }
+.draftTools { border-top: 1px solid var(--lab-line); padding-top: 10px; color: var(--lab-muted); font-size: 0.75rem; margin-bottom: 12px; }
+.draftTools summary { cursor: pointer; padding: 3px 0; }
+.draftTools p { margin-top: 12px; }
+.scope { color: var(--lab-muted); font-size: 0.75rem; margin: 20px 0 0 !important; }
+.material { display: flex; align-items: center; gap: 16px; justify-content: space-between; padding: 10px 14px; margin-bottom: 16px; background: var(--lab-surface); color: var(--lab-muted); font-size: 12px; }
+.mobilePicker, .mobileTabs { display: none; }
+.resources { max-width: 960px; padding: 10px 0 40px; }
+.resources > h2 { margin: 30px 0 15px; font-size: 23px; }
+.resources table { font-size: 13px; }
+.dita { max-width: 1100px; padding: 6px 0 40px; }
+.dita > p { max-width: 800px; color: var(--lab-muted); }
+.ditaTabs { display: flex; gap: 10px; margin: 25px 0 20px; flex-wrap: wrap; }
+.ditaTabs button[aria-pressed='true'] { color: var(--lab-accent); background: var(--lab-tint); border-color: var(--lab-accent); }
+.ditaAssembly { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 30px; border-top: 1px solid var(--lab-line); border-bottom: 1px solid var(--lab-line); padding: 25px 0; margin-bottom: 24px; }
+.ditaAssembly > div:first-child ol { padding: 0; margin: 15px 0; list-style: none; }
+.ditaAssembly > div:first-child li { margin: 6px 0; }
+.ditaAssembly button { text-align: left; display: flex; flex-direction: column; width: 100%; padding: 10px 12px; border: 0; border-left: 2px solid transparent; background: transparent; color: var(--lab-ink); border-radius: 4px; }
+.ditaAssembly button[aria-current] { color: var(--lab-accent); background: var(--lab-tint); border-left-color: var(--lab-accent); }
+.ditaAssembly small { color: var(--lab-muted); font-size: 0.75rem; }
+.ditaAssembly h3 { margin-top: 0; }
+.dita details { margin: 16px 0; }
+.dita summary { cursor: pointer; color: var(--lab-accent); }
+.ditaTools { margin-top: 25px; padding-top: 4px; }
+.ditaTools ol { padding-left: 22px; }
+.ditaTools li { margin: 8px 0; }
+@media (min-width: 1600px) { .main { padding-left: 42px; padding-right: 42px; } .workshop { grid-template-columns: 260px minmax(0, 1fr); } }
+@media (max-width: 1150px) { .workshop { grid-template-columns: 205px minmax(0, 1fr); } .main { padding: 0 20px 20px; } .rail { padding-left: 12px; padding-right: 12px; } .toolbarTitle { display: none; } .toolbar { justify-content: flex-end; } .workspace { gap: 16px; } .paneHeader { padding: 10px; gap: 6px; } .paneHeader > span:last-child { display: none; } }
+@media (max-width: 900px) {
+  .workshop { display: block; --editor-height: 420px; }
+  .rail { position: static; height: auto; padding: 18px 22px; border-right: 0; border-bottom: 1px solid var(--lab-line); overflow: visible; flex-direction: row; align-items: center; gap: 20px; justify-content: space-between; }
+  .railTitle { margin: 0; padding: 0; } .railTitle h1 { font-size: 18px; margin: 0; } .railTitle p { display: none; }
+  .workshop .backToDocs { min-height: 44px; margin-bottom: 2px; }
+  .steps, .railBottom { display: none; }
+  .mobilePicker { display: flex; align-items: center; gap: 8px; color: var(--lab-muted); font-size: 0.75rem; }
+  .mobilePicker select { max-width: 230px; font-size: 12px; }
+  .toolbar { min-height: 65px; margin-bottom: 20px; }
+  .toolbarTitle { display: block; }
+  .lessonHeader h2 { font-size: 23px; }
+}
+@media (max-width: 650px) {
+  .rail { padding: 15px 16px; flex-wrap: wrap; gap: 12px; }
+  .mobilePicker { width: 100%; justify-content: space-between; }
+  .mobilePicker select { width: 76%; max-width: none; }
+  .main { padding: 0 16px 20px; }
+  .toolbarTitle { display: none; }
+  .toolbarActions { width: 100%; justify-content: space-between; gap: 12px; }
+  .selector { gap: 7px; }
+  .toolbar .secondary { padding: 7px 10px; }
+  .deviceIntro { gap: 14px; align-items: flex-start; }
+  .deviceIntro img { flex-basis: 110px; width: 110px; height: 110px; }
+  .deviceIntro strong { font-size: 16px; } .deviceIntro p { font-size: 12px; } .deviceIntro span { font-size: 0.75rem; }
+  .workspace { display: block; }
+  .mobileTabs { display: flex; gap: 16px; border-bottom: 1px solid var(--lab-line); margin: 0 0 14px; }
+  .mobileTabs button { border: 0; border-bottom: 2px solid transparent; padding: 7px 0; background: transparent; color: var(--lab-muted); font-size: 12px; }
+  .mobileTabs button[aria-pressed='true'] { color: var(--lab-accent); border-bottom-color: var(--lab-accent); }
+  .workspace[data-view='source'] .previewPane, .workspace[data-view='preview'] .editorPane { display: none; }
+  .sourceEditor .paint, .sourceEditor textarea { font-size: 16px; }
+  .sourceEditor .paint { min-width: 100%; }
+  .paper { height: 460px; padding: 20px; }
+  .material { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .syntaxHints { gap: 12px; }
+  .syntaxHints small { width: 100%; }
+  .ditaAssembly { grid-template-columns: 1fr; gap: 18px; }
+  .ditaAssembly > div:first-child ol { display: flex; flex-wrap: wrap; gap: 6px; } .ditaAssembly > div:first-child li { flex: 1 1 120px; }
+}
+
+/* One exercise per screen. The complete guide has its own reading view. */
+.workshop { --editor-height: 330px; }
+.rail { padding-top: 20px; }
+.railTitle { margin-bottom: 16px; }
+.navGroup { margin-bottom: 15px; }
+.workshop .navGroup h2 { color: var(--lab-muted); font-size: 0.75rem; font-weight: 550; letter-spacing: .05em; margin: 0 10px 6px; }
+.steps button { width: 100%; min-height: 34px; padding: 5px 10px; gap: 5px; }
+.steps button > .navMarker { width: 16px; display: flex; align-items: center; }
+.steps button > .navMarker svg { width: 13px; height: 13px; }
+.railBottom { margin-top: 4px; }
+.railBottom > button:first-of-type { padding-top: 14px; }
+.progress { margin-bottom: 16px; }
+.main { scroll-margin-top: var(--ifm-navbar-height); padding-bottom: 36px; }
+.toolbar { min-height: 84px; margin-bottom: 30px; }
+.formatSwitch { display: inline-flex; padding: 4px; border: 1px solid var(--lab-line); background: var(--lab-surface); border-radius: 7px; gap: 3px; }
+.formatSwitch button { border: 0; background: transparent; color: var(--lab-muted); border-radius: 4px; padding: 8px 13px; min-height: 36px; font-size: 12px; }
+.formatSwitch button[aria-pressed='true'] { color: var(--lab-accent); background: var(--lab-paper); box-shadow: 0 1px 3px #00000012; font-weight: 650; }
+.eyebrow { display: block; color: var(--lab-muted); font-size: 0.75rem; margin-bottom: 10px; }
+.lessonHeader { margin-bottom: 20px; }
+.workshop .lessonHeader h2, .introduction h2, .fullHeading h2 { font-size: 26px; margin-bottom: 12px; }
+.segmentEditor { display: block; width: 100%; height: var(--editor-height); border: 0; border-radius: 0; margin: 0; padding: 20px; resize: vertical; background: var(--lab-paper); color: var(--lab-ink); font: 14px/1.9 ui-monospace, SFMono-Regular, Consolas, 'PingFang SC', monospace; tab-size: 2; overflow-wrap: normal; }
+.segmentEditor:focus { outline: 2px solid var(--lab-accent); outline-offset: -2px; }
+.paper { height: var(--editor-height); padding: 20px 24px; }
+.paper h1 { font-size: 24px; }
+.paper h2 { font-size: 20px; }
+.lessonActions { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.lessonActions .actions { margin: 18px 0 12px; }
+.saveNote { font-size: 0.75rem; }
+.help { max-width: 800px; margin-bottom: 20px; }
+.draftTools { margin-top: 16px; }
+.navigation { margin-top: 25px; border-top: 1px solid var(--lab-line); padding-top: 20px; }
+.introduction { max-width: 1000px; }
+.introduction > p { color: var(--lab-muted); max-width: 780px; }
+.coursePosition, .courseHandoff { max-width: 900px; padding: 16px 20px; margin: 0 0 26px; border-left: 3px solid var(--lab-accent); background: var(--lab-surface); }
+.coursePosition strong { font-size: 14px; }
+.coursePosition p, .courseHandoff p, .courseHandoff li { font-size: 13px; line-height: 1.8; }
+.coursePosition p { margin: 7px 0; }
+.coursePosition a, .courseHandoff a { display: inline-block; padding: 6px 0; font-size: 13px; }
+.courseHandoff { margin: 28px 0; }
+.courseHandoff h2 { font-size: 22px; margin-bottom: 12px; }
+.courseHandoff ol { padding-left: 22px; }
+.deviceIntro { margin-top: 26px; padding: 20px 0 30px; gap: 30px; }
+.deviceIntro img { width: 300px; height: 200px; flex-basis: 300px; object-fit: contain; }
+.deviceIntro p { font-size: 14px; }
+.deviceIntro small { color: var(--lab-muted); font-size: 0.75rem; }
+.introSteps { padding-left: 22px; margin: 22px 0; }
+.introSteps li { padding-left: 5px; margin-bottom: 10px; }
+.fullHeading { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.fullHeading p { color: var(--lab-muted); max-width: 700px; }
+.fullControls { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 12px 0 22px; }
+.fullControls label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--lab-muted); }
+.fullControls select { max-width: 260px; padding: 8px; color: var(--lab-ink); background: var(--lab-paper); border: 1px solid var(--lab-line); border-radius: 4px; }
+.fullPaper { height: auto; max-width: 900px; margin: 0 auto 30px; padding: 30px; border: 1px solid var(--lab-line); border-radius: 5px; overflow: visible; }
+.fullPaper h2 { scroll-margin-top: calc(var(--ifm-navbar-height) + 20px); }
+.completeSource { max-height: none; }
+.mapChoices { display: flex; gap: 18px; padding: 5px 20px; border-bottom: 1px solid var(--lab-line); }
+.mapChoices button[aria-pressed='true'] { color: var(--lab-accent); font-weight: 650; }
+.assembledTopic { border-bottom: 1px solid var(--lab-line); padding: 15px 0; }
+.assembledTopic small { color: var(--lab-muted); font-size: 0.75rem; }
+.ditaTools { max-width: 900px; }
+@media (max-width: 900px) {
+ .workshop { --editor-height: 340px; }
+ .railTitle { margin-bottom: 0; }
+ .toolbar { margin-bottom: 24px; min-height: 76px; }
+ .toolbarTitle { display: none; }
+ .deviceIntro img { width: 220px; height: 160px; flex-basis: 220px; }
+}
+@media (max-width: 650px) {
+ .workshop { --editor-height: 310px; }
+ .formatSwitch { width: 100%; }
+ .formatSwitch button { flex: 1; min-height: 40px; }
+ .toolbar { justify-content: stretch; }
+ .lessonHeader > p { font-size: 13px; }
+ .segmentEditor { font-size: 16px; padding: 16px; }
+ .deviceIntro { flex-direction: column; gap: 16px; margin-top: 10px; }
+ .deviceIntro img { width: 100%; max-width: 280px; height: 170px; flex-basis: auto; align-self: center; }
+ .lessonActions, .fullHeading, .fullControls { flex-direction: column; align-items: stretch; gap: 8px; }
+ .lessonActions .saveNote { text-align: left; }
+ .fullControls label { justify-content: space-between; }
+ .fullControls select { max-width: 70%; }
+ .fullPaper { padding: 18px; }
+ .fullHeading .secondary { align-self: flex-start; }
+}
+
+/* Tasks, starter material and completed checks have different visual roles. */
+.taskBrief { margin: 18px 0; padding: 18px 20px; border: 1px solid var(--lab-line); border-left: 4px solid var(--lab-accent); border-radius: 6px; background: var(--lab-tint); }
+.taskBrief > strong { display: block; color: var(--lab-accent); font-size: 13px; margin-bottom: 8px; }
+.workshop .taskBrief p { color: var(--lab-ink); font-size: 14px; line-height: 1.8; margin: 0 0 10px; }
+.taskBrief p:last-child { margin-bottom: 0; }
+.hintLabel { display: block; font-size: 12px; font-weight: 650; color: var(--lab-muted); margin: 14px 0 4px; }
+.workshop .taskBrief .compatibility { font-size: 12px; color: var(--lab-muted); }
+.workshop .editorNotice { padding: 11px 16px; margin: 0; border-bottom: 1px dashed var(--lab-line); color: var(--lab-muted); background: var(--lab-surface); font-size: 12px; line-height: 1.7; }
+.paper blockquote, .paper :global(.admonitionblock) { background: var(--lab-tint); color: var(--lab-ink); border: 1px solid var(--lab-line); border-left: 4px solid var(--lab-accent); border-radius: 4px; padding: 16px; }
+.paper :global(.admonitionblock) tr, .paper :global(.admonitionblock) td { background: transparent; }
+.paper :global(.admonitionblock) :global(.icon) { width: 60px; color: var(--lab-accent); font-weight: 700; }
+.checkPassed, .checkRetry { margin: 18px 0; padding: 20px; border: 1px solid var(--lab-line); border-radius: 8px; display: flex; gap: 14px; align-items: flex-start; background: var(--lab-surface); }
+.checkPassed { border-left: 4px solid var(--lab-success); }
+.checkRetry { border-left: 4px solid var(--lab-accent); }
+.checkPassed strong { color: var(--lab-success); font-size: 17px; }
+.checkRetry strong { color: var(--lab-ink); font-size: 16px; }
+.workshop .checkPassed p { color: var(--lab-muted); margin: 8px 0 14px; font-size: 13px; }
+.checkRetry ul { margin: 10px 0 0; padding-left: 20px; }
+.workshop .checkBadge { width: 30px; height: 30px; color: var(--lab-success); }
+.checkPassed[data-animate='true'], .checkRetry[data-animate='true'] { animation: feedbackEnter .35s ease-out; }
+.checkPassed[data-animate='true'] .checkBadge { animation: feedbackCheck .5s ease-out; }
+@keyframes feedbackEnter { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes feedbackCheck { 0% { transform: scale(.5); } 65% { transform: scale(1.2); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .checkPassed[data-animate], .checkRetry[data-animate], .checkPassed[data-animate] .checkBadge { animation: none; } }
+@media (max-width: 650px) { .taskBrief { padding: 14px; } .checkPassed, .checkRetry { padding: 16px; gap: 10px; } }
+
+.lessonHeader .hint { padding: 12px 16px; border-left: 3px solid var(--lab-accent); background: var(--lab-tint); color: var(--lab-ink); font-size: 14px; }
+
+.syntaxReference { margin: 16px 0; border: 1px solid var(--lab-line); border-radius: 6px; padding: 15px 18px; background: var(--lab-paper); }
+.workshop .syntaxReference h3 { margin: 0 0 10px; font-size: 14px; font-weight: 650; letter-spacing: 0; }
+.syntaxRows { margin: 0; }
+.syntaxRows > div { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr); gap: 18px; padding: 7px 0; border-bottom: 1px solid var(--lab-line); align-items: start; }
+.syntaxRows > div:last-child { border-bottom: 0; }
+.syntaxRows dt { min-width: 0; font-weight: 400; }
+.syntaxRows code { display: block; white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--lab-accent); background: var(--lab-surface); border: 0; border-radius: 3px; padding: 4px 8px; }
+.syntaxRows dd { margin: 0; padding: 4px 0; color: var(--lab-muted); font-size: 13px; line-height: 1.65; }
+.workshop .syntaxPitfall { margin: 10px 0 0; font-size: 12px; line-height: 1.8; color: var(--lab-ink); }
+.syntaxMore { margin-top: 9px; font-size: 12px; color: var(--lab-muted); }
+.syntaxMore summary { cursor: pointer; width: fit-content; color: var(--lab-accent); }
+.syntaxMore[open] summary { margin-bottom: 10px; }
+.syntaxMore p { margin: 8px 0; }
+@media (max-width: 650px) {
+ .syntaxReference { padding: 13px; }
+ .syntaxRows > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+ .syntaxRows dd { font-size: 12px; }
+}
+
+/* The shared introduction explains the choices before syntax practice. */
+.introActions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 16px; }
+.introActions a { font-size: 12px; }
+.introSection { margin: 30px 0; padding-bottom: 26px; border-bottom: 1px solid var(--lab-line); }
+.introSection:last-child { border-bottom: 0; padding-bottom: 0; }
+.introSection h3 { scroll-margin-top: calc(var(--ifm-navbar-height) + 24px); }
+.introSection > p { max-width: 850px; }
+.introExample { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--lab-line); border-radius: 8px; margin: 20px 0; overflow: hidden; }
+.introExample > div { min-width: 0; }
+.introExample > div + div { border-left: 1px solid var(--lab-line); }
+.introExample > div > span { display: block; padding: 9px 18px; background: var(--lab-surface); border-bottom: 1px solid var(--lab-line); color: var(--lab-muted); font-size: 12px; }
+.introExample pre { margin: 0; padding: 18px; border: 0; border-radius: 0; background: var(--lab-paper); color: var(--lab-ink); font: 13px/1.9 ui-monospace, monospace; }
+.introExampleResult { padding: 18px; }
+.introExampleResult h4 { margin: 0 0 10px; font-size: 18px; }
+.introExampleResult ol { margin: 0; padding-left: 24px; }
+.introReasons { margin: 20px 0; }
+.introReasons > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 22px; padding: 13px 0; border-top: 1px solid var(--lab-line); }
+.introReasons dt { font-weight: 650; }
+.introReasons dd { margin: 0; color: var(--lab-muted); }
+.introTableScroll { overflow-x: auto; margin: 20px 0; border: 1px solid var(--lab-line); border-radius: 8px; }
+.workshop .introComparison { display: table; width: 100%; min-width: 690px; table-layout: fixed; margin: 0; border-collapse: collapse; font-size: 13px; }
+.introComparison caption { text-align: left; padding: 10px 14px; color: var(--lab-muted); font-size: 12px; }
+.introComparison th, .introComparison td { padding: 13px 14px; border: 1px solid var(--lab-line); vertical-align: top; text-align: left; }
+.introComparison thead th { background: var(--lab-tint); }
+.introComparison th:first-child { width: 13%; }
+.introComparison tbody th { font-weight: 600; }
+.introComparison tbody tr { background: var(--lab-paper); }
+.introComparison tbody tr:nth-child(even) { background: var(--lab-surface); }
+.introRecommendation { padding-left: 16px; border-left: 3px solid var(--lab-accent); }
+.introPrompt { background: var(--lab-surface); border-left: 3px solid var(--lab-accent); margin: 20px 0; padding: 16px 20px; color: var(--lab-ink); }
+.introPrompt strong { display: block; margin-bottom: 8px; font-size: 12px; color: var(--lab-muted); }
+.introPrompt p { margin-bottom: 0; }
+.workshop .introSource { font-size: 12px; color: var(--lab-muted); margin-top: 20px; }
+@media (max-width: 650px) {
+  .introExample { grid-template-columns: minmax(0, 1fr); }
+  .introExample > div + div { border-left: 0; border-top: 1px solid var(--lab-line); }
+  .introReasons > div { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+}
+
+/* Two learning paths, compact lesson instructions and visible draft states. */
+.toolbar { justify-content: flex-start; min-height: 62px; margin-bottom: 14px; gap: 12px; }
+.toolbarTitle { display: none; }
+.learningRoutes { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; padding: 8px 0; width: 100%; }
+.routeSwitch { display: flex; gap: 6px; flex-wrap: wrap; }
+.routeSwitch button { border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--lab-muted); padding: 8px 10px; min-height: 40px; font-size: 13px; }
+.routeSwitch button[aria-pressed='true'] { color: var(--lab-accent); border-bottom-color: var(--lab-accent); font-weight: 650; }
+.learningRoutes .formatSwitch { width: auto; margin-left: auto; }
+.routeNote { color: var(--lab-muted); font-size: 12px; margin-left: auto; }
+.steps button { gap: 7px; }
+.steps button > .navMarker { width: 15px; display: flex; align-items: center; justify-content: center; }
+.steps button > .navLabel { width: auto; min-width: 0; flex: 1; font: inherit; color: inherit; }
+.steps button > .navStatus { width: auto; color: var(--lab-muted); font: 12px/1.4 var(--ifm-font-family-base); flex-shrink: 0; }
+.emptyDot, .editedDot { width: 6px; height: 6px; border: 1px solid var(--lab-muted); border-radius: 50%; }
+.editedDot { background: var(--lab-accent); border-color: var(--lab-accent); }
+.introContents { display: flex; gap: 8px 22px; flex-wrap: wrap; margin: 18px 0; padding-bottom: 12px; border-bottom: 1px solid var(--lab-line); }
+.introContents a { font-size: 13px; padding: 4px 0; }
+.lessonHeader { margin-bottom: 12px; }
+.workshop .lessonHeader h2 { font-size: 23px; margin-bottom: 6px; }
+.lessonHeader .eyebrow { margin-bottom: 4px; }
+.lessonHeader .taskBrief { padding: 10px 14px; margin: 8px 0; }
+.lessonHeader .taskBrief > strong { font-size: 12px; margin-bottom: 3px; }
+.lessonHeader .taskBrief p { font-size: 13px; line-height: 1.65; }
+.lessonHeader .syntaxReference { margin: 8px 0; padding: 9px 14px; }
+.lessonHeader .syntaxReference h3 { font-size: 12px; margin-bottom: 4px; color: var(--lab-muted); }
+.syntaxRows > div { padding: 3px 0; gap: 12px; }
+.syntaxRows code { font-size: 12px; line-height: 1.5; padding: 3px 6px; }
+.syntaxRows dd { font-size: 12px; line-height: 1.5; padding: 3px 0; }
+.syntaxMore { margin-top: 5px; }
+.paneHeader { min-height: 38px; padding-top: 6px; padding-bottom: 6px; }
+.workshop .editorNotice { padding: 7px 14px; }
+.structureNotice { color: var(--lab-success); border-left: 3px solid var(--lab-success); padding: 8px 12px; }
+@media (max-width: 900px) {
+  .rail { padding-top: 10px; padding-bottom: 10px; }
+  .railTitle { display: flex; align-items: center; gap: 16px; }
+  .workshop .backToDocs { margin: 0; font-size: 0.75rem; }
+  .railTitle h1 { font-size: 16px; }
+}
+@media (max-width: 650px) {
+  .rail { gap: 6px; }
+  .learningRoutes { gap: 5px; }
+  .routeSwitch { width: 100%; justify-content: space-between; gap: 0; }
+  .routeSwitch button { padding: 6px 5px; font-size: 12px; }
+  .learningRoutes .formatSwitch { width: 100%; padding: 2px; }
+  .learningRoutes .formatSwitch button { min-height: 34px; padding: 5px 9px; }
+  .routeNote { margin: 0 5px; }
+  .toolbar { margin-bottom: 10px; }
+  .lessonHeader .taskBrief, .lessonHeader .syntaxReference { padding: 8px 10px; }
+  .syntaxRows > div { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 8px; }
+  .mobileTabs { margin-bottom: 8px; }
+  .mobileTabs button { min-height: 40px; }
+}
+/* Route changes announce the heading without drawing an input-like outline. */
+.main h2[tabindex='-1']:focus { outline: none; }
+
+/* Reuse is an optional capability example, separate from saved lesson drafts. */
+.reuse { max-width: 960px; }
+.reuse > h2 { font-size: 26px; }
+.reuse > h3 { margin-top: 30px; font-size: 20px; }
+.reuse p, .reuse li { line-height: 1.85; }
+.reuseGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+.reuseGrid > div { min-width: 0; }
+.reuseGrid textarea { display: block; width: 100%; margin: 12px 0; padding: 12px; border: 1px solid var(--lab-line); border-radius: 8px; background: var(--lab-surface); color: var(--lab-ink); font: inherit; resize: vertical; }
+.reuseToggle { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; font-size: 14px; }
+.reuseToggle input { margin-top: 5px; accent-color: var(--lab-accent); }
+.reuseResults { display: grid; gap: 12px; }
+.reuseResults article { padding: 16px 20px; border: 1px solid var(--lab-line); border-left: 3px solid var(--lab-accent); border-radius: 8px; background: var(--lab-surface); }
+.reuseResults h3 { margin: 0 0 4px; font-size: 17px; }
+.reuseResults small { color: var(--lab-muted); }
+.reuseResults p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 700px) { .reuseGrid { grid-template-columns: 1fr; } }
+
+/* Keep section navigation reachable after lesson changes on smaller screens. */
+.workspace[data-empty='true'] .segmentEditor,
+.workspace[data-empty='true'] .paper { height: 130px; min-height: 130px; }
+.workshop .syntaxBoundary { margin: 7px 0 10px; font-size: 13px; line-height: 1.7; color: var(--lab-ink); }
+@media (max-width: 900px) {
+  .rail { position: sticky; top: var(--ifm-navbar-height); z-index: 20; background: var(--lab-paper); box-shadow: 0 2px 5px #00000008; flex-wrap: wrap; gap: 4px 16px; padding: 8px 20px; }
+  .railTitle { width: 100%; justify-content: space-between; gap: 8px; }
+  .workshop .backToDocs { min-height: 32px; }
+  .railTitle h1 { font-size: 14px; }
+  .mobilePicker { width: 100%; }
+  .mobilePicker select { flex: 1; min-width: 0; max-width: none; width: auto; min-height: 44px; font-size: 16px; }
+  .main { scroll-margin-top: calc(var(--ifm-navbar-height) + 104px); }
+  .main h2[id], .main h3[id], .fullPaper h2 { scroll-margin-top: calc(var(--ifm-navbar-height) + 116px); }
+}
+@media (max-width: 650px) {
+  .rail { padding-inline: 16px; }
+  .workshop .primary, .workshop .secondary, .workshop .textButton,
+  .mobileTabs button, .learningRoutes .formatSwitch button, .routeSwitch button { min-height: 44px; }
+  .mobileTabs { gap: 8px; }
+  .mobileTabs button { min-width: 64px; padding-inline: 12px; font-size: 14px; }
+  .syntaxRows > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .syntaxRows code { font-size: 13px; }
+  .syntaxRows dd { font-size: 13px; }
+  .material { flex-wrap: wrap; gap: 8px; }
+}
+
+.previousDraft { margin: 16px 0; padding: 16px 20px; border: 1px solid var(--ifm-color-primary); border-radius: 6px; background: var(--ifm-color-emphasis-100); }
+.previousDraft p { margin: 0 0 10px; font-size: 14px; line-height: 1.7; }
+.previousDraft button { color: var(--ifm-color-primary); text-decoration: underline; background: none; border: 0; padding: 4px 0; cursor: pointer; }

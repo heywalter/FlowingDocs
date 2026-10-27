@@ -1,27 +1,5 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-.cardList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 26px;
-}
-
-.showcaseFavorite {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: #f6fdfd;
-}
-
-html[data-theme='dark'] .showcaseFavorite {
-  background-color: #232525;
-}
-
-.headingFavorites {
-  display: flex;
-  align-items: center;
-}
+.cardList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.results { margin: 0 0 36px; }
+.empty { padding: 44px 20px; border: 1px solid var(--site-rule); border-radius: 5px; text-align: center; }
+.empty p { color: var(--site-muted); margin-bottom: 20px; }
+@media (max-width: 700px) { .cardList { grid-template-columns: minmax(0, 1fr); gap: 24px; } }

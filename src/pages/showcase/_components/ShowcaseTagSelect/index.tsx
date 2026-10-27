@@ -12,7 +12,7 @@ import React, {
   type ReactElement,
   useId,
 } from 'react'
-import type { TagType } from '@site/src/data/projects'
+import type { TagType } from '@site/data/showcase'
 import { useTags } from '../../_utils'
 
 import styles from './styles.module.css'
@@ -54,7 +54,7 @@ export default function ShowcaseTagSelect({
         id={id}
         checked={isSelected}
         onChange={toggle}
-        className="screen-reader-only"
+        className="sr-only"
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             toggle()

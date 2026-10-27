@@ -6,7 +6,7 @@ import SearchPageOriginal from '@theme-original/SearchPage'
 
 type Props = ComponentProps<typeof SearchPageOriginal>
 
-export default function SearchPageWrapper(props: Props): JSX.Element {
+export default function SearchPageWrapper(props: Props): React.JSX.Element {
   const {
     i18n: { currentLocale },
   } = useDocusaurusContext()

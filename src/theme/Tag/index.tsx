@@ -5,7 +5,7 @@ import React from 'react'
 
 import styles from './styles.module.css'
 
-export default function Tag({ permalink, label, count, className }: Props & { className?: string }): JSX.Element {
+export default function Tag({ permalink, label, count, className }: Props & { className?: string }): React.JSX.Element {
   return (
     <Link href={permalink} className={cn(styles.tag, count ? styles.tagWithCount : styles.tagRegular, className)}>
       {label}

@@ -1,0 +1,69 @@
+architecture:
+  label: "Architecture"
+  permalink: /architecture
+asciidoc:
+  label: "AsciiDoc"
+  permalink: /asciidoc
+concept-topics:
+  label: "Concept Topics"
+  permalink: /concept-topics
+content-reuse:
+  label: "Content Reuse"
+  permalink: /content-reuse
+data-dictionaries:
+  label: "Data Dictionaries"
+  permalink: /data-dictionaries
+dita:
+  label: "DITA"
+  permalink: /dita
+docs-as-code:
+  label: "Docs-as-Code"
+  permalink: /docs-as-code
+documentation-engineering:
+  label: "Documentation Engineering"
+  permalink: /documentation-engineering
+docusaurus:
+  label: "Docusaurus"
+  permalink: /docusaurus
+information-design:
+  label: "Information Design"
+  permalink: /information-design
+layout-components:
+  label: "Layout Components"
+  permalink: /layout-components
+markup-languages:
+  label: "Markup Languages"
+  permalink: /markup-languages
+mental-models:
+  label: "Mental Models"
+  permalink: /mental-models
+mysql:
+  label: "MySQL"
+  permalink: /mysql
+parameter-contracts:
+  label: "Parameter Contracts"
+  permalink: /parameter-contracts
+quality-gates:
+  label: "Quality Gates"
+  permalink: /quality-gates
+reference-topics:
+  label: "Reference Topics"
+  permalink: /reference-topics
+sop-standards:
+  label: "SOP Standards"
+  permalink: /sop-standards
+static-sites:
+  label: "Static Sites"
+  permalink: /static-sites
+task-topics:
+  label: "Task Topics"
+  permalink: /task-topics
+technical-writing:
+  label: "Technical Writing"
+  permalink: /technical-writing
+tooling-tradeoffs:
+  label: "Tooling Tradeoffs"
+  permalink: /tooling-tradeoffs
+user-experience:
+  label: "User Experience"
+  permalink: /user-experience

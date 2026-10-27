@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Document markup / 文档标记语言</title>
+<link rel="canonical" href="../">
+<script>
+const root = window.location.pathname.startsWith('/en/') ? '/en/docs/markup/' : '/docs/markup/';
+const target = new URL(root, window.location.origin);
+target.search = window.location.search;
+if (!target.searchParams.has('exercise')) target.searchParams.set('exercise', 'table');
+target.hash = window.location.hash;
+window.location.replace(target.href);
+</script>
+<noscript><meta http-equiv="refresh" content="0;url=../?exercise=table"></noscript>
+</head><body><a href="../?exercise=table">打开练习 / Open exercises</a></body></html>

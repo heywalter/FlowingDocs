@@ -12,7 +12,7 @@ function useContainerClassName() {
   return !isBlogPostPage ? 'group/blog rounded-md mt-0 bg-blog mb-8 shadow-blog' : ''
 }
 
-export default function BlogPostItem({ children, className }: Props): JSX.Element {
+export default function BlogPostItem({ children, className }: Props): React.JSX.Element {
   const containerClassName = useContainerClassName()
   return (
     <BlogPostItemContainer className={cn(containerClassName, className)}>

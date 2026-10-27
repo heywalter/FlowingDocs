@@ -13,7 +13,7 @@ function NavbarBackdrop(props: ComponentProps<'div'>) {
   return <div role="presentation" {...props} className={clsx('navbar-sidebar__backdrop', props.className)} />
 }
 
-export default function NavbarLayout({ children }: Props): JSX.Element {
+export default function NavbarLayout({ children }: Props): React.JSX.Element {
   const {
     navbar: { hideOnScroll, style },
   } = useThemeConfig()

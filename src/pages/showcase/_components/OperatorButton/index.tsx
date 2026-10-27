@@ -1,39 +1,14 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React, { useId } from 'react'
-import clsx from 'clsx'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { useOperator } from '../../_utils'
-
 import styles from './styles.module.css'
 
 export default function OperatorButton() {
-  const id = useId()
   const [operator, toggleOperator] = useOperator()
-  // TODO add translations
+  const { i18n: { currentLocale } } = useDocusaurusContext()
   return (
-    <>
-      <input
-        id={id}
-        type="checkbox"
-        className="screen-reader-only"
-        aria-label="Toggle between or and and for the tags you selected"
-        checked={operator === 'AND'}
-        onChange={toggleOperator}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            toggleOperator()
-          }
-        }}
-      />
-      <label htmlFor={id} className={clsx(styles.checkboxLabel, 'shadow--md')}>
-        <span className={styles.checkboxLabelOr}>OR</span>
-        <span className={styles.checkboxLabelAnd}>AND</span>
-      </label>
-    </>
+    <label className={styles.option}>
+      <input type="checkbox" checked={operator === 'AND'} onChange={toggleOperator} />
+      {currentLocale === 'en' ? 'Match all selected topics' : '匹配全部所选主题'}
+    </label>
   )
 }

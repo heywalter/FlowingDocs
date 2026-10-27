@@ -9,50 +9,33 @@ export type LocalizedSeoKeywords = {
 }
 
 export const BLOG_KEYWORDS: LocalizedSeoKeywords = {
-  'zh-Hans': ['Flowing Docs', '知流小记', '技术写作', '技术传播', '文档工程', '用户体验', 'Docusaurus', 'AI 审校'],
-  'en': [
-    'Flowing Docs',
-    'technical writing',
-    'technical communication',
-    'documentation engineering',
-    'user experience',
-    'Docusaurus',
-    'AI review',
-  ],
+  'zh-Hans': ['Flowing Docs', '知流小记', '个人博客', 'AI 工具', '自托管', '技术写作', '个人项目', '生活记录'],
+  'en': ['Flowing Docs', 'personal blog', 'AI tools', 'self-hosting', 'technical writing', 'personal projects', 'everyday life'],
 }
 
 export const BLOG_ARCHIVE_DESCRIPTION: LocalizedSeoText = {
-  'zh-Hans': 'Flowing Docs 博客归档，按年份整理技术写作、文档工程、Docusaurus、AI 工具和个人实践文章。',
-  'en': 'Flowing Docs blog archive, organized by year across technical writing, documentation engineering, Docusaurus, AI tools, and personal practice notes.',
+  'zh-Hans': 'Flowing Docs 博客归档，按年份整理 AI 工具、自托管、技术写作、个人项目与生活记录。',
+  'en': 'Flowing Docs posts by year, covering AI tools, self-hosting, technical writing, personal projects, and everyday life.',
 }
 
 export const BLOG_TAGS_DESCRIPTION: LocalizedSeoText = {
-  'zh-Hans': 'Flowing Docs 博客标签索引，用于浏览技术写作、文档工程、Docusaurus、AI 工具和用户体验等主题。',
-  'en': 'Flowing Docs blog tag index for browsing topics such as technical writing, documentation engineering, Docusaurus, AI tools, and user experience.',
+  'zh-Hans': 'Flowing Docs 博客标签索引，按主题浏览工作经验、工具使用、个人项目和生活记录。',
+  'en': 'Browse Flowing Docs posts by topic: work experience, tools, personal projects, and everyday life.',
 }
 
 export const BLOG_AUTHORS_DESCRIPTION: LocalizedSeoText = {
-  'zh-Hans': 'Flowing Docs 作者列表，查看作者资料和他们发布的技术写作、文档工程与实践文章。',
-  'en': 'Flowing Docs author list with author profiles and posts about technical writing, documentation engineering, and practical workflows.',
+  'zh-Hans': 'Flowing Docs 作者列表，查看作者资料与发表的文章。',
+  'en': 'Flowing Docs authors, their profiles, and published posts.',
 }
 
 export const BLOG_AUTHOR_KEYWORDS: LocalizedSeoKeywords = {
-  'zh-Hans': ['Flowing Docs', '知流小记', '作者', '博客作者', '技术写作', '文档工程', '技术传播'],
-  'en': ['Flowing Docs', 'author', 'blog author', 'technical writing', 'documentation engineering', 'technical communication'],
+  'zh-Hans': ['Flowing Docs', '知流小记', '作者', '个人博客', 'AI 工具', '个人项目', '技术写作'],
+  'en': ['Flowing Docs', 'author', 'personal blog', 'AI tools', 'personal projects', 'technical writing'],
 }
 
 export const ABOUT_KEYWORDS: LocalizedSeoKeywords = {
-  'zh-Hans': ['Walter Gui', 'Flowing Docs', '知流小记', '技术文档工程师', '技术写作', '技术传播', '内容设计', '开发者体验', '文档工程'],
-  'en': [
-    'Walter Gui',
-    'Flowing Docs',
-    'technical documentation engineer',
-    'technical writing',
-    'technical communication',
-    'content design',
-    'developer experience',
-    'documentation engineering',
-  ],
+  'zh-Hans': ['Walter Gui', 'Flowing Docs', '知流小记', '个人博客', 'AI 工具', '个人项目', '自托管', '技术写作'],
+  'en': ['Walter Gui', 'Flowing Docs', 'personal blog', 'AI tools', 'personal projects', 'self-hosting', 'technical writing'],
 }
 
 export const SHOWCASE_KEYWORDS: LocalizedSeoKeywords = {
@@ -100,16 +83,16 @@ export function uniqueKeywords(keywords: string[]): string[] {
 
 export function getBlogTagDescription(locale: string, tagName: string): string {
   if (locale === 'en') {
-    return `Flowing Docs posts tagged with "${tagName}", collecting related notes on technical writing, documentation engineering, and practical workflows.`
+    return `Flowing Docs posts tagged with "${tagName}", collecting related articles and practical notes.`
   }
 
-  return `Flowing Docs 中关于「${tagName}」的博客文章合集，聚合相关技术写作、文档工程和实践记录。`
+  return `Flowing Docs 中关于「${tagName}」的博客文章合集，聚合相关主题的文章与实践记录。`
 }
 
 export function getBlogAuthorDescription(locale: string, authorName: string): string {
   if (locale === 'en') {
-    return `${authorName}'s Flowing Docs posts about technical writing, documentation engineering, AI tools, and practical workflows.`
+    return `${authorName}'s articles and practical notes on Flowing Docs.`
   }
 
-  return `${authorName} 在 Flowing Docs 发布的文章合集，记录技术写作、文档工程、AI 工具与实践经验。`
+  return `${authorName} 在 Flowing Docs 发布的文章与实践记录。`
 }

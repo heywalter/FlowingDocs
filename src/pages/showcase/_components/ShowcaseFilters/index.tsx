@@ -78,7 +78,7 @@ function HeadingText() {
       <Heading as="h2">
         <Translate id="showcase.filters.title">快速筛选</Translate>
       </Heading>
-      <span>{siteCountPlural(filteredUsers.length)}</span>
+      <span role="status" aria-live="polite" aria-atomic="true">{siteCountPlural(filteredUsers.length)}</span>
     </div>
   )
 }

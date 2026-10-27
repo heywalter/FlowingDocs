@@ -29,7 +29,10 @@ async function blogPluginEnhanced(context, options) {
       const { setGlobalData } = actions
 
       setGlobalData({
-        posts: content.blogPosts.slice(0, 10), // Only store 10 posts
+        posts: content.blogPosts.slice(0, 10), // Blog-list order, including pinned posts.
+        latestPosts: [...content.blogPosts]
+          .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+          .slice(0, 3), // Homepage is chronological, independently of pinned posts.
         postNum: content.blogPosts.length,
         tagNum: Object.keys(blogTags).length,
       })
