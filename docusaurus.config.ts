@@ -17,36 +17,36 @@ function getSiteTitle() {
 function getSiteTagline() {
   switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
     case 'en':
-      return 'Technical documentation and knowledge sharing'
+      return 'Work, tools, and everyday life'
     default:
-      return '技术文档与知识分享'
+      return '工作、工具与生活记录'
   }
 }
 
 function getSiteBio() {
   switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
     case 'en':
-      return 'Technical Documentation Engineer'
+      return 'Work, tools, and everyday life'
     default:
-      return '技术内容创作者'
+      return '工作、工具与生活记录'
   }
 }
 
 function getSiteDescription() {
   switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
     case 'en':
-      return 'Personal blog about technical documentation, content design, and user experience optimization.'
+      return 'Walter’s personal blog about AI tools, self-hosted services, technical writing, personal projects, and everyday life.'
     default:
-      return '关于技术文档、内容设计和用户体验优化的个人博客。'
+      return 'Walter 的个人博客，分享 AI 工具、自托管服务、技术写作、个人项目与生活记录。'
   }
 }
 
 function getBlogDescription() {
   switch (process.env.DOCUSAURUS_CURRENT_LOCALE) {
     case 'en':
-      return 'Exploring technical communication, sharing practices in technical writing, user experience, and knowledge dissemination.'
+      return 'Notes on AI tools, self-hosted services, technical writing, personal projects, and everyday life.'
     default:
-      return '探索技术传播，分享技术写作、用户体验与知识传播实践。'
+      return '记录 AI 工具、自托管服务、技术写作、个人项目与日常生活中的实践。'
   }
 }
 
@@ -75,6 +75,11 @@ const config: Config = {
     description: getSiteDescription(),
   },
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   themeConfig: {
     // Main theme configuration
     image: 'img/logo.webp', // Default social share image
@@ -89,7 +94,7 @@ const config: Config = {
         src: 'img/logo.webp',
         srcDark: 'img/logo-dark.webp', // Logo for dark mode
       },
-      hideOnScroll: true, // Hides the navbar while scrolling down
+      hideOnScroll: false, // SiteHeader stays visible; anchors must reserve its height
       items: [
         { label: '博客', position: 'left', to: 'blog' },
         { label: '技术写作', position: 'left', to: 'docs' },
@@ -225,7 +230,7 @@ const config: Config = {
         debug: process.env.NODE_ENV === 'development',
         offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
         pwaHead: [
-          { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
+          { tagName: 'link', rel: 'icon', href: '/img/favicon.ico' },
           { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
           { tagName: 'meta', name: 'theme-color', content: '#12affa' },
         ],
@@ -239,7 +244,7 @@ const config: Config = {
           `https://github.com/heywalter/flowingdocs/edit/main/${blogDirPath}/${blogPath}`, // "Edit this page" link
         editLocalizedFiles: false,
         blogDescription: getBlogDescription(),
-        blogSidebarCount: 10, // Number of recent posts in the sidebar
+        blogSidebarCount: 'ALL', // Browsable history; the article rail scrolls independently
         blogSidebarTitle: getBlogSidebarTitle(),
         postsPerPage: 10,
         showReadingTime: true,
@@ -277,13 +282,10 @@ const config: Config = {
                     // HTML comment with brand details
                     const motto = `
       This site is built with ❤️ using Docusaurus.
-      Authored by Walter, a Technical Documentation Engineer.
-      --------
-      MISSION: Transform complex technology into flowing knowledge.
+      Authored by Walter.
       --------
       GitHub: https://github.com/heywalter/flowingdocs
       --------
-      "Documentation's purpose is to let knowledge flow freely." — Walter
       `;
                     if (document.firstChild?.nodeType !== Node.COMMENT_NODE) {
                       document.prepend(document.createComment(motto));

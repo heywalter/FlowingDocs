@@ -7,7 +7,7 @@ import TOC from '@theme/TOC'
 
 import styles from './styles.module.css'
 
-export default function MDXPage(props: Props): JSX.Element {
+export default function MDXPage(props: Props): React.JSX.Element {
   const { content: MDXPageContent } = props
   const {
     metadata: { title, description, frontMatter },

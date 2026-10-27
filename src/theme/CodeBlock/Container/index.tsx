@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 export default function CodeBlockContainer<T extends 'div' | 'pre'>({
   as: As,
   ...props
-}: { as: T } & ComponentProps<T>): JSX.Element {
+}: { as: T } & ComponentProps<T>): React.JSX.Element {
   const prismTheme = usePrismTheme()
   const prismCssVariables = getPrismCssVariables(prismTheme)
   return (

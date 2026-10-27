@@ -1,0 +1,71 @@
+---
+title: "Document markup: Capabilities and tradeoffs across Markdown, AsciiDoc, and DITA"
+sidebar_label: Document markup
+sidebar_position: 1
+description: "Empirical comparison of Markdown, AsciiDoc, and DITA: dissecting complex table spans, conditional attribute inclusion, single-sourcing modular reuse, and DITA topic/map architectures."
+keywords:
+  - Document Markup
+  - Markdown
+  - AsciiDoc
+  - DITA
+  - Single Source of Truth
+  - Content Reuse
+  - Table Spans
+  - Modular Documentation
+  - Technical Writing
+image: /img/flowingdocs.png
+tags:
+  - markup-languages
+  - asciidoc
+  - dita
+  - content-reuse
+hide_title: true
+hide_table_of_contents: true
+---
+
+import MarkupWorkshop from '@site/src/components/MarkupWorkshop';
+
+<MarkupWorkshop>
+
+## Format characteristics and practical fit
+
+Choose a format based on how you need to lay out, reuse, and publish the content:
+
+- **Markdown**: Simple notation commonly used for READMEs, blogs, and API documentation. Standard syntax has no cell spans, variables, or content reuse mechanism; those features usually require HTML, extensions, or build tools.
+- **AsciiDoc**: Supports row and column spans, document attributes, and `include` directives. These features help maintain shared parameters and snippets or assemble content from multiple files.
+- **DITA**: Organizes XML content into topics, assembles documents with maps, and reuses content through mechanisms such as `conref`. Consider it when you need structural validation, content reuse, and multiple output formats, along with the editing and publishing tools those workflows require. See the [OASIS DITA overview](https://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html).
+
+The workshop above provides two learning tracks: **Write a guide** compares everyday Markdown and AsciiDoc notation side by side, while **DITA · Organize guides** demonstrates how Topics and Maps assemble into comprehensive publication suites.
+
+Regarding table formatting: Markdown pipe tables follow the [GFM specification](https://github.github.com/gfm/#tables-extension-), which offers no span syntax. Exercises here use embedded HTML `rowspan` and `colspan`; verify whether your production site sanitizes or strips raw HTML. AsciiDoc [supports row and column spans natively](https://docs.asciidoctor.org/asciidoc/latest/tables/span-cells/).
+
+## Real-world engineering scenarios {#database-docs}
+
+The workshop uses **MySQL 8.0 scenarios** to compare document structure. These are writing exercises, not complete production procedures. Adapt the following patterns to your own documentation:
+
+- **Parameter dictionaries & engine comparisons** → Configuration matrices and API specifications (data types, defaults, validation boundaries, scopes).
+- **Initialization & lifecycle runbooks** → Cluster provisioning, certificate rotations, or failover SOPs (emphasizing prerequisites, actions, and verification feedback).
+- **Console errors & literal blocks** → CLI outputs, connection status codes, and troubleshooting runbooks.
+
+Regardless of markup choice, linters only validate syntax. Complete technical documentation requires explicit preconditions, expected outputs, and recovery steps when operations fail.
+
+## Further reference by scenario {#format-resources}
+
+Choose your next technical focus based on real documentation requirements:
+
+| Scenario | Recommended path & references |
+| --- | --- |
+| Writing open-source READMEs or internal team notes | Consult [CommonMark](https://commonmark.org/help/) and the [GFM spec](https://github.github.com/gfm/); check which extensions your platform enables. |
+| Reusing product names, version strings, or callouts across guides | See the Content Reuse panel on the left; explore [AsciiDoc attributes](https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes/) and [include directives](https://docs.asciidoctor.org/asciidoc/latest/directives/include/). |
+| Embedding interactive UI widgets inside articles | Explore [MDX](https://mdxjs.com/docs/what-is-mdx/), paired with a modern static generator (e.g. Docusaurus, Next.js). |
+| Assembling modular product deliverables across large teams | Work through the workshop's DITA track to master Topics and Maps, then export the project to continue in professional XML suites (e.g. Oxygen XML Editor). |
+
+### Practice package & offline migration
+
+You can export your workspace state anytime using the download controls above:
+- **Source file only**: Downloads current draft files using site-wide resource paths.
+- **Practice package (with assets)**: Bundles associated SVG assets with relative paths, ready to open in local editors or static build pipelines.
+
+When choosing a site generator, explore the [Static site generators guide](../publishing/index.md). To refine information hierarchy and cognitive load, continue with [Information design](../information-design/index.mdx).
+
+</MarkupWorkshop>

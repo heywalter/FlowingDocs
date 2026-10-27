@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link'
 import { cn } from '@site/src/lib/utils'
 import type { Props } from '@theme/PaginatorNavLink'
 
-export default function PaginatorNavLink(props: Props): JSX.Element {
+export default function PaginatorNavLink(props: Props): React.JSX.Element {
   const { permalink, title, subLabel, isNext } = props
   return (
     <Link

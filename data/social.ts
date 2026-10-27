@@ -42,6 +42,7 @@ const social: Social = {
 }
 
 const socialSet: Record<keyof Social | 'rss', SocialValue> = {
+  rss: { href: '/blog/atom.xml', title: 'RSS', icon: 'ri:rss-line', color: '#c5651b' },
   github: {
     href: social.github,
     title: 'GitHub',
@@ -97,12 +98,12 @@ const socialSet: Record<keyof Social | 'rss', SocialValue> = {
     icon: 'ri:linkedin-line',
     color: '#0077B5',
   },
-  /*rss: {
+  /* rss: {
     href: '/blog/rss.xml',
     title: 'RSS',
     icon: 'ri:rss-line',
     color: '#FFA501',
-  },*/
+  }, */
 }
 
 export default socialSet

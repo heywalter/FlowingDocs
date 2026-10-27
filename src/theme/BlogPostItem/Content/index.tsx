@@ -4,7 +4,7 @@ import { cn } from '@site/src/lib/utils'
 import type { Props } from '@theme/BlogPostItem/Content'
 import MDXContent from '@theme/MDXContent'
 
-export default function BlogPostItemContent({ children, className }: Props): JSX.Element {
+export default function BlogPostItemContent({ children, className }: Props): React.JSX.Element {
   const { isBlogPostPage } = useBlogPost()
   return (
     <div

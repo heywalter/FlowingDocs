@@ -1,0 +1,218 @@
+---
+title: "信息表达：把内容写清楚，让读者用得上"
+sidebar_label: 内容与排版
+sidebar_position: 1
+description: "从读者疑问找内容缺口，对照标签页、折叠和表格，提供作者自查与自动检查示例。"
+image: /img/flowingdocs.png
+tags:
+  - information-design
+  - layout-components
+  - docs-as-code
+  - quality-gates
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import TableWidthDemo from '@site/src/components/InformationDesign/TableWidthDemo';
+import DocsHealthScorecard from '@site/src/components/InformationDesign/DocsHealthScorecard';
+
+“`query_timeout`：超时时间，默认 30。”这句话格式没有问题，但读者仍不知道单位、0 的含义和修改影响谁。信息表达要解决的，就是这些会妨碍判断和操作的问题。
+
+本页先讨论内容缺口，再比较标签页、折叠和表格。例子中的 `query_timeout` 是虚构参数，用于演示写法，不是 MySQL 配置建议。
+
+## 从内容到发布，分别检查什么 {#lifecycle-journey}
+
+| 当前问题 | 去哪里看 |
+| --- | --- |
+| 格式能否表达合并表格或共享片段？ | [标记语言对照](../markup/index.mdx) |
+| 背景、步骤和参数混在了一起？ | [概念说明](./concept.md)、[操作步骤](./task.md)、[参数参考](./reference.md) |
+| 编辑器里正常，发布后变了样？ | [发布工具与扩展语法](../publishing/index.md) |
+
+这几类内容可以按需查阅。同一事实可以出现在不同文档里，但组织方式应围绕读者当前的问题。
+
+## 从读者疑问找缺口 {#clarify}
+
+| 读者会问什么 | 需要确认的事实 |
+| --- | --- |
+| 限制等待时间，还是执行时间？ | 控制对象、计时起止点 |
+| 30 是秒还是毫秒？ | 单位、类型、取值范围 |
+| 0 是不等待，还是不限制？ | 特殊值含义 |
+| 改完影响谁？ | 作用域与生效时机 |
+| 超时之后发生什么？ | 错误、事务与连接的后续状态 |
+
+先查对应版本的说明、源码或测试结果，再改写。找不到依据的行为列为待确认，不用肯定的语气填补空白。
+
+:::note 改写示例：虚构服务
+`query_timeout` 限制单次查询的执行时间，单位为秒，默认值为 `30`。接受 0～3600 的整数，0 表示不设置时限。
+
+修改只影响当前会话之后发起的查询，正在执行的查询不受影响。达到时限时，当前查询终止并返回 `QUERY_TIMEOUT`。
+
+事务是否回滚、连接是否可继续使用，以及如何查询当前值，仍需核实。
+:::
+
+写得更具体，不等于事实已经正确。把未确认的部分留出来，是这段说明的重要组成部分。
+
+## 按读者做事的顺序安排 {#order}
+
+通常先说条件与影响，再写操作，最后说明怎样确认结果。风险提醒放在有关动作之前；只有少数人需要的原理或历史放在附近的补充说明里。
+
+标题说明目标，段首先给结论，链接名称直接写出目标内容。任务很短时，可以在几句话中完成，不必套一套长模板。
+
+## 标签页：同一任务的不同写法 {#tabs}
+
+读者通常只需要一种语言或平台时，可以用标签页。共同的前置条件放在外面，里面只放各自的内容。
+
+<Tabs defaultValue="json" queryString="config-format">
+<TabItem value="json" label="JSON">
+
+```json
+{
+  "query_timeout": 30
+}
+```
+
+</TabItem>
+<TabItem value="yaml" label="YAML">
+
+```yaml
+query_timeout: 30
+```
+
+</TabItem>
+</Tabs>
+
+需要同时比较时，用并排展示或表格更方便。有先后依赖的步骤应保持连续，不能分散到不同标签里。本例把选项写入 URL，便于分享指定写法；站内搜索、键盘操作和打印效果仍需另外检查。
+
+## 折叠：收起补充信息，保留关键条件 {#disclosure}
+
+如果读者不展开折叠块也能完成任务，里面通常适合放原理、历史或少见的排错细节。必须知道的前置条件、风险和验证方法保持可见。
+
+> 修改只影响当前会话之后发起的查询。
+
+<details>
+<summary>为什么不只写“立即生效”？</summary>
+
+“立即”没有说明影响范围。读者可能以为正在执行的查询也会改变。写清对象和时间边界，比换一个更强烈的副词有用。
+
+</details>
+
+折叠标题直接写出问题。整页内容都要逐个展开时，先考虑是否应该拆页或精简。
+
+## 表格：按内容分配列宽 {#tables}
+
+表格适合比较同类信息。默认值通常很短，说明文字较长，均分列宽可能导致不必要的折行。
+
+<TableWidthDemo />
+
+先删无用列，再分配宽度；长步骤移到表外。窄屏保留完整内容，在表格区域内滚动。表头应使用真正的表头单元格，不能只靠加粗或颜色区分。
+
+<details>
+<summary>列宽示例用了什么？</summary>
+
+本例使用 HTML `colgroup` 和 `table-layout: fixed`，外层允许横向滚动。具体比例需要按内容试读，而不是套一个固定数值。
+
+需要跨行跨列时，可对照[合并单元格示例](../markup/index.mdx?syntax=asciidoc&exercise=table-spans)。
+
+</details>
+
+## 其他内容适合怎样展示 {#other-forms}
+
+| 读者要做什么 | 可以采用 | 需要避免 |
+| --- | --- | --- |
+| 按顺序完成操作 | 有序步骤 | 漏掉条件、预期结果 |
+| 按条件选择路径 | 判断表、流程图 | 分支没有结果 |
+| 复制配置 | 代码块 | 输入与输出混在一起 |
+| 理解调用关系 | 图加文字说明 | 箭头含义不明 |
+| 找到界面控件 | 标注截图加菜单路径 | 只有截图，没有可搜索的名称 |
+| 注意限制 | 就近的提醒 | 每一段都用警告框 |
+
+## 用真实任务检查效果 {#review}
+
+请一位不熟悉内容的人找出适用版本、判断参数能否设为 0，并找到验证方法。观察他在哪里停住：条件藏得太深，术语没解释，还是两个地方的说明不一致？
+
+这类观察能指向具体修改。浏览量、停留时间和点击率只能提供线索，不能单独证明文档是否解决了问题。
+
+## 作者自查清单 {#scorecard}
+
+下面是我整理的检查问题，不是行业评分标准。按文档类型选用，可以标记“不适用”；勾选只记录你的判断，不会自动验证技术事实。
+
+<DocsHealthScorecard />
+
+## 哪些检查适合自动化 {#ci-gates}
+
+构建失败、内部链接缺失和固定术语写法适合交给工具。技术结论是否成立、读者能否完成任务，还需要审阅和实际验证。
+
+### 用规则提醒需要复核的措辞
+
+例如可以用 [Vale](https://vale.sh/) 提醒作者检查“立即生效”。它只能找到词语，不能判断上下文已经解释清楚，更不能推断数据库行为。
+
+在专门的演练目录创建 `.vale.ini`：
+
+```ini
+StylesPath = styles
+MinAlertLevel = warning
+
+[*.md]
+BasedOnStyles = Review
+```
+
+在 `styles/Review/Scope.yml` 中保存规则：
+
+```yaml
+extends: existence
+message: "请核对 '%s' 是否交代了作用域和生效时机。"
+level: warning
+nonword: true
+tokens:
+  - 立即生效
+  - 马上生效
+```
+
+安装 Vale 后运行 `vale example.md`。这里使用警告让作者复核，不因命中某个词就判定内容错误。中文词组的边界设置见 [Vale existence 规则](https://docs.vale.sh/checks/existence)。
+
+中文审校也可评估 [DocSifter](https://github.com/heywalter/docsifter)。工具的提示和 AI 建议都应结合上下文处理。
+
+### 一个可以放进本站的构建检查
+
+以下示例适用于本仓库的 `package.json`、锁文件和 `check:docs-links` 脚本。新项目需要换成自己的版本和命令。它构建站点并检查生成后的文档内链；不包含产品行为验证或公网部署。
+
+```yaml
+name: Documentation checks
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'i18n/**'
+      - 'src/**'
+      - 'static/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'docusaurus.config.ts'
+      - 'sidebars.ts'
+      - '.github/workflows/docs-checks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm check:docs-links
+```
+
+这是可采用的工作流示例，是否将它设为合并必需条件，需要在实际仓库里配置并验证。不要把“能构建”当成“所有内容正确”。
+
+继续阅读：[操作说明的完整小例子](./task.md#example)、[参数参考](./reference.md)或[发布工具的取舍](../publishing/index.md)。

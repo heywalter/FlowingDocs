@@ -1,101 +1,24 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+.card { display: flex; flex-direction: column; border: 1px solid var(--site-rule); border-radius: 5px; overflow: hidden; background: var(--site-panel); }
+.showcaseCardImage { overflow: hidden; border-bottom: 1px solid var(--site-rule); }
+.showcaseCardImage img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; max-height: 250px; object-fit: cover; }
+.card :global(.card__body) { padding: 24px 26px; flex: 1; }
+.showcaseCardHeader { margin-bottom: 14px; }
+.showcaseCardTitle { font-family: var(--site-display); font-weight: 700; font-size: clamp(23px, 2.2vw, 30px); line-height: 1.4; margin: 0; }
+.showcaseCardLink { color: var(--site-ink); }
+.showcaseCardLink:hover { color: var(--site-accent); }
+.showcaseCardBody { font-size: 15px; line-height: 1.9; color: var(--site-muted); margin: 0; }
+.showcaseCardActions { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 22px; }
+.showcaseCardActions :global(.button) { padding: 3px 0; border: 0; border-radius: 0; background: none; color: var(--site-accent); font-size: 14px; font-weight: 500; }
+.showcaseCardActions a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.cardFooter { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--site-rule); padding: 16px 26px; margin: 0; }
+.tag { font-size: 11px; color: var(--site-muted); display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+.tag + .tag::before { content: '·'; margin-right: 2px; }
+.colorLabel { display: none; }
+@media (max-width: 600px) { .card :global(.card__body) { padding: 20px; } .cardFooter { padding: 14px 20px; } }
 
-.showcaseCardImage {
-  overflow: hidden;
-  height: auto;
-  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+.card { transition: border-color var(--site-motion-link), box-shadow var(--site-motion-link); }
+.card:has(a:focus-visible) { border-color: var(--site-accent); box-shadow: 0 6px 20px -16px var(--site-accent); }
+@media (hover: hover) and (pointer: fine) {
+  .card:has(a:hover) { border-color: var(--site-accent); box-shadow: 0 6px 20px -16px var(--site-accent); }
 }
-
-.showcaseCardHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.showcaseCardTitle {
-  margin-bottom: 0;
-  flex: 1 1 auto;
-}
-
-.showcaseCardTitle a {
-  text-decoration: none;
-  background: linear-gradient(
-      var(--ifm-color-primary),
-      var(--ifm-color-primary)
-    )
-    0% 100% / 0% 1px no-repeat;
-  transition: background-size ease-out 200ms;
-}
-
-.showcaseCardTitle a:not(:focus):hover {
-  background-size: 100% 1px;
-}
-
-.showcaseCardTitle,
-.showcaseCardHeader {
-  margin-right: 0.25rem;
-}
-
-.showcaseCardSrcBtn {
-  padding-left: 12px;
-  padding-right: 12px;
-  border: none;
-}
-
-.showcaseCardActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.showcaseCardSrcBtn:focus-visible {
-  background-color: var(--ifm-color-secondary-dark);
-}
-
-[data-theme='dark'] .showcaseCardSrcBtn {
-  background-color: var(--ifm-color-emphasis-200) !important;
-  color: inherit;
-}
-
-[data-theme='dark'] .showcaseCardSrcBtn:hover {
-  background-color: var(--ifm-color-emphasis-300) !important;
-}
-
-.showcaseCardBody {
-  font-size: smaller;
-  line-height: 1.66;
-}
-
-.cardFooter {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.tag {
-  font-size: 0.675rem;
-  border: 1px solid var(--ifm-color-secondary-darkest);
-  cursor: default;
-  margin-right: 6px;
-  margin-bottom: 6px !important;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.tag .textLabel {
-  margin-left: 8px;
-}
-
-.tag .colorLabel {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  margin-left: 6px;
-  margin-right: 6px;
-}
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } }

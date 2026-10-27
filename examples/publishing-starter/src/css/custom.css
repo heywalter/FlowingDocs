@@ -1,0 +1,7 @@
+:root {
+  --ifm-color-primary: #5146b8;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.7;
+}
+.markdown table { display: block; overflow-x: auto; }
+.markdown img { max-width: 100%; height: auto; }

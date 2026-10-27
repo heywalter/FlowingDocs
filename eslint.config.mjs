@@ -5,7 +5,7 @@ import ts from 'typescript-eslint'
 
 export default [
   {
-    ignores: ['.docusaurus', 'build'],
+    ignores: ['**/.docusaurus/**', '**/build/**'],
   },
   stylistic.configs['recommended-flat'],
   ...ts.configs.recommended,

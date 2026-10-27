@@ -5,6 +5,8 @@ date: 2026-08-01
 tags: [Nextcloud, 私有云, Docker, 自建服务器, RAG, 个人知识库, AI, 家庭实验室]
 image: https://img.flowingdocs.com/images/nextcloud_self_hosted.png
 description: 商业云盘放不了敏感内容、本地存储又有限，用旧主机跑 Nextcloud 是个出路：低成本扩容、VPN 远程连回家、文件改坏了拉时间轴找——后来顺手接进 RAG，工作文档变成可查询的 AI 知识库。
+homepage_title: "用旧主机搭私有云"
+homepage_description: "用退役硬件搭私有云：谈谈存储扩容、版本溯源与本地 RAG 知识库搭建。"
 ---
 
 工作文件越积越多，本地存储不够用，商业云盘又放不了敏感内容。最后在旧主机上跑了 Nextcloud：想加多少盘就加多少，出门用 VPN 拨回来就连上，即使文件改坏想回溯也非常方便，后来顺手接进本地 AI RAG 系统，能做的事比最初想的多得多。

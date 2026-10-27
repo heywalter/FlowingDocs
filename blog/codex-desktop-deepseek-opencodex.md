@@ -5,6 +5,8 @@ date: 2026-08-07
 tags: [Codex, DeepSeek, opencodex, AI 工具, 模型路由, macOS]
 image: https://img.flowingdocs.com/images/switch-model-to-deepseek-in-codex-desktop-en.png
 description: 记录我如何用 opencodex 在 Codex Desktop 的同一个任务中切换 DeepSeek，包括安装配置、模型选择、启动日志排查和恢复原生 Codex。
+homepage_title: "Codex Desktop 接入 DeepSeek"
+homepage_description: "大任务收尾时换用轻快模型：记录本地代理配置与日志避坑经验。"
 ---
 
 我在 Codex Desktop 里经常遇到一种情况，任务已经完成大半，只剩几处简单修改，此时更想临时换一个响应快、成本低的模型，把收尾工作做完。

@@ -1,54 +1,65 @@
 ---
 slug: /
-description: Flowing Docs documentation hub for technical writing, Docusaurus blog setup, AI documentation tools, and documentation engineering practices.
-keywords:
-  - Flowing Docs
-  - documentation hub
-  - technical writing
-  - Docusaurus
-  - AI documentation tools
-  - documentation engineering
-  - Docs as Code
+title: Technical Documentation Practices
+sidebar_label: Overview
+sidebar_position: 1
+hide_table_of_contents: true
+hide_title: true
+description: "Practical problems, approaches and limits in markup, information design and publishing."
+image: /img/flowingdocs.png
+tags:
+  - technical-writing
+  - information-design
+  - documentation-engineering
+  - docs-as-code
 ---
 
-# Flowing Docs Documentation Hub
+import DocsJourney from '@site/src/components/DocsJourney';
 
-Welcome to the Flowing Docs documentation center!
+<DocsJourney locale="en" />
 
-Unlike the blog which focuses on recording personal thoughts, growth trajectories, and daily experiments, here we lean more towards specific practical technical details, tool guides, and best practices. You can think of this as a small "instruction manual" - when you want to implement something specific or solve a particular problem, this is the place for quick reference.
+These notes collect practical documentation problems, approaches and tradeoffs for technical writers and developers who write product guides, API documentation or procedures. Start with the problem you have; there is no required course order.
 
-## 📖 What's in the Documentation Center?
+## Document markup {#start-here}
 
-Currently, the documentation center has planned the following modules:
+Merged table cells, a notice shared by two guides, or different manuals assembled from the same content can all affect your choice of format.
 
-- **Technical Communication & Content Practices**
-  
-  Sharing methods for writing technical documentation, style guides, and content structure techniques, focusing on efficiently outputting understandable and friendly technical content.
+- [Compare common notation](./markup/index.mdx?exercise=intro): headings, lists, code, images and notices.
+- [Ordinary and merged tables](./markup/index.mdx?syntax=asciidoc&exercise=table-spans): embedded HTML in Markdown versus native AsciiDoc notation.
+- [Change once, reuse in several places](./markup/index.mdx?syntax=asciidoc&view=reuse): includes, variables and tool-specific limitations.
+- [Organize guides with DITA](./markup/index.mdx?syntax=dita&exercise=intro): topics, maps and reuse, with an exportable project.
 
-- **Docusaurus Blog Setup & Customization Guide**
-  
-  From open source templates to deep customization, recording experiences and pitfalls during the setup process, helping you quickly build your own blog or documentation site.
+Exercises use MySQL scenarios to compare document structure. They are not complete database installation or production-change procedures.
 
-- **AI-Assisted Documentation Tool Practices**
-  
-  Sharing how to use AI to improve documentation writing efficiency, such as intelligent proofreading tools, automated content generation, and other application experiences.
+## Information design {#information-design}
 
-- **Productivity Tools & Experiments**
-  
-  Sharing experiences with tools that improve efficiency, including some "random experiments" with personal servers and DIY hardware.
+What is missing from “Timeout, default 30”? When are tabs helpful, and when should readers see both options together?
 
-## 🚀 Quick Start Reading
+Start with [making documentation clear and useful](./information-design/index.mdx). For a specific document, see:
 
-You can start directly with these documents:
+- [Concepts](./information-design/concept.md): what something is, why it works and where the explanation applies.
+- [Procedures](./information-design/task.md): prerequisites, actions and a way to confirm success.
+- [Reference](./information-design/reference.md): units, ranges, special values and when changes take effect.
 
-- Docusaurus Blog Setup and Customization Guide-ToDo
-- AI Document Proofreading Tool Usage Guide-ToDo
+## Publishing {#publishing}
 
-## 💡 Feedback & Contributions
+[Choose a static site generator](./publishing/index.md): compare Docusaurus, VitePress, MkDocs and Antora, using this site's bilingual content, blog and interactive components to explain maintenance costs. The page includes a build/publish simulation and a minimal site template.
 
-The documentation content will continue to be improved. Feel free to make suggestions, corrections, or contribute your own experience:
+## When does this workflow help? {#paradigm-shift}
 
-- 💬 [Submit Issue or PR to GitHub](https://github.com/heywalter/flowingdocs)
-- 📮 [Leave a message to share your ideas](/about#comments)
+Docs-as-Code applies version control, CI checks, and peer reviews to documentation. Content is written in plain text and compiled through a generator—either alongside product code or in a dedicated repository.
 
-I hope the documentation here can really help you!
+This workflow helps when documentation follows product versions, needs automated link checks, or involves several reviewers. The team also needs to maintain build dependencies and deployment configuration, and handle branch merges.
+
+Word and online collaboration tools also offer version history, tracked changes, and templates. Whether contributors are comfortable with Git—and whether existing workflows already solve the team's problems—often matters more than the format itself. If current tools meet the team's needs, keeping them is also a reasonable choice. AI can draft and proofread, but technical claims still need verification against product behavior, source code, or test results.
+
+## Future notes {#maintenance}
+
+This first edition focuses on the three topics above. API consistency, AI collaboration, reader feedback, traffic paths and stale-content maintenance will follow when there are concrete cases to discuss. The [review checklist and automated-check example](./information-design/index.mdx#scorecard) are available now.
+
+<span id="optional-topics"></span>
+<span id="lifecycle"></span>
+
+## Corrections and discussion {#feedback}
+
+[Open an issue or PR](https://github.com/heywalter/flowingdocs), or [leave a message on the About page](/en/about). Include the page URL, specific text, environment and expected result to help reproduce the problem.

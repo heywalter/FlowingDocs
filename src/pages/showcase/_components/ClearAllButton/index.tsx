@@ -6,18 +6,19 @@
  */
 
 import React, { type ReactNode } from 'react'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { useClearQueryString } from '@docusaurus/theme-common'
 
 export default function ClearAllButton(): ReactNode {
   const clearQueryString = useClearQueryString()
-  // TODO translate
+  const { i18n: { currentLocale } } = useDocusaurusContext()
   return (
     <button
-      className="button button--outline button--primary"
+      className="button button--outline button--primary button--sm"
       type="button"
       onClick={() => clearQueryString()}
     >
-      Clear All
+      {currentLocale === 'en' ? 'Clear filters' : '清除筛选'}
     </button>
   )
 }

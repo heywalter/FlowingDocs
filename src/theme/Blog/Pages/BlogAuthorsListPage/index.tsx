@@ -11,7 +11,7 @@ import BlogAuthorsListPageOriginal from '@theme-original/Blog/Pages/BlogAuthorsL
 
 type Props = ComponentProps<typeof BlogAuthorsListPageOriginal>
 
-export default function BlogAuthorsListPageWrapper(props: Props): JSX.Element {
+export default function BlogAuthorsListPageWrapper(props: Props): React.JSX.Element {
   const {
     i18n: { currentLocale },
   } = useDocusaurusContext()

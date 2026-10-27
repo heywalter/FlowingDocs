@@ -1,11 +1,3 @@
-import NavbarContent from '@theme/Navbar/Content'
-import NavbarLayout from '@theme/Navbar/Layout'
-import React from 'react'
+import { SiteHeader } from '@site/src/components/SiteChrome'
 
-export default function Navbar(): JSX.Element {
-  return (
-    <NavbarLayout>
-      <NavbarContent />
-    </NavbarLayout>
-  )
-}
+export default SiteHeader

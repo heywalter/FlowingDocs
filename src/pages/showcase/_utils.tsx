@@ -87,7 +87,7 @@ export function useSiteCountPlural() {
           id: 'showcase.filters.resultCount',
           description:
             'Label for the number of sites found on the showcase. Simplified for single plural form support in zh-Hans.',
-          message: '{sitesCount} 个客户案例',
+          message: '{sitesCount} 个项目',
         },
         { sitesCount },
       ),

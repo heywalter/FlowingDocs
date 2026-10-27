@@ -49,13 +49,41 @@ const Showcase = [
   },
   {
     title: translate({
+      message: 'DSH Domain Proxy - 域名分流与耗时观测',
+      id: 'showcase.dsh-proxy.title',
+    }),
+    description: (
+      <>
+        {translate({
+          message: '为 DeepSeek Harness 打造的域名分流插件：让指定 API 域名精准走本地代理（免改 Provider 与 Key），并实时记录请求路径、首字延迟（TTFT）与流式吐字速率。',
+          id: 'showcase.dsh-proxy.description',
+        })}
+      </>
+    ),
+    preview: translate({
+      message: 'https://cdn.jsdelivr.net/npm/dsh-domain-proxy@0.1.1/docs/images/config.jpg',
+      id: 'showcase.dsh-proxy.preview',
+    }),
+    url: translate({
+      message: '/blog/dsh-domain-proxy-open-source',
+      id: 'showcase.dsh-proxy.url',
+    }),
+    article: translate({
+      message: '/blog/dsh-domain-proxy-open-source',
+      id: 'showcase.dsh-proxy.articleUrl',
+    }),
+    source: 'https://github.com/heywalter/dsh-domain-proxy',
+    tags: ['favorite', 'open_source', 'ai', 'dx'],
+  },
+  {
+    title: translate({
       message: 'Flowing Docs 博客实践',
       id: 'showcase.flowingdocs.title',
     }),
     description: (
       <>
         {translate({
-          message: '基于 Docusaurus 构建的个人博客，聚焦技术写作、开发者体验与内容可维护性，支持暗黑模式、PWA、Giscus 评论、SEO 优化等功能。',
+          message: '基于 Docusaurus 搭建的个人网站，记录工作、工具与生活。这里也整理网站的中英文内容、交互组件和维护过程。',
           id: 'showcase.flowingdocs.description',
         })}
       </>
@@ -69,7 +97,7 @@ const Showcase = [
 
 export type ProjectShowcase = {
   title: string
-  description: JSX.Element
+  description: React.ReactNode
   preview: string | null
   url: string
   article?: string | null

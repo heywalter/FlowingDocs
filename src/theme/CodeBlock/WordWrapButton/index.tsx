@@ -1,12 +1,12 @@
 import { translate } from '@docusaurus/Translate'
 import { cn } from '@site/src/lib/utils'
-import type { Props } from '@theme/CodeBlock/WordWrapButton'
+type Props = React.ComponentProps<'button'> & { isEnabled: boolean }
 import IconWordWrap from '@theme/Icon/WordWrap'
 import React from 'react'
 
 import styles from './styles.module.css'
 
-export default function WordWrapButton({ className, onClick, isEnabled }: Props): JSX.Element | null {
+export default function WordWrapButton({ className, onClick, isEnabled }: Props): React.JSX.Element | null {
   const title = translate({
     id: 'theme.CodeBlock.wordWrapToggle',
     message: 'Toggle word wrap',

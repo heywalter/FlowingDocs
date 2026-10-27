@@ -2,7 +2,7 @@ import { translate } from '@docusaurus/Translate'
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
 import IconClose from '@theme/Icon/Close'
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle'
-import NavbarLogo from '@theme/Navbar/Logo'
+import { SiteBrand } from '@site/src/components/SiteChrome'
 import React from 'react'
 
 function CloseButton() {
@@ -23,10 +23,10 @@ function CloseButton() {
   )
 }
 
-export default function NavbarMobileSidebarHeader(): JSX.Element {
+export default function NavbarMobileSidebarHeader(): React.JSX.Element {
   return (
     <div className="navbar-sidebar__brand">
-      <NavbarLogo />
+      <SiteBrand />
       <NavbarColorModeToggle className="margin-right--md" />
       <CloseButton />
     </div>

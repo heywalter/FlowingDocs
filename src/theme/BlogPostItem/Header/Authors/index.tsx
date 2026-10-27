@@ -1,10 +1,10 @@
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
 import { cn } from '@site/src/lib/utils'
-import BlogPostItemHeaderAuthor from '@theme/BlogPostItem/Header/Author'
+import BlogPostItemHeaderAuthor from '../Author'
 import type { Props } from '@theme/BlogPostItem/Header/Authors'
 import styles from './styles.module.css'
 
-export default function BlogPostItemHeaderAuthors({ className }: Props): JSX.Element | null {
+export default function BlogPostItemHeaderAuthors({ className }: Props): React.JSX.Element | null {
   const {
     metadata: { authors },
     assets,

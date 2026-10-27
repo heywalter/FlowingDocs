@@ -1,0 +1,218 @@
+---
+title: "Information design: make documentation clear and useful"
+sidebar_label: Content and layout
+sidebar_position: 1
+description: "Find missing facts and compare tabs, disclosures and tables, with review questions and build checks."
+image: /img/flowingdocs.png
+tags:
+  - information-design
+  - layout-components
+  - docs-as-code
+  - quality-gates
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import TableWidthDemo from '@site/src/components/InformationDesign/TableWidthDemo';
+import DocsHealthScorecard from '@site/src/components/InformationDesign/DocsHealthScorecard';
+
+“`query_timeout`: timeout, default 30.” The formatting is fine, but readers still need a unit, the meaning of zero and the scope of a change. Information design addresses gaps that prevent decisions and actions.
+
+This page starts with missing facts, then compares tabs, disclosures and tables. `query_timeout` is fictional; it is a writing example, not MySQL configuration advice.
+
+## What to check from content to publishing {#lifecycle-journey}
+
+| Problem | Read |
+| --- | --- |
+| Can the format express merged cells or shared content? | [Markup comparison](../markup/index.mdx) |
+| Background, actions and parameters are mixed together | [Concepts](./concept.md), [procedures](./task.md), [reference](./reference.md) |
+| The published result differs from the editor | [Publishing tools and extensions](../publishing/index.md) |
+
+Read these as needed. The same facts can appear in different documents, organized for different reader questions.
+
+## Find gaps through reader questions {#clarify}
+
+| Reader question | Facts to establish |
+| --- | --- |
+| Waiting time or execution time? | Object and start/end of measurement |
+| Seconds or milliseconds? | Unit, type and range |
+| Does zero mean no wait or no limit? | Special values |
+| Who is affected by a change? | Scope and timing |
+| What happens after a timeout? | Error, transaction and connection state |
+
+Check version-specific documentation, source or tests before rewriting. Record unknown behavior rather than filling gaps with confident guesses.
+
+:::note Rewritten example: fictional service
+`query_timeout` limits one query's execution time in seconds. Its default is `30`; it accepts integers from 0 to 3600, with 0 meaning no time limit.
+
+A change applies to queries subsequently started in the current session. Running queries are unaffected. At the limit, the query stops and returns `QUERY_TIMEOUT`.
+
+Transaction rollback, connection reuse and current-value verification still need confirmation.
+:::
+
+Greater specificity does not prove accuracy. The unresolved questions are part of the explanation.
+
+## Follow the reader's sequence {#order}
+
+Usually describe prerequisites and impact, then actions, then verification. Put warnings before the action they concern. Keep optional history or deeper explanations in nearby supporting content.
+
+State the goal in the title, lead paragraphs with the useful conclusion, and name link destinations clearly. A short task may need only a few sentences.
+
+## Tabs: alternative forms of one task {#tabs}
+
+Tabs work when readers usually need one language or platform. Keep shared prerequisites outside them.
+
+<Tabs defaultValue="json" queryString="config-format">
+<TabItem value="json" label="JSON">
+
+```json
+{
+  "query_timeout": 30
+}
+```
+
+</TabItem>
+<TabItem value="yaml" label="YAML">
+
+```yaml
+query_timeout: 30
+```
+
+</TabItem>
+</Tabs>
+
+For simultaneous comparison, use side-by-side content or a table. Keep sequential steps together. This example records the selected tab in the URL; search, keyboard use and print output still need their own checks.
+
+## Disclosures: optional detail, visible conditions {#disclosure}
+
+A disclosure can hold background or uncommon troubleshooting if readers can complete the task without opening it. Keep required conditions, risks and verification visible.
+
+> The change applies to queries subsequently started in the current session.
+
+<details>
+<summary>Why not just say “takes effect immediately”?</summary>
+
+“Immediately” does not identify scope. Readers could think a running query changes too. State the object and timing.
+
+</details>
+
+Name the question in the disclosure title. If everything requires expansion, consider simplifying or splitting the page.
+
+## Tables: allocate width for the content {#tables}
+
+Tables compare similar information. Defaults are often short; descriptions are long. Equal widths can cause unnecessary wrapping.
+
+<TableWidthDemo locale="en" />
+
+Remove unnecessary columns before adjusting widths. Move long procedures outside cells. Preserve full content on narrow screens with scrolling inside the table. Use actual header cells rather than relying on bold text or color.
+
+<details>
+<summary>How does the column-width example work?</summary>
+
+It uses HTML `colgroup` and `table-layout: fixed`, with horizontal scrolling around the table. Choose proportions by reading the actual content.
+
+For row and column spans, see the [merged-cell examples](../markup/index.mdx?syntax=asciidoc&exercise=table-spans).
+
+</details>
+
+## Other useful forms {#other-forms}
+
+| Reader goal | Possible format | Watch for |
+| --- | --- | --- |
+| Follow a sequence | Numbered steps | Missing conditions or results |
+| Choose a branch | Decision table or flowchart | Paths without outcomes |
+| Copy configuration | Code block | Mixed input and output |
+| Understand calls | Diagram with explanation | Undefined arrows |
+| Locate a control | Annotated screenshot and menu path | No searchable text label |
+| Notice a limit | Nearby callout | Warning fatigue |
+
+## Test with a real task {#review}
+
+Ask someone unfamiliar with the content to identify the applicable version, decide whether zero is allowed and find verification instructions. Observe where they stop: hidden conditions, unexplained terms or conflicting descriptions.
+
+Those observations point to changes. Views, dwell time and clicks provide clues, but do not alone prove that documentation solved a problem.
+
+## Author's review checklist {#scorecard}
+
+These are my review questions, not an industry scoring standard. Select the relevant document type and mark irrelevant items as not applicable. The controls record your judgment; they do not verify technical claims.
+
+<DocsHealthScorecard locale="en" />
+
+## What can be automated? {#ci-gates}
+
+Tools can check build failures, missing internal links and consistent terminology. Technical correctness and task completion still need review and testing.
+
+### Flag wording for review
+
+[Vale](https://vale.sh/) can flag “takes effect immediately.” It detects a phrase; it cannot decide whether the surrounding explanation is adequate or infer database behavior.
+
+Create `.vale.ini` in a separate practice directory:
+
+```ini
+StylesPath = styles
+MinAlertLevel = warning
+
+[*.md]
+BasedOnStyles = Review
+```
+
+Save this rule in `styles/Review/Scope.yml`:
+
+```yaml
+extends: existence
+message: "Check whether '%s' explains scope and timing."
+level: warning
+ignorecase: true
+tokens:
+  - takes effect immediately
+  - immediately effective
+```
+
+After installing Vale, run `vale example.md`. A warning invites review; a phrase match does not establish an error. Chinese phrase matching may require `nonword: true`; see [Vale existence rules](https://docs.vale.sh/checks/existence).
+
+[DocSifter](https://github.com/heywalter/docsifter) is another option to evaluate for Chinese review. Interpret tool and AI suggestions in context.
+
+### A build check for this repository
+
+This example uses this repository's `package.json`, lockfile and `check:docs-links` script. Adapt versions and commands for other projects. It builds the site and checks generated documentation links; it does not verify product behavior or deploy publicly.
+
+```yaml
+name: Documentation checks
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'i18n/**'
+      - 'src/**'
+      - 'static/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'docusaurus.config.ts'
+      - 'sidebars.ts'
+      - '.github/workflows/docs-checks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm check:docs-links
+```
+
+This is a workflow example you can adopt. Requiring it for merges needs repository configuration and verification. A successful build does not establish that every claim is correct.
+
+Next: [a complete procedure example](./task.md#example), [parameter reference](./reference.md), or [publishing tradeoffs](../publishing/index.md).

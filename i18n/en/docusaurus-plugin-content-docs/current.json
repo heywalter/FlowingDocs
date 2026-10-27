@@ -2,5 +2,13 @@
   "version.label": {
     "message": "Next",
     "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.文档标记语言": {
+    "message": "Document markup",
+    "description": "The label for the category 文档标记语言 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.信息表达": {
+    "message": "Information design",
+    "description": "The label for the category 信息表达 in sidebar tutorialSidebar"
   }
 }

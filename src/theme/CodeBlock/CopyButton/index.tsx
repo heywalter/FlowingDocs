@@ -11,7 +11,7 @@ import React, { useCallback, useState, useRef, useEffect } from 'react'
 
 import styles from './styles.module.css'
 
-export default function CopyButton({ code, className }: Props): JSX.Element {
+export default function CopyButton({ code, className }: Props): React.JSX.Element {
   const [isCopied, setIsCopied] = useState(false)
   const copyTimeout = useRef<number | undefined>(undefined)
   const handleCopyCode = useCallback(() => {

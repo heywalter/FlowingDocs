@@ -1,0 +1,299 @@
+.wrap {
+  --rt: #b45309;
+  --dac: var(--ifm-color-primary);
+  container-type: inline-size;
+  margin: 1.5rem 0 2.5rem;
+}
+
+[data-theme='dark'] .wrap {
+  --rt: #fbbf24;
+}
+
+.intro {
+  margin-bottom: 1.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+}
+
+.lead {
+  margin: 0.75rem 0 0;
+  line-height: 1.7;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Legend and rows share one three-column grid so the side labels line up with the descriptions. */
+.legend,
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 1.4fr) minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: center;
+}
+
+.legend {
+  align-items: end;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.legendRich,
+.legendDac {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+.legendRich {
+  justify-self: end;
+  justify-content: flex-end;
+  text-align: right;
+  color: var(--rt);
+}
+
+.legendDac {
+  justify-self: start;
+  text-align: left;
+  color: var(--dac);
+}
+
+.legendMid {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.row {
+  --tone: var(--ifm-color-emphasis-600);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.rich {
+  --tone: var(--rt);
+}
+
+.dac {
+  --tone: var(--dac);
+}
+
+.even {
+  --tone: var(--ifm-color-emphasis-600);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.pill {
+  display: inline-flex;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 13%, transparent);
+  border-radius: 999px;
+}
+
+.body {
+  grid-template-areas: 'left track right';
+  row-gap: 8px;
+}
+
+.left,
+.right {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ifm-font-color-base);
+}
+
+.left {
+  grid-area: left;
+  text-align: right;
+}
+
+.right {
+  grid-area: right;
+  text-align: left;
+}
+
+.track {
+  grid-area: track;
+  position: relative;
+  height: 8px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 999px;
+}
+
+.track::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--ifm-color-emphasis-400);
+  border-radius: 2px;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  background: var(--tone);
+  border-radius: 999px;
+  opacity: 0.85;
+  transition:
+    left 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay),
+    width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay);
+}
+
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  background: var(--ifm-background-surface-color);
+  border: 3px solid var(--tone);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tone) 16%, transparent);
+  transition: left 1s cubic-bezier(0.3, 1.25, 0.5, 1) var(--delay);
+}
+
+.inView .fill {
+  left: var(--fl);
+  width: var(--fw);
+}
+
+.inView .marker {
+  left: var(--pos);
+}
+
+.verdicts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.verdict {
+  padding: 14px 16px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--tone);
+  border-radius: 12px;
+}
+
+.verdictTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tone);
+}
+
+.verdictLabel {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.verdictText {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.note {
+  margin: 0.9rem 0 0;
+  font-size: 13px;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Narrow column: the track sits on top and the two descriptions stack below it. */
+@container (max-width: 560px) {
+  .legend,
+  .body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .legendMid {
+    display: none;
+  }
+
+  .legendRich {
+    justify-self: start;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .body {
+    grid-template-areas:
+      'track track'
+      'left right';
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .verdicts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .marker {
+    transition: none;
+  }
+}

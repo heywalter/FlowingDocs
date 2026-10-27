@@ -1,0 +1,15 @@
+.reference {
+  margin: 2rem clamp(1rem, 4vw, 4rem);
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  scroll-margin-top: 6rem;
+}
+.reference > summary { cursor: pointer; font-weight: 600; }
+.reference[open] > summary { margin-bottom: 1.2rem; }
+.reference nav { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: 1.5rem 0; }
+.reference section { scroll-margin-top: 6rem; border-top: 1px solid var(--ifm-color-emphasis-200); padding-top: 1.5rem; margin-top: 2rem; }
+.reference pre { max-width: 100%; overflow: auto; white-space: pre; }
+.reference p > a + a { margin-left: 1rem; }
+@media (max-width: 600px) { .reference { margin: 1rem; padding: 1rem; } }

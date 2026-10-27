@@ -10,7 +10,8 @@ import type { Props } from '@theme/BlogPostPage'
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata'
 import BlogPostPaginator from '@theme/BlogPostPaginator'
 import TOC from '@theme/TOC'
-import { type ReactNode } from 'react'
+import ReadingProgressBar from '@site/src/components/ReadingProgressBar'
+import { type ReactNode, useEffect } from 'react'
 
 function BlogPostPageContent({
   sidebar,
@@ -18,9 +19,29 @@ function BlogPostPageContent({
 }: {
   sidebar: BlogSidebar
   children: ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   const { metadata, toc } = useBlogPost()
   const { nextItem, prevItem, frontMatter } = metadata
+  useEffect(() => {
+    // A cold load can miss the browser's initial fragment scroll before hydration.
+    // Only compensate at the top; never move a reader who has already scrolled.
+    const frame = requestAnimationFrame(() => {
+      if (!window.location.hash || window.scrollY !== 0) return
+      let id: string
+      try {
+        id = decodeURIComponent(window.location.hash.slice(1))
+      }
+      catch {
+        return
+      }
+      const target = document.getElementById(id)
+      if (!target?.closest('article')) return
+      const top = target.getBoundingClientRect().top
+      const headerBottom = document.querySelector('.navbar')?.getBoundingClientRect().bottom ?? 0
+      if (top < headerBottom || top >= window.innerHeight) target.scrollIntoView({ block: 'start', behavior: 'instant' })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [metadata.permalink])
   const {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,
@@ -39,6 +60,7 @@ function BlogPostPageContent({
           : undefined
       }
     >
+      <ReadingProgressBar key={metadata.permalink} />
       <BlogPostItem>{children}</BlogPostItem>
 
       {(nextItem || prevItem) && (
@@ -46,13 +68,13 @@ function BlogPostPageContent({
           <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
         </div>
       )}
-      {!hideComment && <Comment />}
+      {!hideComment && <Comment title={metadata.title} description={metadata.description} />}
       <BackToTopButton />
     </BlogLayout>
   )
 }
 
-export default function BlogPostPage(props: Props): JSX.Element {
+export default function BlogPostPage(props: Props): React.JSX.Element {
   const BlogPostContent = props.content
   return (
     <BlogPostProvider content={props.content} isBlogPostPage>

@@ -8,7 +8,7 @@ import { ReadingTime } from '../Header/Info/index'
 
 import styles from './styles.module.css'
 
-export default function BlogPostItemFooter(): JSX.Element | null {
+export default function BlogPostItemFooter(): React.JSX.Element | null {
   const { metadata, isBlogPostPage } = useBlogPost()
   const { tags, title, editUrl, hasTruncateMarker, date, readingTime, authors } = metadata
 

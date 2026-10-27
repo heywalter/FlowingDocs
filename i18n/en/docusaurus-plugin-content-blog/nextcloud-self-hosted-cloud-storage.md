@@ -5,6 +5,8 @@ date: 2026-08-01
 tags: [Nextcloud, Self-Hosted, Docker, Home Server, RAG, Knowledge Base, AI, Home Lab]
 image: https://img.flowingdocs.com/images/nextcloud_self_hosted.png
 description: "Commercial cloud storage isn't always right for sensitive work files — and local storage has limits. Running Nextcloud on a spare machine turned out to cover a lot at once: cheap storage expansion, VPN access from anywhere, file version history on a timeline, and a local RAG knowledge base that's actually useful."
+homepage_title: "A private cloud on an old PC"
+homepage_description: "Turn retired hardware into a private cloud for local storage, version history, and RAG retrieval."
 ---
 
 Work files keep piling up, local storage fills fast, and commercial cloud services aren't always an option for sensitive content. I ended up deploying Nextcloud on a spare machine — add disks whenever storage runs low, connect over VPN from anywhere, roll back any file to an earlier version, and later hooked it into a local RAG system. It does a lot more than I expected.

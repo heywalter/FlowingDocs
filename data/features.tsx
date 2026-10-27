@@ -25,20 +25,20 @@ const FEATURES: FeatureItem[] = [
       <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-1 shadow-xl transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/25 dark:from-slate-900 dark:via-blue-900/50 dark:to-indigo-900/30">
         {/* 外层光晕效果 */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-purple-400/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        
+
         {/* 内容区域 */}
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
           {/* 动态背景网格 */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] [background-size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
               {/* SVG 背景光环 */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-200/50 to-indigo-300/50 blur-xl scale-150 transition-transform duration-700 group-hover:scale-175 dark:from-blue-800/30 dark:to-indigo-700/30" />
-              
+              <div className="group-hover:scale-175 absolute inset-0 scale-150 rounded-full bg-gradient-to-br from-blue-200/50 to-indigo-300/50 blur-xl transition-transform duration-700 dark:from-blue-800/30 dark:to-indigo-700/30" />
+
               {/* SVG 容器 */}
-              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/20 bg-white/50 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 dark:border-gray-700/30 dark:bg-gray-800/50">
+              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/20 bg-white/50 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:rotate-6 group-hover:scale-110 dark:border-gray-700/30 dark:bg-gray-800/50">
                 <WebDeveloperSvg
                   className="transition-all duration-1000 group-hover:scale-105"
                   style={{
@@ -51,9 +51,9 @@ const FEATURES: FeatureItem[] = [
               </div>
             </div>
           </div>
-          
+
           {/* 底部渐变 */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-blue-50/80 to-transparent dark:from-blue-900/40" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-blue-50/80 to-transparent dark:from-blue-900/40" />
         </div>
       </div>
     ),
@@ -81,17 +81,17 @@ const FEATURES: FeatureItem[] = [
       <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-100 p-1 shadow-xl transition-all duration-700 hover:shadow-2xl hover:shadow-purple-500/25 dark:from-violet-900 dark:via-purple-900/50 dark:to-fuchsia-900/30">
         {/* AI 主题的动态背景 */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400/20 via-pink-400/20 to-violet-400/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        
+
         {/* 内容区域 */}
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
               {/* AI 光环效果 */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-200/60 to-pink-300/60 blur-2xl scale-150 transition-transform duration-700 group-hover:scale-175 group-hover:rotate-180 dark:from-purple-800/40 dark:to-pink-700/40" />
-              
+              <div className="group-hover:scale-175 absolute inset-0 scale-150 rounded-full bg-gradient-to-br from-purple-200/60 to-pink-300/60 blur-2xl transition-transform duration-700 group-hover:rotate-180 dark:from-purple-800/40 dark:to-pink-700/40" />
+
               {/* SVG 容器 */}
-              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br from-white/60 to-purple-50/80 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:scale-110 group-hover:-rotate-12 dark:border-gray-700/30 dark:from-gray-800/60 dark:to-purple-900/80">
+              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br from-white/60 to-purple-50/80 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:-rotate-12 group-hover:scale-110 dark:border-gray-700/30 dark:from-gray-800/60 dark:to-purple-900/80">
                 <SpiderSvg
                   className="transition-all duration-1000 group-hover:scale-105 group-hover:hue-rotate-15"
                   style={{
@@ -104,9 +104,9 @@ const FEATURES: FeatureItem[] = [
               </div>
             </div>
           </div>
-          
+
           {/* 底部渐变 */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-purple-50/80 to-transparent dark:from-purple-900/40" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-purple-50/80 to-transparent dark:from-purple-900/40" />
         </div>
       </div>
     ),
@@ -134,17 +134,17 @@ const FEATURES: FeatureItem[] = [
       <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-100 p-1 shadow-xl transition-all duration-700 hover:shadow-2xl hover:shadow-emerald-500/25 dark:from-emerald-900 dark:via-teal-900/50 dark:to-cyan-900/30">
         {/* 用户旅程主题背景 */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-cyan-400/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        
+
         {/* 内容区域 */}
         <div className="relative h-56 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl dark:bg-gray-900/90">
           {/* 主要内容 */}
           <div className="flex h-full items-center justify-center p-8">
             <div className="relative">
               {/* 用户体验光环 */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-200/60 to-cyan-300/60 blur-2xl scale-150 transition-transform duration-700 group-hover:scale-175 group-hover:rotate-90 dark:from-emerald-800/40 dark:to-cyan-700/40" />
-              
+              <div className="group-hover:scale-175 absolute inset-0 scale-150 rounded-full bg-gradient-to-br from-emerald-200/60 to-cyan-300/60 blur-2xl transition-transform duration-700 group-hover:rotate-90 dark:from-emerald-800/40 dark:to-cyan-700/40" />
+
               {/* SVG 容器 */}
-              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br from-white/60 to-emerald-50/80 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:scale-110 group-hover:rotate-3 dark:border-gray-700/30 dark:from-gray-800/60 dark:to-emerald-900/80">
+              <div className="relative flex size-28 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br from-white/60 to-emerald-50/80 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 dark:border-gray-700/30 dark:from-gray-800/60 dark:to-emerald-900/80">
                 <OpenSourceSvg
                   className="transition-all duration-1000 group-hover:scale-105"
                   style={{
@@ -157,9 +157,9 @@ const FEATURES: FeatureItem[] = [
               </div>
             </div>
           </div>
-          
+
           {/* 底部渐变 */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-emerald-50/80 to-transparent dark:from-emerald-900/40" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-emerald-50/80 to-transparent dark:from-emerald-900/40" />
         </div>
       </div>
     ),

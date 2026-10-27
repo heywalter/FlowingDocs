@@ -42,7 +42,7 @@
 .tagListItem {
   user-select: none;
   white-space: nowrap;
-  height: 32px;
+  min-height: 36px;
   font-size: 0.8rem;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
@@ -51,3 +51,7 @@
 .tagListItem:last-child {
   margin-right: 0;
 }
+
+.headingRow { flex-wrap: wrap; gap: 12px; }
+.headingText h2 { font-size: 18px; }
+.headingText span { font-size: 13px; color: var(--site-muted); }

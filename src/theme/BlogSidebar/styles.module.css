@@ -1,0 +1,22 @@
+.sidebar { min-width: 0; align-self: start; position: sticky; top: calc(var(--ifm-navbar-height) + 24px); }
+.content { display: flex; flex-direction: column; max-height: calc(100dvh - var(--ifm-navbar-height) - 48px); }
+.toggle { display: none; }
+.back { display: inline-flex; align-items: center; gap: 8px; color: var(--site-muted); font-size: 13px; margin-bottom: 24px; }
+.title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 14px; margin: 0 0 16px; }
+.title span { font-size: 12px; font-weight: 400; color: var(--site-muted); }
+.posts { overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; padding-right: 10px; }
+.list { list-style: none; padding: 0; margin: 0; }
+.item { margin: 0 0 4px; }
+.link { display: block; padding: 10px 12px; border-left: 2px solid transparent; border-radius: 0 4px 4px 0; color: var(--site-muted); font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.link:hover { color: var(--site-accent); background: var(--site-panel); text-decoration: none; }
+.link.active { color: var(--site-accent); border-left-color: var(--site-accent); background: color-mix(in srgb, var(--site-accent) 7%, transparent); font-weight: 600; }
+.year { margin: 20px 0 8px; font-size: 13px; color: var(--site-muted); font-variant-numeric: tabular-nums; }
+.more { display: flex; gap: 20px; padding: 16px 0 0; margin-top: 14px; border-top: 1px solid var(--site-rule); font-size: 13px; }
+@media (max-width: 1199px) {
+  .sidebar { position: static; grid-column: 1 / -1; margin-bottom: 24px; }
+  .toggle { display: flex; justify-content: space-between; gap: 20px; width: 100%; align-items: center; min-height: 44px; padding: 10px 0; font: inherit; font-size: 14px; color: var(--site-muted); background: transparent; border: 0; border-bottom: 1px solid var(--site-rule); cursor: pointer; }
+  .toggle[aria-expanded='true'] svg { transform: rotate(180deg); }
+  .content { display: none; padding: 20px 16px; border: 1px solid var(--site-rule); border-top: 0; border-radius: 0 0 6px 6px; background: var(--site-panel); max-height: 60dvh; }
+  .content.open { display: flex; }
+  .back { margin-bottom: 18px; }
+}

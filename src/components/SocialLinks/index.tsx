@@ -19,7 +19,7 @@ interface Props {
   href: string
   title: string
   color?: string
-  icon: string | JSX.Element
+  icon: string | React.JSX.Element
   qrcode?: string
   [key: string]: unknown
 }

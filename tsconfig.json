@@ -1,7 +1,10 @@
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "baseUrl": ".",
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
@@ -24,7 +27,9 @@
     "noUnusedParameters": false,
     "importsNotUsedAsValues": "remove",
     "moduleResolution": "Bundler",
-    "skipLibCheck": false
+    "skipLibCheck": true
   },
-  "exclude": ["src/sw.js"]
+  "exclude": [
+    "src/sw.js"
+  ]
 }

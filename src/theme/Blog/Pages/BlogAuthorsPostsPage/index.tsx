@@ -18,7 +18,7 @@ function getAuthorPageDescription(author: Props['author'], locale: string): stri
   return getBlogAuthorDescription(locale, author.name)
 }
 
-export default function BlogAuthorsPostsPageWrapper(props: Props): JSX.Element {
+export default function BlogAuthorsPostsPageWrapper(props: Props): React.JSX.Element {
   const {
     i18n: { currentLocale },
   } = useDocusaurusContext()

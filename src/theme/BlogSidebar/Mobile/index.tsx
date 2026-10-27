@@ -19,7 +19,7 @@ const ListComponent: BlogSidebarContentProps['ListComponent'] = ({ items }) => {
   )
 }
 
-function BlogSidebarMobileSecondaryMenu({ sidebar }: Props): JSX.Element {
+function BlogSidebarMobileSecondaryMenu({ sidebar }: Props): React.JSX.Element {
   const items = useVisibleBlogSidebarItems(sidebar.items)
   return (
     <BlogSidebarContent
@@ -30,7 +30,7 @@ function BlogSidebarMobileSecondaryMenu({ sidebar }: Props): JSX.Element {
   )
 }
 
-function BlogSidebarMobile(props: Props): JSX.Element {
+function BlogSidebarMobile(props: Props): React.JSX.Element {
   return <NavbarSecondaryMenuFiller component={BlogSidebarMobileSecondaryMenu} props={props} />
 }
 

@@ -3,7 +3,7 @@ import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal'
 import IconMenu from '@theme/Icon/Menu'
 import React from 'react'
 
-export default function MobileSidebarToggle(): JSX.Element {
+export default function MobileSidebarToggle(): React.JSX.Element {
   const { toggle, shown } = useNavbarMobileSidebar()
   return (
     <button
