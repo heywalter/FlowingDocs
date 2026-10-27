@@ -69,148 +69,148 @@ export default function Scene({ running, reduced }: Props) {
     return () => ro.disconnect()
   }, [])
 
-  if (!paths.p1) return null
-
   return (
     <div ref={containerRef} className={styles.scene} aria-hidden="true">
-      <svg className={styles.pipelineSvg} xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="streamGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--journey-stream-start, #8f85f3)" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="var(--journey-stream-mid, #6344ff)" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="var(--journey-stream-end, #a855f7)" stopOpacity="0.3" />
-          </linearGradient>
-          <linearGradient id="streamGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--journey-stream-mid, #6344ff)" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="var(--journey-stream-pulse, #38bdf8)" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="var(--journey-stream-end, #10b981)" stopOpacity="0.4" />
-          </linearGradient>
-          <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+      {paths.p1 && (
+        <svg className={styles.pipelineSvg} xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="streamGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="var(--journey-stream-start, #8f85f3)" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="var(--journey-stream-mid, #6344ff)" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="var(--journey-stream-end, #a855f7)" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="streamGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="var(--journey-stream-mid, #6344ff)" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="var(--journey-stream-pulse, #38bdf8)" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="var(--journey-stream-end, #10b981)" stopOpacity="0.4" />
+            </linearGradient>
+            <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
 
-        {/* Base connecting channels */}
-        <path d={paths.p1} className={styles.channelBase} />
-        <path d={paths.p2} className={styles.channelBase} />
-        <path d={paths.p3} className={styles.channelBase} />
-        <path d={paths.p4} className={styles.channelBase} />
-        <path d={paths.p5} className={styles.channelBase} />
-        <path d={paths.p6} className={styles.channelBase} />
+          {/* Base connecting channels */}
+          <path d={paths.p1} className={styles.channelBase} />
+          <path d={paths.p2} className={styles.channelBase} />
+          <path d={paths.p3} className={styles.channelBase} />
+          <path d={paths.p4} className={styles.channelBase} />
+          <path d={paths.p5} className={styles.channelBase} />
+          <path d={paths.p6} className={styles.channelBase} />
 
-        {/* Active streaming beams */}
-        <path
-          d={paths.p1}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad1)"
-        />
-        <path
-          d={paths.p2}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad1)"
-        />
-        <path
-          d={paths.p3}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad1)"
-        />
+          {/* Active streaming beams */}
+          <path
+            d={paths.p1}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad1)"
+          />
+          <path
+            d={paths.p2}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad1)"
+          />
+          <path
+            d={paths.p3}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad1)"
+          />
 
-        <path
-          d={paths.p4}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad2)"
-        />
-        <path
-          d={paths.p5}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad2)"
-        />
-        <path
-          d={paths.p6}
-          className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
-          stroke="url(#streamGrad2)"
-        />
+          <path
+            d={paths.p4}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad2)"
+          />
+          <path
+            d={paths.p5}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad2)"
+          />
+          <path
+            d={paths.p6}
+            className={`${styles.streamLine} ${running ? styles.streamingFast : styles.streamingIdle}`}
+            stroke="url(#streamGrad2)"
+          />
 
-        {/* Animated conveyor chips: multiple files assembling into engine and outputs */}
-        {!reduced && (
-          <>
-            {/* Input chips from Source to Engine */}
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p1} dur={running ? '1.4s' : '4.6s'} repeatCount="indefinite" />
-              <rect x="-30" y="-10" width="60" height="20" rx="5" fill="var(--card-bg)" stroke="#8167ff" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#8167ff" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                start.md
-              </text>
-            </g>
+          {/* Animated conveyor chips: multiple files assembling into engine and outputs */}
+          {!reduced && (
+            <>
+              {/* Input chips from Source to Engine */}
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p1} dur={running ? '1.4s' : '4.6s'} repeatCount="indefinite" />
+                <rect x="-30" y="-10" width="60" height="20" rx="5" fill="var(--card-bg)" stroke="#8167ff" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#8167ff" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  start.md
+                </text>
+              </g>
 
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p2} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.25s' : '0.9s'} repeatCount="indefinite" />
-              <rect x="-34" y="-10" width="68" height="20" rx="5" fill="var(--card-bg)" stroke="#a855f7" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#a855f7" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                sidebars.ts
-              </text>
-            </g>
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p2} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.25s' : '0.9s'} repeatCount="indefinite" />
+                <rect x="-34" y="-10" width="68" height="20" rx="5" fill="var(--card-bg)" stroke="#a855f7" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#a855f7" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  sidebars.ts
+                </text>
+              </g>
 
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p3} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.5s' : '1.8s'} repeatCount="indefinite" />
-              <rect x="-32" y="-10" width="64" height="20" rx="5" fill="var(--card-bg)" stroke="#6344ff" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#6344ff" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                theme.css
-              </text>
-            </g>
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p3} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.5s' : '1.8s'} repeatCount="indefinite" />
+                <rect x="-32" y="-10" width="64" height="20" rx="5" fill="var(--card-bg)" stroke="#6344ff" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#6344ff" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  theme.css
+                </text>
+              </g>
 
-            {/* Output chips from Engine to Browser */}
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p4} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.2s' : '0.8s'} repeatCount="indefinite" />
-              <rect x="-33" y="-10" width="66" height="20" rx="5" fill="var(--card-bg)" stroke="#10b981" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#10b981" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                index.html
-              </text>
-            </g>
+              {/* Output chips from Engine to Browser */}
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p4} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.2s' : '0.8s'} repeatCount="indefinite" />
+                <rect x="-33" y="-10" width="66" height="20" rx="5" fill="var(--card-bg)" stroke="#10b981" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#10b981" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  index.html
+                </text>
+              </g>
 
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p5} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.45s' : '1.7s'} repeatCount="indefinite" />
-              <rect x="-31" y="-10" width="62" height="20" rx="5" fill="var(--card-bg)" stroke="#38bdf8" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#38bdf8" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                bundle.js
-              </text>
-            </g>
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p5} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.45s' : '1.7s'} repeatCount="indefinite" />
+                <rect x="-31" y="-10" width="62" height="20" rx="5" fill="var(--card-bg)" stroke="#38bdf8" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#38bdf8" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  bundle.js
+                </text>
+              </g>
 
-            <g className={styles.chipNode}>
-              <animateMotion path={paths.p6} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.7s' : '2.6s'} repeatCount="indefinite" />
-              <rect x="-31" y="-10" width="62" height="20" rx="5" fill="var(--card-bg)" stroke="#10b981" strokeWidth="1.2" />
-              <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#10b981" fontFamily="ui-monospace, SFMono-Regular, monospace">
-                style.css
-              </text>
-            </g>
+              <g className={styles.chipNode}>
+                <animateMotion path={paths.p6} dur={running ? '1.4s' : '4.6s'} begin={running ? '0.7s' : '2.6s'} repeatCount="indefinite" />
+                <rect x="-31" y="-10" width="62" height="20" rx="5" fill="var(--card-bg)" stroke="#10b981" strokeWidth="1.2" />
+                <text x="0" y="3.5" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="#10b981" fontFamily="ui-monospace, SFMono-Regular, monospace">
+                  style.css
+                </text>
+              </g>
 
-            {/* Animated packet pulses on active compilation */}
-            {running && (
-              <>
-                <circle r="4" fill="#a855f7" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p1} dur="1.2s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#6344ff" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p2} dur="1.2s" begin="0.2s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#8f85f3" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p3} dur="1.2s" begin="0.4s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#38bdf8" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p4} dur="1.2s" begin="0.6s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#10b981" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p5} dur="1.2s" begin="0.8s" repeatCount="indefinite" />
-                </circle>
-                <circle r="4" fill="#38bdf8" filter="url(#glowEffect)" className={styles.particle}>
-                  <animateMotion path={paths.p6} dur="1.2s" begin="1.0s" repeatCount="indefinite" />
-                </circle>
-              </>
-            )}
-          </>
-        )}
-      </svg>
+              {/* Animated packet pulses on active compilation */}
+              {running && (
+                <>
+                  <circle r="4" fill="#a855f7" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p1} dur="1.2s" repeatCount="indefinite" />
+                  </circle>
+                  <circle r="4" fill="#6344ff" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p2} dur="1.2s" begin="0.2s" repeatCount="indefinite" />
+                  </circle>
+                  <circle r="4" fill="#8f85f3" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p3} dur="1.2s" begin="0.4s" repeatCount="indefinite" />
+                  </circle>
+                  <circle r="4" fill="#38bdf8" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p4} dur="1.2s" begin="0.6s" repeatCount="indefinite" />
+                  </circle>
+                  <circle r="4" fill="#10b981" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p5} dur="1.2s" begin="0.8s" repeatCount="indefinite" />
+                  </circle>
+                  <circle r="4" fill="#38bdf8" filter="url(#glowEffect)" className={styles.particle}>
+                    <animateMotion path={paths.p6} dur="1.2s" begin="1.0s" repeatCount="indefinite" />
+                  </circle>
+                </>
+              )}
+            </>
+          )}
+        </svg>
+      )}
     </div>
   )
 }
