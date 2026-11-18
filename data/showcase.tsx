@@ -49,6 +49,31 @@ const Showcase = [
   },
   {
     title: translate({
+      message: 'Antigravity Context Monitor - 上下文与 TTFT 观测',
+      id: 'showcase.context-monitor.title',
+    }),
+    description: (
+      <>
+        {translate({
+          message: '给 Google Antigravity（Desktop 与 CLI）补上只读实时观测：按 Auto (256K) 压缩水位标定容量与 Base/Growth 增量，并查看 Prompt Cache 命中率、Avg/Last TTFT、tok/s 与 12 周活动热力图。',
+          id: 'showcase.context-monitor.description',
+        })}
+      </>
+    ),
+    preview: '/blog-images/context-monitor-banner.png',
+    url: translate({
+      message: '/demos/context-monitor/index.html',
+      id: 'showcase.context-monitor.demoUrl',
+    }),
+    article: translate({
+      message: '/blog/antigravity-context-monitor-open-source',
+      id: 'showcase.context-monitor.articleUrl',
+    }),
+    source: 'https://github.com/heywalter/antigravity-context-monitor',
+    tags: ['favorite', 'open_source', 'ai', 'dx'],
+  },
+  {
+    title: translate({
       message: 'DSH Domain Proxy - 域名分流与耗时观测',
       id: 'showcase.dsh-proxy.title',
     }),
