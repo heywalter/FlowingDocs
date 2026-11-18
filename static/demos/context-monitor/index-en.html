@@ -1,0 +1,1410 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#faf8f4" id="meta-theme-color">
+<meta name="description" content="Interactive demo for Antigravity Context Monitor: a read-only plugin for Google Antigravity (Desktop & CLI) tracking Auto 256K headroom, Base/Growth tokens, Prompt Cache, TTFT, and output speed.">
+<title>Antigravity Context Monitor — Interactive Demo · Flowing Docs</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TW8Q38798D"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TW8Q38798D', {'anonymize_ip': true});
+try {
+  const saved = localStorage.getItem('fd_demo_theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+} catch {}
+</script>
+<style>
+:root {
+  --paper: #faf8f4;
+  --panel: #fffefa;
+  --tint: #f3f0e8;
+  --tint-2: #ebe6db;
+  --ink: #151722;
+  --ink-2: #3a3d4a;
+  --muted: #65656e;
+  --rule: #dbd8d2;
+  --accent: #5830ec;
+  --accent-hover: #4620cc;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(88, 48, 236, 0.075);
+  --numeral: #c9bdeb;
+
+  --win-bg: #ffffff;
+  --win-titlebar: #f6f6f7;
+  --win-body: #fbfbfc;
+  --win-border: rgba(21, 23, 34, 0.11);
+  --win-shadow: 0 18px 44px rgba(21, 23, 34, 0.08), 0 2px 8px rgba(21, 23, 34, 0.04);
+  --hud-bg: rgba(252, 252, 253, 0.96);
+  --hud-card: #f3f4f6;
+  --hud-card-border: rgba(21, 23, 34, 0.085);
+  --hud-seg: #e8e9ec;
+  --hud-seg-active: #ffffff;
+  --hud-pill-bg: #f5f9ff;
+  --hud-pill-border: #6ba5f2;
+
+  --c-base: #0ea5e9;
+  --c-growth: #6366f1;
+  --c-in: #14b8a6;
+  --c-ok: #15803d;
+  --c-ok-bg: rgba(21, 128, 61, 0.1);
+  --c-info: #0369a1;
+  --c-info-bg: #e0f2fe;
+  --c-warn: #b45309;
+  --c-warn-bg: #fef3c7;
+  --c-crit: #b91c1c;
+  --c-crit-bg: #fee2e2;
+
+  --code-bg: #f4f2ec;
+  --code-fg: #1f2330;
+
+  --display: Georgia, 'Times New Roman', serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-theme="dark"] {
+  --paper: #201f23;
+  --panel: #28262c;
+  --tint: #19181c;
+  --tint-2: #323038;
+  --ink: #f2efe9;
+  --ink-2: #d5d1cb;
+  --muted: #b7b3bd;
+  --rule: #45414b;
+  --accent: #b4a0ff;
+  --accent-hover: #cec1ff;
+  --accent-fg: #1d1633;
+  --accent-soft: rgba(180, 160, 255, 0.13);
+  --numeral: #887ba9;
+
+  --win-bg: #252429;
+  --win-titlebar: #2d2b32;
+  --win-body: #222126;
+  --win-border: rgba(255, 255, 255, 0.11);
+  --win-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+  --hud-bg: rgba(38, 37, 43, 0.98);
+  --hud-card: #302e36;
+  --hud-card-border: rgba(255, 255, 255, 0.09);
+  --hud-seg: #1d1c21;
+  --hud-seg-active: #3a3842;
+  --hud-pill-bg: rgba(56, 189, 248, 0.12);
+  --hud-pill-border: rgba(96, 165, 250, 0.65);
+
+  --c-ok: #4ade80;
+  --c-ok-bg: rgba(74, 222, 128, 0.14);
+  --c-info: #7dd3fc;
+  --c-info-bg: rgba(56, 189, 248, 0.16);
+  --c-warn: #fbbf24;
+  --c-warn-bg: rgba(251, 191, 36, 0.16);
+  --c-crit: #fca5a5;
+  --c-crit-bg: rgba(239, 68, 68, 0.2);
+
+  --code-bg: #18171b;
+  --code-fg: #eae6df;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .2s ease, color .2s ease;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+h1, h2, h3, h4, p { margin: 0; }
+code, pre, .mono { font-family: var(--mono); }
+:where(a, button, input, select):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.skip {
+  position: fixed; top: -90px; left: 20px; z-index: 100;
+  background: var(--accent); color: var(--accent-fg);
+  padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: 600;
+}
+.skip:focus { top: 16px; }
+
+.page {
+  width: calc(100% - 96px);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-inner {
+  width: calc(100% - 96px);
+  max-width: 1240px;
+  min-height: 76px;
+  margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  padding: 10px 0;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 11px;
+  font-weight: 650; font-size: 16px; letter-spacing: -0.015em;
+}
+.brand img { width: 26px; height: 26px; border-radius: 6px; }
+.brand-sep { color: var(--rule); font-weight: 400; }
+.brand-parent { font-size: 13px; color: var(--muted); font-weight: 500; }
+.brand:hover .brand-parent { color: var(--accent); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 24px;
+  font-size: 14px; color: var(--muted);
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.ghost-link {
+  padding: 6px 11px; border-radius: 6px;
+  color: var(--muted); border: 1px solid transparent;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.ghost-link:hover { color: var(--ink); border-color: var(--rule); background: var(--panel); }
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 6px;
+  border: 1px solid var(--rule); background: var(--panel);
+  color: var(--muted); font-size: 14px;
+}
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+.gh-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: 6px;
+  background: var(--accent); color: var(--accent-fg);
+  font-weight: 600; font-size: 13px;
+  transition: background .16s;
+}
+.gh-link:hover { background: var(--accent-hover); }
+
+.hero {
+  padding: 50px 0 54px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+  gap: 44px;
+  align-items: center;
+}
+.kicker {
+  font: 11.5px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.kicker::before {
+  content: ""; width: 22px; height: 1.5px; background: var(--accent); display: inline-block;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(32px, 3.7vw, 50px);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+.hero-lead {
+  font-size: 16.5px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 540px;
+  margin-bottom: 22px;
+}
+.hero-lead code {
+  font-size: 0.9em; padding: 2px 6px; border-radius: 4px;
+  background: var(--tint); color: var(--ink);
+}
+.meta-specs {
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 26px;
+  font: 12.5px var(--mono);
+  color: var(--ink-2);
+}
+.meta-specs span::before {
+  content: "· "; color: var(--accent); font-weight: 700;
+}
+.hero-actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 22px;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--accent-fg);
+  padding: 11px 22px; min-height: 44px; border-radius: 6px;
+  font-size: 15px; font-weight: 600;
+  transition: background .16s;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.text-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--accent); font-size: 15px; font-weight: 500;
+  padding: 4px 0;
+}
+.text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+.mac-window {
+  border-radius: 12px;
+  border: 1px solid var(--win-border);
+  background: var(--win-bg);
+  box-shadow: var(--win-shadow);
+  overflow: hidden;
+}
+.mac-titlebar {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 14px;
+  background: var(--win-titlebar);
+  border-bottom: 1px solid var(--win-border);
+}
+.traffic { display: flex; gap: 7px; align-items: center; flex: none; }
+.traffic span { width: 11px; height: 11px; border-radius: 50%; border: 0.5px solid rgba(0,0,0,0.12); }
+.traffic .r { background: #ff5f57; }
+.traffic .y { background: #febc2e; }
+.traffic .g { background: #28c840; }
+.mac-win-title {
+  font-size: 12.5px; font-weight: 500; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.hud-capsule {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 11px; border-radius: 999px;
+  background: var(--hud-pill-bg);
+  border: 1.2px solid var(--hud-pill-border);
+  font-size: 11.5px; color: var(--ink);
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+  transition: border-color .2s, background .2s;
+}
+.hud-capsule.tone-warn { border-color: #d97706; background: var(--c-warn-bg); }
+.hud-capsule.tone-crit { border-color: #dc2626; background: var(--c-crit-bg); }
+.capsule-ring { width: 14px; height: 14px; flex: none; transform: rotate(-90deg); }
+.capsule-ring circle { fill: none; stroke-width: 2.3; }
+.capsule-ring .bg { stroke: rgba(100, 116, 139, 0.24); }
+.capsule-ring .fg { stroke: #0284c7; stroke-linecap: round; transition: stroke-dashoffset .28s, stroke .2s; }
+.capsule-sep { color: var(--rule); margin: 0 1px; }
+.capsule-muted { color: var(--muted); }
+
+.mac-body { padding: 20px 20px 16px; background: var(--win-body); }
+.chat-user {
+  margin-left: auto; max-width: 84%;
+  padding: 10px 14px; border-radius: 12px;
+  background: var(--tint);
+  color: var(--ink); font-size: 13.5px; line-height: 1.6;
+  margin-bottom: 12px;
+}
+.chat-agent {
+  font-size: 13.5px; line-height: 1.68; color: var(--ink-2);
+  padding: 12px 14px; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--rule);
+  margin-bottom: 14px;
+}
+.stage-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  padding-top: 10px; border-top: 1px solid var(--rule);
+  font-size: 12px; color: var(--muted);
+}
+.density-pills {
+  display: inline-flex; gap: 3px; padding: 2px;
+  border-radius: 7px; background: var(--hud-seg);
+}
+.density-pills button {
+  font: 11px var(--mono); padding: 4px 9px; border-radius: 5px; color: var(--muted);
+}
+.density-pills button.active {
+  background: var(--hud-seg-active); color: var(--ink); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.section { padding: 52px 0; border-bottom: 1px solid var(--rule); }
+.section-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-size: clamp(24px, 2.7vw, 34px);
+  font-weight: 700; line-height: 1.26; letter-spacing: -0.02em;
+}
+.section-head p { color: var(--muted); max-width: 520px; font-size: 15px; line-height: 1.75; }
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 32px; align-items: start;
+}
+.editorial-panel {
+  background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 10px; padding: 24px;
+}
+.step-label {
+  font-size: 13px; font-weight: 650; color: var(--ink);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin-bottom: 12px;
+}
+.preset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px; }
+.preset-btn {
+  text-align: left; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid var(--rule); background: var(--paper);
+  transition: border-color .16s, background .16s;
+}
+.preset-btn:hover { border-color: var(--muted); }
+.preset-btn.active { border-color: var(--accent); background: var(--accent-soft); }
+.preset-btn .p-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px; }
+.preset-btn .p-name { font-size: 13.5px; font-weight: 650; color: var(--ink); }
+.p-tag { font: 11px var(--mono); font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+.p-tag.ok { background: var(--c-ok-bg); color: var(--c-ok); }
+.p-tag.warn { background: var(--c-warn-bg); color: var(--c-warn); }
+.p-tag.crit { background: var(--c-crit-bg); color: var(--c-crit); }
+.preset-btn .p-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+.control-group { padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--rule); }
+.control-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.control-val { font: 12.5px var(--mono); color: var(--accent); font-weight: 600; }
+input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+.turn-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.turn-chip {
+  font: 11.5px var(--mono); padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--muted);
+}
+.turn-chip:hover { color: var(--ink); border-color: var(--muted); }
+.turn-chip.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
+.calib-note {
+  margin-top: 14px; padding: 14px 16px; border-radius: 8px;
+  background: var(--tint); border: 1px solid var(--rule);
+  font-size: 13.5px; line-height: 1.68; color: var(--ink-2);
+}
+.calib-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.calib-box {
+  padding: 9px 12px; border-radius: 6px;
+  background: var(--panel); border: 1px solid var(--rule);
+  font: 12px var(--mono);
+}
+.calib-box span { display: block; font-size: 11.5px; color: var(--muted); font-family: var(--sans); margin-bottom: 2px; }
+
+.hud-popover {
+  border-radius: 16px; border: 1px solid var(--win-border);
+  background: var(--hud-bg); box-shadow: var(--win-shadow); padding: 16px;
+}
+.pop-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.pop-title-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; flex: none; }
+.status-dot.live { background: #22c55e; }
+.pop-title { font-size: 14.5px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pop-model {
+  font: 11px var(--mono); color: var(--ink-2);
+  padding: 2px 8px; border-radius: 6px;
+  background: var(--hud-card); border: 1px solid var(--hud-card-border);
+}
+.pop-meta { font: 11.5px var(--mono); color: var(--muted); margin-bottom: 12px; }
+
+.pop-tabs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+  padding: 3px; border-radius: 9px; background: var(--hud-seg); margin-bottom: 14px;
+}
+.pop-tabs button {
+  padding: 5px 8px; border-radius: 6px; font-size: 12.5px; font-weight: 550; color: var(--muted);
+  transition: background .14s, color .14s;
+}
+.pop-tabs button.active {
+  background: var(--hud-seg-active); color: var(--ink); font-weight: 650;
+  box-shadow: 0 1px 2.5px rgba(0,0,0,0.08);
+}
+
+.hud-box {
+  border-radius: 11px; border: 1px solid var(--hud-card-border);
+  background: var(--hud-card); padding: 12px 13px; margin-bottom: 9px;
+}
+.box-top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: var(--muted); margin-bottom: 4px;
+}
+.ctx-main { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+.ctx-main .big { font-size: 20px; font-weight: 750; letter-spacing: -0.02em; color: var(--ink); }
+.ctx-main .big small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.pct-pill {
+  font: 12px var(--mono); font-weight: 700; padding: 2px 9px; border-radius: 999px;
+  background: var(--c-info-bg); color: var(--c-info);
+}
+.pct-pill.warn { background: var(--c-warn-bg); color: var(--c-warn); }
+.pct-pill.crit { background: var(--c-crit-bg); color: var(--c-crit); }
+
+.bar-track {
+  height: 8px; border-radius: 999px; background: rgba(148, 163, 184, 0.24);
+  overflow: hidden; display: flex; margin-bottom: 9px;
+}
+.bar-base { background: var(--c-base); height: 100%; transition: width .25s; }
+.bar-growth { background: var(--c-growth); height: 100%; transition: width .25s; }
+.bar-out { background: var(--c-in); height: 100%; transition: width .25s; }
+
+.legend-row {
+  display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+  font: 11.5px var(--mono); color: var(--muted); margin-bottom: 5px;
+}
+.legend-row strong { color: var(--ink); font-weight: 600; }
+.leg-dot { display: inline-block; width: 7px; height: 7px; border-radius: 2px; margin-right: 5px; }
+.comp-note { font-size: 11.5px; color: var(--c-ok); font-weight: 550; }
+
+.metrics-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 9px; }
+.metric-card {
+  border-radius: 10px; border: 1px solid var(--hud-card-border);
+  background: var(--hud-card); padding: 10px 11px;
+}
+.metric-card .m-lbl { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.metric-card .m-val { font-size: 16.5px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em; }
+.metric-card .m-sub { font: 10.5px var(--mono); color: var(--muted); margin-top: 2px; }
+
+.pop-foot { display: flex; gap: 8px; margin-top: 11px; }
+.pop-select {
+  flex: 1; padding: 6px 10px; border-radius: 7px;
+  border: 1px solid var(--hud-card-border);
+  background: var(--hud-card); font-size: 12px; color: var(--ink);
+}
+.pop-copy-btn {
+  padding: 6px 13px; border-radius: 7px;
+  border: 1px solid var(--hud-card-border);
+  background: var(--hud-seg); font-size: 12px; font-weight: 600; color: var(--ink);
+}
+.pop-copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.hm-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 650; margin-bottom: 8px; }
+.hm-scale { display: flex; align-items: center; gap: 4px; font-size: 10.5px; color: var(--muted); font-weight: 400; }
+.hm-scale i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.hm-wrap { display: flex; gap: 6px; align-items: stretch; }
+.hm-days { display: grid; grid-template-rows: repeat(7, 1fr); gap: 3px; font: 10px var(--mono); color: var(--muted); padding-right: 2px; }
+.hm-days span { display: flex; align-items: center; }
+.hm-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(7, 12px); grid-auto-flow: column; gap: 3px; flex: 1; }
+.hm-cell { border-radius: 2.5px; transition: transform .1s; }
+.hm-cell:hover { transform: scale(1.18); outline: 1.5px solid var(--ink); }
+.hm-c0 { background: rgba(148, 163, 184, 0.24); }
+.hm-c1 { background: #a5f3fc; }
+.hm-c2 { background: #38bdf8; }
+.hm-c3 { background: #14b8a6; }
+.hm-c4 { background: #10b981; }
+html[data-theme="dark"] .hm-c1 { background: rgba(56, 189, 248, 0.3); }
+html[data-theme="dark"] .hm-c2 { background: rgba(56, 189, 248, 0.56); }
+.hm-tooltip { margin-top: 8px; font: 11px var(--mono); color: var(--muted); min-height: 17px; }
+
+.set-group { margin-bottom: 10px; }
+.set-group label { display: block; font-size: 11.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 4px; }
+.seg-row {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px;
+  padding: 2.5px; border-radius: 8px; background: var(--hud-seg);
+}
+.seg-row button { padding: 4.5px 5px; border-radius: 6px; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.seg-row button.active {
+  background: var(--hud-seg-active); color: var(--ink); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.gallery-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.g-tab {
+  padding: 7px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 550;
+  border: 1px solid var(--rule); background: var(--panel); color: var(--muted);
+}
+.g-tab:hover { color: var(--ink); }
+.g-tab.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.gallery-frame {
+  border-radius: 10px; border: 1px solid var(--rule);
+  background: var(--tint); padding: 22px;
+}
+.gallery-frame > img {
+  width: 100%; max-height: 560px; object-fit: contain;
+  border-radius: 8px; display: block; cursor: zoom-in;
+  box-shadow: 0 8px 28px rgba(21, 23, 34, 0.07);
+}
+.gallery-caption {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-top: 14px; font-size: 13.5px; color: var(--muted);
+}
+.gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+.g-thumb {
+  padding: 8px; border-radius: 8px; border: 1px solid var(--rule);
+  background: var(--panel); text-align: left; transition: border-color .16s;
+}
+.g-thumb:hover { border-color: var(--muted); }
+.g-thumb.active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.g-thumb img {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+  border-radius: 4px; margin-bottom: 6px; border: 1px solid var(--rule);
+}
+.g-thumb span { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+
+.arch-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.arch-col { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 16px; padding: 6px 26px; }
+.arch-col:first-child { padding-left: 0; }
+.arch-col:last-child { padding-right: 0; }
+.arch-col + .arch-col { border-left: 1px solid var(--rule); }
+.arch-num {
+  color: var(--numeral); font-family: Georgia, serif;
+  font-size: 52px; line-height: 1; letter-spacing: -0.05em; user-select: none;
+}
+.arch-col h3 { font-family: var(--display); font-size: 20px; font-weight: 700; margin: 2px 0 8px; color: var(--ink); }
+.arch-col p { font-size: 14.5px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+.arch-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 5px;
+  font: 12px var(--mono); color: var(--ink-2);
+}
+.arch-list li::before { content: "→ "; color: var(--accent); }
+
+.install-section { padding: 52px 0 58px; }
+.install-grid {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 34px; align-items: center;
+  padding: 30px; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--rule);
+}
+.install-grid > div { min-width: 0; }
+.install-grid h2 { font-family: var(--display); font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 10px; }
+.code-block {
+  border-radius: 8px; border: 1px solid var(--rule);
+  background: var(--code-bg); color: var(--code-fg);
+  overflow: hidden;
+}
+.code-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 14px; border-bottom: 1px solid var(--rule);
+  font: 11.5px var(--mono); color: var(--muted);
+  background: color-mix(in srgb, var(--panel) 60%, var(--code-bg));
+}
+.code-block pre {
+  margin: 0; padding: 14px 16px;
+  font: 11.5px/1.7 var(--mono); overflow-x: auto;
+}
+.copy-cmd {
+  padding: 3px 10px; border-radius: 5px; font: 11px var(--mono); font-weight: 600;
+  background: var(--panel); border: 1px solid var(--rule); color: var(--ink-2);
+}
+.copy-cmd:hover { border-color: var(--accent); color: var(--accent); }
+
+footer { border-top: 1px solid var(--rule); padding: 28px 0 44px; font-size: 13.5px; color: var(--muted); }
+.foot-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot-links a:hover { color: var(--accent); }
+
+dialog.lightbox {
+  border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--panel); color: var(--ink);
+  padding: 18px; max-width: min(1120px, 94vw);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+dialog.lightbox::backdrop { background: rgba(21, 23, 34, 0.55); backdrop-filter: blur(4px); }
+dialog.lightbox img { max-width: 100%; max-height: 80vh; border-radius: 8px; display: block; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; font-size: 13.5px; color: var(--muted); }
+.lb-close { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--rule); background: var(--tint); color: var(--ink); }
+
+@media (max-width: 1020px) {
+  .page, .topbar-inner { width: calc(100% - 48px); }
+  .hero, .sim-grid, .install-grid { grid-template-columns: minmax(0, 1fr); }
+  .arch-grid { grid-template-columns: 1fr; gap: 24px; }
+  .arch-col { padding: 0; }
+  .arch-col + .arch-col { border-left: 0; border-top: 1px solid var(--rule); padding-top: 22px; }
+}
+@media (max-width: 640px) {
+  .page, .topbar-inner { width: calc(100% - 36px); }
+  .preset-grid, .gallery-thumbs, .calib-compare { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hud-capsule { font-size: 10.5px; padding: 3px 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#simulator">Skip to interactive simulator</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <a href="/en/" style="display:inline-flex;align-items:center;gap:10px">
+        <img src="/demos/context-monitor/assets/logo.svg" alt="Context Monitor Logo" width="26" height="26">
+        <span>Antigravity Context Monitor</span>
+      </a>
+      <span class="brand-sep">/</span>
+      <a class="brand-parent" href="/en/">Flowing Docs</a>
+    </div>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#simulator">Simulator</a>
+      <a href="#gallery">Screenshots</a>
+      <a href="#architecture">How It Works</a>
+      <a href="#install">Install</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="ghost-link" href="/en/blog/antigravity-context-monitor-open-source">Article</a>
+      <a class="ghost-link" href="/en/showcase">Showcase</a>
+      <a class="ghost-link" href="/demos/context-monitor/index.html" lang="zh-CN">中文</a>
+      <button type="button" class="theme-btn" id="theme-toggle" title="Switch light / dark theme" aria-label="Switch light or dark theme">☾</button>
+      <a class="gh-link" href="https://github.com/heywalter/antigravity-context-monitor" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <div>
+      <div class="kicker">Antigravity Official Plugin · v0.2.0</div>
+      <h1>See context pressure<br>before compaction hits.</h1>
+      <p class="hero-lead">
+        A read-only monitor plugin for Google Antigravity (Desktop &amp; CLI). Calibrates live occupancy to <code>Auto (256K)</code> compaction thresholds while separating <strong>Base / Growth</strong> tokens, <strong>Prompt Cache hits</strong>, <strong>Avg / Last TTFT</strong>, and output speed.
+      </p>
+      <div class="meta-specs">
+        <span>0 Extra Prompt Tokens</span>
+        <span>No App Patching · No CDP</span>
+        <span>macOS Capsule + Cross-Platform Pane</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#simulator">Try the Interactive HUD ↓</a>
+        <a class="text-link" href="/en/blog/antigravity-context-monitor-open-source">Read Background &amp; Article →</a>
+      </div>
+    </div>
+
+    <div class="mac-window" aria-label="Live macOS Titlebar Capsule Preview">
+      <div class="mac-titlebar">
+        <div class="traffic" aria-hidden="true"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+        <div class="mac-win-title" id="hero-conv-title">Refactor Context Monitor</div>
+        <div class="hud-capsule" id="hero-capsule">
+          <svg class="capsule-ring" viewBox="0 0 18 18" aria-hidden="true">
+            <circle class="bg" cx="9" cy="9" r="6.5"/>
+            <circle class="fg" id="hero-ring-fg" cx="9" cy="9" r="6.5" stroke-dasharray="40.84" stroke-dashoffset="23.6"/>
+          </svg>
+          <span id="hero-capsule-text" class="mono"><strong>42% (108K/256K)</strong> <span class="capsule-sep">|</span> <span class="capsule-muted">18.4M tok · Cache 94%</span></span>
+        </div>
+      </div>
+      <div class="mac-body">
+        <div class="chat-user">Why did my thread trigger <code>CHECKPOINT</code> auto-compaction near 220K when the spec says 1M?</div>
+        <div class="chat-agent">
+          Most flagship models compact near <strong>256K</strong> by default in long threads. The floating pill above stays synced with the simulator below—switch scenarios, drag the turn slider, or toggle capsule density to see how headroom changes.
+        </div>
+        <div class="stage-footer">
+          <span>Capsule density (linked to Settings tab)</span>
+          <div class="density-pills" role="group" aria-label="Capsule density">
+            <button type="button" data-density="compact" class="active">Compact</button>
+            <button type="button" data-density="full">Full Bar</button>
+            <button type="button" data-density="minimal">Minimal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="simulator" class="section">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Interactive HUD Simulator</div>
+        <h2>Three-Tab Popover &amp; Auto 256K Calibration</h2>
+      </div>
+      <p>Select a session scenario or scrub through turns on the left; interact with the macOS popover tabs (Session, History, Settings) on the right.</p>
+    </div>
+
+    <div class="sim-grid">
+      <div class="editorial-panel">
+        <div class="step-label">
+          <span>1. Pick a Session Stage</span>
+          <span class="mono" style="font-size:11.5px;color:var(--muted)">127.0.0.1 Read-Only</span>
+        </div>
+
+        <div class="preset-grid" id="preset-grid">
+          <button type="button" class="preset-btn active" data-preset="healthy">
+            <div class="p-top"><span class="p-name">Steady Cached Refactor</span><span class="p-tag ok">42.2%</span></div>
+            <div class="p-desc">Cache hit 94.2%, TTFT 2.1s / 2.6s, 1x compaction completed with comfortable headroom.</div>
+          </button>
+          <button type="button" class="preset-btn" data-preset="bloat">
+            <div class="p-top"><span class="p-name">Heavy File Read Growth</span><span class="p-tag warn">83.8%</span></div>
+            <div class="p-desc">Repeated read_file &amp; grep_search raise Growth to 198K; good time to /compact.</div>
+          </button>
+          <button type="button" class="preset-btn" data-preset="critical">
+            <div class="p-top"><span class="p-name">Near 256K Compaction</span><span class="p-tag crit">96.8%</span></div>
+            <div class="p-desc">Right below the CHECKPOINT ceiling; Last TTFT climbs to 5.8s before auto-summary.</div>
+          </button>
+          <button type="button" class="preset-btn" data-preset="compacted">
+            <div class="p-top"><span class="p-name">Post-/compact Reset</span><span class="p-tag ok">19.0%</span></div>
+            <div class="p-desc">Keeps Base 16.4K + 32.2K summary with ~207K free; TTFT settles back to 1.6s.</div>
+          </button>
+        </div>
+
+        <div class="control-group">
+          <div class="control-row">
+            <label class="step-label" for="turn-slider" style="margin:0">2. Scrub Turns (Turn 1 → Turn 14)</label>
+            <span class="control-val" id="turn-readout">Turn 8 · 108.0K ctx</span>
+          </div>
+          <input id="turn-slider" type="range" min="1" max="14" value="8" aria-label="Turn evolution slider">
+          <div class="turn-chips" id="turn-chips">
+            <button type="button" class="turn-chip" data-turn="2">T2 Start</button>
+            <button type="button" class="turn-chip" data-turn="6">T6 Edits</button>
+            <button type="button" class="turn-chip active" data-turn="8">T8 Steady</button>
+            <button type="button" class="turn-chip" data-turn="11">T11 Heavy Reads</button>
+            <button type="button" class="turn-chip" data-turn="12">T12 Near Cliff</button>
+            <button type="button" class="turn-chip" data-turn="13">T13 CHECKPOINT</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-row">
+            <label class="step-label" for="sim-window-select" style="margin:0">3. Compare Window Denominator (Auto 256K vs 1M)</label>
+            <select id="sim-window-select" class="pop-select" style="flex:0 0 auto;min-width:165px">
+              <option value="256000" selected>Auto (256K · Default)</option>
+              <option value="128000">128K</option>
+              <option value="200000">200K</option>
+              <option value="512000">512K</option>
+              <option value="1000000">1M (Nominal Max)</option>
+            </select>
+          </div>
+          <div class="calib-note">
+            Dividing <code>214.6K</code> by a nominal <code>1M</code> ceiling shows a calm <code>21.5%</code>. Calibrating against Antigravity's actual compaction window (<code>256K</code> default, auto-promoted on observed peaks) surfaces the real <code>83.8%</code> pressure warning in time.
+            <div class="calib-compare">
+              <div class="calib-box"><span>Against nominal 1M ceiling:</span><strong id="cmp-1m" style="color:var(--c-ok)">10.8% (looks empty)</strong></div>
+              <div class="calib-box"><span>Against Auto 256K gauge:</span><strong id="cmp-auto" style="color:var(--accent)">42.2% (true headroom)</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hud-popover" aria-label="Interactive macOS HUD Popover">
+        <div class="pop-head">
+          <div class="pop-title-row">
+            <span class="status-dot live" aria-hidden="true"></span>
+            <span class="pop-title" id="pop-conv-title">Refactor Context Monitor</span>
+          </div>
+          <span class="pop-model">gemini-2.5-pro</span>
+        </div>
+        <div class="pop-meta" id="pop-meta">ID 9a7f3c1e · Auto-follow · Window Auto (256K) · Idle</div>
+
+        <div class="pop-tabs" role="tablist" aria-label="HUD Popover Tabs">
+          <button type="button" role="tab" aria-selected="true" class="active" data-pop-tab="session">Session</button>
+          <button type="button" role="tab" aria-selected="false" data-pop-tab="history">History</button>
+          <button type="button" role="tab" aria-selected="false" data-pop-tab="settings">Settings</button>
+        </div>
+
+        <div id="tab-session">
+          <div class="hud-box">
+            <div class="box-top">
+              <span>CURRENT CONTEXT WINDOW</span>
+              <span class="mono" id="pop-free" style="font-weight:400">~148.0K free</span>
+            </div>
+            <div class="ctx-main">
+              <div class="big mono"><span id="pop-ctx">108.0K</span> <small>/ <span id="pop-limit">256K</span></small></div>
+              <span class="pct-pill" id="pop-pct">42.2%</span>
+            </div>
+            <div class="bar-track" aria-hidden="true">
+              <div class="bar-base" id="bar-base" style="width:6.4%"></div>
+              <div class="bar-growth" id="bar-growth" style="width:35.8%"></div>
+              <div class="bar-out" id="bar-out" style="width:1.4%"></div>
+            </div>
+            <div class="legend-row">
+              <span><i class="leg-dot" style="background:var(--c-base)"></i>Base <strong id="leg-base">16.4K</strong></span>
+              <span><i class="leg-dot" style="background:var(--c-growth)"></i>Growth <strong id="leg-growth">91.6K</strong></span>
+              <span><i class="leg-dot" style="background:var(--c-in)"></i>Input <strong id="leg-in">108.0K</strong></span>
+            </div>
+            <div class="comp-note" id="pop-comp-note">Compacted 1x · Last cache hit 96.4%</div>
+          </div>
+
+          <div class="metrics-2x2">
+            <div class="metric-card">
+              <div class="m-lbl">Speed (End-to-End)</div>
+              <div class="m-val mono" id="pop-speed">58 / 64 tok/s</div>
+              <div class="m-sub" id="pop-speed-sub">Avg 58 · Last 64 tok/s</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">Cache Hit Rate</div>
+              <div class="m-val mono" id="pop-cache">94.2%</div>
+              <div class="m-sub" id="pop-cache-sub">Hit 17.18M · Saved $14.20</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">Session Total</div>
+              <div class="m-val mono" id="pop-total">18.42M</div>
+              <div class="m-sub" id="pop-total-sub">8 turns · 142 steps · 48 tools</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">Est. API Cost</div>
+              <div class="m-val mono" id="pop-cost">$1.84</div>
+              <div class="m-sub" id="pop-cost-sub">≈ ¥13.34 · Out 118.0K</div>
+            </div>
+          </div>
+
+          <div class="hud-box" style="margin-bottom:0">
+            <div class="box-top">
+              <span style="text-transform:none;letter-spacing:0">First Token (TTFT)</span>
+              <span class="mono" id="pop-ttft-steps" style="font-weight:400">39 steps</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+              <span class="mono" style="font-size:16.5px;font-weight:750" id="pop-ttft">2.1s / 2.6s</span>
+              <span class="mono" style="font-size:11px;color:var(--muted)" id="pop-ttft-sub">Avg 2.1s · Last 2.6s</span>
+            </div>
+          </div>
+
+          <div class="pop-foot">
+            <select class="pop-select" id="pop-session-switch" aria-label="Switch monitored session">
+              <option value="follow">Follow Active Session (Refactor Context Monitor)</option>
+              <option value="bloat">Pin: Audit SQLite TTFT Pipeline</option>
+              <option value="compacted">Pin: FlowingDocs Release Sync</option>
+            </select>
+            <button type="button" class="pop-copy-btn" id="pop-copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div id="tab-history" hidden>
+          <div class="metrics-2x2">
+            <div class="metric-card">
+              <div class="m-lbl">Today (2026-11-17)</div>
+              <div class="m-val mono">42.68M</div>
+              <div class="m-sub">$11.42 · 4 sessions</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">Last 7 Days</div>
+              <div class="m-val mono">148.20M</div>
+              <div class="m-sub">$46.80 · Cache 93.9%</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">This Month</div>
+              <div class="m-val mono">286.40M</div>
+              <div class="m-sub">$88.20 · 1840 steps</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-lbl">All Time (Desktop+CLI)</div>
+              <div class="m-val mono">612.50M</div>
+              <div class="m-sub">Est. $194.5 · Saved $1046.8</div>
+            </div>
+          </div>
+
+          <div class="hud-box" style="margin-bottom:0">
+            <div class="hm-head">
+              <span>12-Week Activity Heatmap</span>
+              <div class="hm-scale"><span>Less</span><i class="hm-c0"></i><i class="hm-c1"></i><i class="hm-c2"></i><i class="hm-c3"></i><i class="hm-c4"></i><span>More</span></div>
+            </div>
+            <div class="hm-wrap">
+              <div class="hm-days" aria-hidden="true">
+                <span>M</span><span></span><span>W</span><span></span><span>F</span><span></span><span>S</span>
+              </div>
+              <div class="hm-grid" id="hm-grid" role="grid" aria-label="12-Week Activity Heatmap"></div>
+            </div>
+            <div class="hm-tooltip" id="hm-tooltip">Hover any cell to inspect combined Desktop + CLI usage</div>
+          </div>
+          <div style="font:11px var(--mono);color:var(--muted);margin-top:8px">
+            Desktop: 52 sess (584.20M) · CLI: 6 sess (28.30M)
+          </div>
+        </div>
+
+        <div id="tab-settings" hidden>
+          <div class="set-group">
+            <label>Language</label>
+            <div class="seg-row" data-setting="lang">
+              <button type="button" data-val="en" class="active">English</button>
+              <button type="button" data-val="zh">中文</button>
+            </div>
+          </div>
+          <div class="set-group">
+            <label>Position</label>
+            <div class="seg-row" data-setting="pos">
+              <button type="button" data-val="topRight" class="active">Top Right</button>
+              <button type="button" data-val="bottomCenter">Bottom Center</button>
+              <button type="button" data-val="bottomRight">Bottom Right</button>
+            </div>
+          </div>
+          <div class="set-group">
+            <label>Density (updates the Titlebar Capsule)</label>
+            <div class="seg-row" data-setting="density">
+              <button type="button" data-val="compact" class="active">Compact</button>
+              <button type="button" data-val="full">Full Bar</button>
+              <button type="button" data-val="minimal">Minimal</button>
+            </div>
+          </div>
+          <div class="set-group">
+            <label>Display</label>
+            <div class="seg-row" data-setting="display">
+              <button type="button" data-val="both" class="active">Window + Menu</button>
+              <button type="button" data-val="window">Window Only</button>
+              <button type="button" data-val="menubar">Menu Bar Only</button>
+            </div>
+          </div>
+          <div class="set-group">
+            <label>Context Limit (updates live gauge)</label>
+            <div class="seg-row" data-setting="limit">
+              <button type="button" data-val="256000" class="active">Auto</button>
+              <button type="button" data-val="128000">128K</button>
+              <button type="button" data-val="200000">200K</button>
+              <button type="button" data-val="512000">512K</button>
+              <button type="button" data-val="1000000">1M</button>
+            </div>
+          </div>
+          <p style="font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:8px">
+            Tip: On macOS, drag the capsule directly to fine-tune offset. Auto calibrates to Antigravity's compaction limit (default 256K).
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Product Screenshots</div>
+        <h2>Real Captures Inside Antigravity</h2>
+      </div>
+      <p>Captured directly from v0.2.0 running on macOS. Click any image to inspect full-resolution details.</p>
+    </div>
+
+    <div class="gallery-tabs" role="tablist" aria-label="Screenshot switcher">
+      <button type="button" class="g-tab active" data-idx="0">Session Popover</button>
+      <button type="button" class="g-tab" data-idx="1">12-Week Heatmap</button>
+      <button type="button" class="g-tab" data-idx="2">Instant Settings</button>
+      <button type="button" class="g-tab" data-idx="3">Cross-Platform Aux Pane</button>
+    </div>
+
+    <div class="gallery-frame">
+      <img id="gallery-main-img" src="/demos/context-monitor/assets/popover-session.png" alt="Antigravity Context Monitor product screenshot">
+      <div class="gallery-caption">
+        <span id="gallery-main-cap">macOS Titlebar Capsule &amp; Session Popover — Auto (256K) gauge, Base/Growth split, Avg/Last tok/s &amp; Avg/Last TTFT</span>
+        <button type="button" class="ghost-link" id="open-lightbox" style="border-color:var(--rule);background:var(--panel)">Zoom Image ↗</button>
+      </div>
+      <div class="gallery-thumbs">
+        <button type="button" class="g-thumb active" data-idx="0">
+          <img src="/demos/context-monitor/assets/popover-session.png" alt="Session Popover thumbnail">
+          <span>Session Popover</span>
+        </button>
+        <button type="button" class="g-thumb" data-idx="1">
+          <img src="/demos/context-monitor/assets/popover-history.png" alt="History Heatmap thumbnail">
+          <span>History Heatmap</span>
+        </button>
+        <button type="button" class="g-thumb" data-idx="2">
+          <img src="/demos/context-monitor/assets/popover-settings.png" alt="Settings Popover thumbnail">
+          <span>Settings Controls</span>
+        </button>
+        <button type="button" class="g-thumb" data-idx="3">
+          <img src="/demos/context-monitor/assets/aux-pane-dashboard.png" alt="Aux Pane thumbnail">
+          <span>Aux Pane Web UI</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture" class="section">
+    <div class="section-head">
+      <div>
+        <div class="kicker">How It Works</div>
+        <h2>Read-Only on Local Files, Zero Client Edits</h2>
+      </div>
+      <p>Runs strictly within Antigravity's official Plugin, Hooks, and Sidecar rules—validated with 0 errors and 0 warnings via <code>agy plugin validate</code>.</p>
+    </div>
+
+    <div class="arch-grid">
+      <article class="arch-col">
+        <span class="arch-num" aria-hidden="true">01</span>
+        <div>
+          <h3>Read-Only Local Sources</h3>
+          <p>A minimal <code>SessionStart / PreInvocation</code> hook records the active conversation ID while reading Antigravity's existing files.</p>
+          <ul class="arch-list">
+            <li>transcript.jsonl → tokens, tools &amp; checkpoints</li>
+            <li>annotations/*.pbtxt → renamed session titles</li>
+            <li>conversations/*.db → read-only step timestamps</li>
+          </ul>
+        </div>
+      </article>
+      <article class="arch-col">
+        <span class="arch-num" aria-hidden="true">02</span>
+        <div>
+          <h3>Zero-npm Node Sidecar</h3>
+          <p>No third-party npm packages: includes a compact pure-JS Protobuf reader and read-only SQLite wrapper, quietly skipping TTFT on Node 20.</p>
+          <ul class="arch-list">
+            <li>f1 (created_at) → f6 (viewable_at) yields true TTFT</li>
+            <li>127.0.0.1 loopback only, zero outbound network calls</li>
+            <li>Per-launch random CONTEXT_MONITOR_HUD_TOKEN</li>
+          </ul>
+        </div>
+      </article>
+      <article class="arch-col">
+        <span class="arch-num" aria-hidden="true">03</span>
+        <div>
+          <h3>Auxiliary Pane + macOS Pill</h3>
+          <p>All platforms get the Sidecar Auxiliary Pane; macOS compiles a local AppKit Universal binary (arm64 + x86_64) via swiftc on first launch.</p>
+          <ul class="arch-list">
+            <li>Aux Pane: Overview · History · Steps · Tools · Raw</li>
+            <li>macOS HUD: left-click popover, right-click menu</li>
+            <li>Apple code signature stays intact across updates</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="install" class="install-section">
+    <div class="install-grid">
+      <div>
+        <div class="kicker">Quick Start</div>
+        <h2>Install into Antigravity with One Command</h2>
+        <p style="color:var(--muted);font-size:15px;margin-bottom:22px">
+          Clone directly into your plugins folder and restart Antigravity, or download the prebuilt <code>hud_bar-v0.2.0-macos-universal.tar.gz</code> (with SHA-256 checksum) from GitHub Releases. MIT Licensed.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/en/blog/antigravity-context-monitor-open-source">Read Background &amp; Article</a>
+          <a class="text-link" href="https://github.com/heywalter/antigravity-context-monitor" target="_blank" rel="noopener">GitHub Repository ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="code-block">
+          <div class="code-bar"><span>bash</span><button type="button" class="copy-cmd" id="copy-install-btn">Copy</button></div>
+<pre><code id="install-cmd">git clone https://github.com/heywalter/antigravity-context-monitor.git \
+  ~/.gemini/config/plugins/context-monitor
+
+# Optional: validate &amp; install via CLI
+cd ~/.gemini/config/plugins/context-monitor
+agy plugin validate . &amp;&amp; agy plugin install .</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="page foot-inner">
+    <span>Antigravity Context Monitor · v0.2.0 · MIT License © 2026 Walter</span>
+    <div class="foot-links">
+      <a href="/en/">Flowing Docs Home</a>
+      <a href="/en/showcase">All Projects</a>
+      <a href="/en/blog/antigravity-context-monitor-open-source">Release Article</a>
+      <a href="https://github.com/heywalter/antigravity-context-monitor" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Full-resolution preview">
+  <img id="lb-img" src="/demos/context-monitor/assets/popover-session.png" alt="Zoomed screenshot preview">
+  <div class="lb-bar">
+    <span id="lb-cap"></span>
+    <button type="button" class="lb-close" id="lb-close">Close Esc</button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s), all = s => [...document.querySelectorAll(s)];
+
+  document.addEventListener('click', event => {
+    const link = event.target instanceof Element ? event.target.closest('a[lang]') : null;
+    if (link?.lang) document.cookie = `nf_lang=${link.lang}; path=/; max-age=31536000; samesite=lax`;
+  }, true);
+
+  const themeBtn = $('#theme-toggle');
+  function syncThemeUI() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeBtn.textContent = dark ? '☀' : '☾';
+    $('#meta-theme-color').setAttribute('content', dark ? '#201f23' : '#faf8f4');
+  }
+  themeBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', cur);
+    try { localStorage.setItem('fd_demo_theme', cur); } catch {}
+    syncThemeUI();
+  });
+  syncThemeUI();
+
+  const PRESETS = {
+    healthy: {
+      title: 'Refactor Context Monitor', id: '9a7f3c1e',
+      turn: 8, steps: 142, tools: 48,
+      baseK: 16.4, growthK: 91.6, outK: 3.6,
+      cachePct: 94.2, lastCachePct: 96.4, hitM: 17.18, saved: 14.20,
+      totalM: 18.42, cost: 1.84, outTotalK: 118.0,
+      avgSpeed: 58, lastSpeed: 64,
+      avgTtft: 2.1, lastTtft: 2.6, ttftSteps: 39,
+      compacted: 1
+    },
+    bloat: {
+      title: 'Audit SQLite TTFT Pipeline', id: '4c82d10a',
+      turn: 11, steps: 188, tools: 74,
+      baseK: 16.4, growthK: 198.2, outK: 4.1,
+      cachePct: 91.8, lastCachePct: 88.5, hitM: 24.10, saved: 19.85,
+      totalM: 26.25, cost: 3.12, outTotalK: 164.0,
+      avgSpeed: 52, lastSpeed: 44,
+      avgTtft: 3.8, lastTtft: 5.4, ttftSteps: 51,
+      compacted: 1
+    },
+    critical: {
+      title: 'Refactor HUD & Preload Bridge', id: '7f11e09b',
+      turn: 12, steps: 231, tools: 93,
+      baseK: 16.4, growthK: 231.4, outK: 2.9,
+      cachePct: 92.6, lastCachePct: 86.2, hitM: 31.80, saved: 26.10,
+      totalM: 34.34, cost: 4.45, outTotalK: 201.5,
+      avgSpeed: 49, lastSpeed: 38,
+      avgTtft: 4.4, lastTtft: 5.8, ttftSteps: 64,
+      compacted: 1
+    },
+    compacted: {
+      title: 'FlowingDocs Release Sync', id: '2e90a44c',
+      turn: 13, steps: 16, tools: 6,
+      baseK: 16.4, growthK: 32.2, outK: 2.4,
+      cachePct: 96.4, lastCachePct: 97.8, hitM: 4.20, saved: 3.45,
+      totalM: 4.36, cost: 0.38, outTotalK: 28.5,
+      avgSpeed: 68, lastSpeed: 74,
+      avgTtft: 1.6, lastTtft: 1.9, ttftSteps: 6,
+      compacted: 2
+    }
+  };
+
+  const state = { ...PRESETS.healthy, limit: 256000, density: 'compact' };
+
+  function fmtLimit(lim) { return lim >= 1000000 ? (lim / 1000000) + 'M' : (lim / 1000) + 'K'; }
+
+  function renderAll() {
+    const ctxK = +(state.baseK + state.growthK).toFixed(1);
+    const limitK = state.limit / 1000;
+    const pct = Math.min(100, (ctxK / limitK) * 100);
+    const freeK = Math.max(0, limitK - ctxK);
+    const isAuto = state.limit === 256000;
+    const tone = pct >= 90 ? 'crit' : pct >= 75 ? 'warn' : '';
+
+    $('#hero-conv-title').textContent = state.title;
+    const capEl = $('#hero-capsule');
+    capEl.className = 'hud-capsule' + (tone ? ' tone-' + tone : '');
+    const circ = 40.84;
+    const ringFg = $('#hero-ring-fg');
+    ringFg.style.strokeDashoffset = (circ * (1 - pct / 100)).toFixed(2);
+    ringFg.style.stroke = tone === 'crit' ? '#dc2626' : tone === 'warn' ? '#d97706' : '#0284c7';
+
+    const limTag = fmtLimit(state.limit);
+    const pctRound = Math.round(pct);
+    const capText = $('#hero-capsule-text');
+    if (state.density === 'minimal') {
+      capText.innerHTML = `<strong>${pctRound}%</strong> · ${ctxK.toFixed(0)}K`;
+    } else if (state.density === 'full') {
+      capText.innerHTML = `<strong>${pctRound}% (${Math.round(ctxK)}K/${limTag})</strong> <span class="capsule-sep">|</span> <span class="capsule-muted">${state.totalM.toFixed(1)}M tok · Cache ${Math.round(state.cachePct)}% · ${state.lastSpeed} tok/s · TTFT ${state.lastTtft.toFixed(1)}s</span>`;
+    } else {
+      capText.innerHTML = `<strong>${pctRound}% (${Math.round(ctxK)}K/${limTag})</strong> <span class="capsule-sep">|</span> <span class="capsule-muted">${state.totalM.toFixed(1)}M tok · Cache ${Math.round(state.cachePct)}%</span>`;
+    }
+
+    $('#turn-readout').textContent = `Turn ${state.turn} · ${ctxK.toFixed(1)}K ctx`;
+    const pct1m = ((ctxK / 1000) * 100).toFixed(1);
+    const pct256 = ((ctxK / 256) * 100).toFixed(1);
+    $('#cmp-1m').textContent = `${pct1m}% (${ctxK < 350 ? 'looks empty' : 'still looks safe'})`;
+    $('#cmp-auto').textContent = `${pct256}% (${ctxK >= 230 ? 'near CHECKPOINT' : ctxK >= 190 ? 'consider /compact' : 'true headroom'})`;
+    $('#cmp-auto').style.color = ctxK >= 230 ? 'var(--c-crit)' : ctxK >= 190 ? 'var(--c-warn)' : 'var(--accent)';
+
+    $('#pop-conv-title').textContent = state.title;
+    $('#pop-meta').textContent = `ID ${state.id} · Auto-follow · Window ${isAuto ? 'Auto (' + limTag + ')' : limTag} · Idle`;
+    $('#pop-free').textContent = `~${freeK.toFixed(1)}K free`;
+    $('#pop-ctx').textContent = ctxK.toFixed(1) + 'K';
+    $('#pop-limit').textContent = limTag;
+    const pctEl = $('#pop-pct');
+    pctEl.textContent = pct.toFixed(1) + '%';
+    pctEl.className = 'pct-pill' + (tone ? ' ' + tone : '');
+
+    const bW = Math.min(100, (state.baseK / limitK) * 100);
+    const gW = Math.min(100 - bW, (state.growthK / limitK) * 100);
+    const oW = Math.min(100 - bW - gW, (state.outK / limitK) * 100);
+    $('#bar-base').style.width = bW.toFixed(1) + '%';
+    $('#bar-growth').style.width = gW.toFixed(1) + '%';
+    $('#bar-out').style.width = oW.toFixed(1) + '%';
+    $('#leg-base').textContent = state.baseK.toFixed(1) + 'K';
+    $('#leg-growth').textContent = state.growthK.toFixed(1) + 'K';
+    $('#leg-in').textContent = ctxK.toFixed(1) + 'K';
+    $('#pop-comp-note').textContent = `Compacted ${state.compacted}x · Last cache hit ${state.lastCachePct.toFixed(1)}%`;
+
+    $('#pop-speed').textContent = `${state.avgSpeed} / ${state.lastSpeed} tok/s`;
+    $('#pop-speed-sub').textContent = `Avg ${state.avgSpeed} · Last ${state.lastSpeed} tok/s`;
+    $('#pop-cache').textContent = state.cachePct.toFixed(1) + '%';
+    $('#pop-cache-sub').textContent = `Hit ${state.hitM.toFixed(2)}M · Saved $${state.saved.toFixed(2)}`;
+    $('#pop-total').textContent = state.totalM.toFixed(2) + 'M';
+    $('#pop-total-sub').textContent = `${state.turn} turns · ${state.steps} steps · ${state.tools} tools`;
+    $('#pop-cost').textContent = '$' + state.cost.toFixed(2);
+    $('#pop-cost-sub').textContent = `≈ ¥${(state.cost * 7.25).toFixed(2)} · Out ${state.outTotalK.toFixed(1)}K`;
+    $('#pop-ttft-steps').textContent = `${state.ttftSteps} steps`;
+    $('#pop-ttft').textContent = `${state.avgTtft.toFixed(1)}s / ${state.lastTtft.toFixed(1)}s`;
+    $('#pop-ttft-sub').textContent = `Avg ${state.avgTtft.toFixed(1)}s · Last ${state.lastTtft.toFixed(1)}s`;
+  }
+
+  function applyPreset(key) {
+    const p = PRESETS[key]; if (!p) return;
+    Object.assign(state, p);
+    $('#turn-slider').value = String(p.turn);
+    all('.preset-btn').forEach(b => b.classList.toggle('active', b.dataset.preset === key));
+    all('.turn-chip').forEach(b => b.classList.toggle('active', Number(b.dataset.turn) === p.turn));
+    renderAll();
+  }
+
+  function applyTurn(turn) {
+    turn = Math.max(1, Math.min(14, Number(turn)));
+    state.turn = turn;
+    if (turn >= 13) {
+      Object.assign(state, {
+        baseK: 16.4, growthK: turn === 13 ? 32.2 : 54.8, outK: 2.6,
+        compacted: 2, cachePct: 96.2, lastCachePct: 97.4,
+        avgSpeed: 65, lastSpeed: 72, avgTtft: 1.7, lastTtft: 2.0,
+        steps: 16 + (turn - 13) * 18, tools: 6 + (turn - 13) * 8,
+        totalM: turn === 13 ? 4.36 : 7.85, cost: turn === 13 ? 0.38 : 0.71,
+        hitM: turn === 13 ? 4.2 : 7.55, saved: turn === 13 ? 3.45 : 6.20,
+        ttftSteps: 6 + (turn - 13) * 7, outTotalK: 28.5 + (turn - 13) * 14
+      });
+    } else {
+      const prog = (turn - 1) / 11;
+      const growth = +(14 + prog * 217.4).toFixed(1);
+      Object.assign(state, {
+        baseK: 16.4, growthK: growth, outK: +(1.8 + prog * 2.2).toFixed(1),
+        compacted: turn >= 7 ? 1 : 0,
+        cachePct: +(88.5 + Math.sin(prog * 2.5) * 6).toFixed(1),
+        lastCachePct: +(97.2 - prog * 10).toFixed(1),
+        avgSpeed: Math.round(68 - prog * 19),
+        lastSpeed: Math.round(74 - prog * 35),
+        avgTtft: +(1.4 + prog * 2.9).toFixed(1),
+        lastTtft: +(1.6 + prog * 4.2).toFixed(1),
+        steps: Math.round(18 + prog * 212),
+        tools: Math.round(5 + prog * 88),
+        totalM: +(2.1 + prog * 32.2).toFixed(2),
+        hitM: +(1.9 + prog * 29.8).toFixed(2),
+        saved: +(1.6 + prog * 24.4).toFixed(2),
+        cost: +(0.25 + prog * 4.2).toFixed(2),
+        outTotalK: +(16 + prog * 185).toFixed(1),
+        ttftSteps: Math.round(6 + prog * 58)
+      });
+    }
+    all('.preset-btn').forEach(b => b.classList.remove('active'));
+    all('.turn-chip').forEach(b => b.classList.toggle('active', Number(b.dataset.turn) === turn));
+    renderAll();
+  }
+
+  all('.preset-btn').forEach(btn => btn.addEventListener('click', () => applyPreset(btn.dataset.preset)));
+  $('#turn-slider').addEventListener('input', e => applyTurn(e.target.value));
+  all('.turn-chip').forEach(btn => btn.addEventListener('click', () => {
+    $('#turn-slider').value = btn.dataset.turn;
+    applyTurn(btn.dataset.turn);
+  }));
+
+  $('#sim-window-select').addEventListener('change', e => {
+    state.limit = Number(e.target.value);
+    all('[data-setting="limit"] button').forEach(b => b.classList.toggle('active', Number(b.dataset.val) === state.limit));
+    renderAll();
+  });
+
+  function setDensity(d) {
+    state.density = d;
+    all('[data-density]').forEach(b => b.classList.toggle('active', b.dataset.density === d));
+    all('[data-setting="density"] button').forEach(b => b.classList.toggle('active', b.dataset.val === d));
+    renderAll();
+  }
+  all('[data-density]').forEach(b => b.addEventListener('click', () => setDensity(b.dataset.density)));
+
+  all('[data-pop-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.popTab;
+      all('[data-pop-tab]').forEach(b => {
+        const on = b.dataset.popTab === target;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', String(on));
+      });
+      ['session', 'history', 'settings'].forEach(t => { $('#tab-' + t).hidden = (t !== target); });
+    });
+  });
+
+  $('#pop-session-switch').addEventListener('change', e => {
+    const v = e.target.value;
+    applyPreset(v === 'follow' ? 'healthy' : v);
+  });
+
+  all('.seg-row').forEach(group => {
+    group.addEventListener('click', e => {
+      const btn = e.target.closest('button'); if (!btn) return;
+      const setting = group.dataset.setting;
+      const val = btn.dataset.val;
+      group.querySelectorAll('button').forEach(b => b.classList.toggle('active', b === btn));
+      if (setting === 'density') setDensity(val);
+      if (setting === 'limit') {
+        state.limit = Number(val);
+        $('#sim-window-select').value = val;
+        renderAll();
+      }
+      if (setting === 'lang' && val === 'zh') {
+        document.cookie = 'nf_lang=zh-CN; path=/; max-age=31536000; samesite=lax';
+        location.href = '/demos/context-monitor/index.html';
+      }
+    });
+  });
+
+  const hmGrid = $('#hm-grid');
+  const today = new Date('2026-11-17T00:00:00');
+  for (let i = 83; i >= 0; i--) {
+    const d = new Date(today); d.setDate(today.getDate() - i);
+    const iso = d.toISOString().slice(0, 10);
+    const seed = (84 - i) * 17 + d.getDay() * 11;
+    const lvl = i === 0 ? 3 : (seed % 9 === 0 ? 0 : (seed % 7 === 0 ? 4 : (seed % 3) + 1));
+    const tokens = (lvl * 12.4 + (seed % 9) * 0.9).toFixed(1);
+    const sess = lvl === 0 ? 0 : Math.max(1, (seed % 5) + 1);
+    const cliTok = (lvl > 2 ? ((seed % 4) + 0.8).toFixed(1) : '0.0');
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = `hm-cell hm-c${lvl}`;
+    cell.title = `${iso}: ${tokens}M tok`;
+    cell.setAttribute('aria-label', `${iso}: ${tokens}M tokens`);
+    const showTip = () => { $('#hm-tooltip').textContent = `${iso} · ${tokens}M tok (${sess} sess · CLI ${cliTok}M)`; };
+    cell.addEventListener('mouseenter', showTip);
+    cell.addEventListener('focus', showTip);
+    hmGrid.appendChild(cell);
+  }
+
+  $('#pop-copy-btn').addEventListener('click', () => {
+    const ctxK = (state.baseK + state.growthK).toFixed(1);
+    const summary = `[Antigravity Context] ${ctxK}K/${fmtLimit(state.limit)} (${((ctxK / (state.limit / 1000)) * 100).toFixed(1)}%) | Cache ${state.cachePct}% | Speed ${state.avgSpeed}/${state.lastSpeed} tok/s | TTFT ${state.avgTtft}/${state.lastTtft}s`;
+    navigator.clipboard?.writeText(summary);
+    const btn = $('#pop-copy-btn'); btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
+  });
+  $('#copy-install-btn').addEventListener('click', () => {
+    navigator.clipboard?.writeText($('#install-cmd').textContent);
+    const btn = $('#copy-install-btn'); btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
+  });
+
+  const galleryImgs = [
+    { src: '/demos/context-monitor/assets/popover-session.png', cap: 'macOS Titlebar Capsule & Session Popover — Auto (256K) gauge, Base/Growth split, Avg/Last tok/s & Avg/Last TTFT' },
+    { src: '/demos/context-monitor/assets/popover-history.png', cap: 'Global History & 12-Week Activity Heatmap — combined Antigravity Desktop + CLI token totals and savings' },
+    { src: '/demos/context-monitor/assets/popover-settings.png', cap: 'Instant Settings — English / 中文 toggle, anchor placement, density presets, and Window Limit' },
+    { src: '/demos/context-monitor/assets/aux-pane-dashboard.png', cap: 'Cross-Platform Auxiliary Pane Web UI (macOS · Linux · Windows) — Overview & per-tool context overhead breakdown' }
+  ];
+  function setGallery(idx) {
+    const item = galleryImgs[idx]; if (!item) return;
+    $('#gallery-main-img').src = item.src;
+    $('#gallery-main-cap').textContent = item.cap;
+    all('.g-tab').forEach((b, i) => b.classList.toggle('active', i === idx));
+    all('.g-thumb').forEach((b, i) => b.classList.toggle('active', i === idx));
+  }
+  all('.g-tab').forEach(b => b.addEventListener('click', () => setGallery(Number(b.dataset.idx))));
+  all('.g-thumb').forEach(b => b.addEventListener('click', () => setGallery(Number(b.dataset.idx))));
+
+  const lb = $('#lightbox');
+  function openLb() {
+    $('#lb-img').src = $('#gallery-main-img').src;
+    $('#lb-cap').textContent = $('#gallery-main-cap').textContent;
+    lb.showModal();
+  }
+  $('#open-lightbox').addEventListener('click', openLb);
+  $('#gallery-main-img').addEventListener('click', openLb);
+  $('#lb-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>

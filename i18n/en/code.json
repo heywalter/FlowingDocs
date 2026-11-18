@@ -763,6 +763,18 @@
   "showcase.ai-review.articleUrl": {
     "message": "/en/blog/docsifter-open-source"
   },
+  "showcase.context-monitor.title": {
+    "message": "Antigravity Context Monitor - Context & TTFT HUD"
+  },
+  "showcase.context-monitor.description": {
+    "message": "A read-only monitor plugin for Google Antigravity (Desktop & CLI): calibrates context pressure to Auto (256K), splits Base vs. Growth, and shows Prompt Cache hits, Avg/Last TTFT, tok/s, and a 12-week heatmap."
+  },
+  "showcase.context-monitor.demoUrl": {
+    "message": "/demos/context-monitor/index-en.html"
+  },
+  "showcase.context-monitor.articleUrl": {
+    "message": "/en/blog/antigravity-context-monitor-open-source"
+  },
   "showcase.dsh-proxy.title": {
     "message": "DSH Domain Proxy - Domain Proxy & Latency Tracker"
   },
